@@ -64,7 +64,7 @@
         <div style="padding: 10px; background-color: #4080b0">
             <span style="color: white;">&nbsp;&nbsp; © All Right <a href="" style="color: white;"
                 target="_blank">有限公司</a> 2015-2015</span> &nbsp;&nbsp; <span style="color: white;"
-                    class="STYLE7" id="ServerDateTime1">建议IE7.0+及分辨率在1024*768及以上使用</span>
+                    class="STYLE7" id="ServerDateTime1">建议IE8.0+及分辨率在1024*768及以上使用</span>
         </div>
     </div>
     <div data-options="region:'center',border:false" style="background: #eee; overflow: hidden; border: 1px solid #95B8E7;">
@@ -78,5 +78,6 @@
     <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="easyui/jquery.form.js"></script>
+    <script src="supermap/libs/SuperMap.Include.js"></script>
 </body>
 </html>

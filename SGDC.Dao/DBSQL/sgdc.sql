@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2016-04-04 03:00:58
+Date: 2016-04-05 01:35:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -213,3 +213,77 @@ CREATE TABLE `userinfo` (
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
+
+-- ----------------------------
+-- View structure for v_shigu
+-- ----------------------------
+DROP VIEW IF EXISTS `v_shigu`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `v_shigu` AS select 
+jb.*
+,HG_ID 
+,HG_ZD_ShangXing
+,HG_ZD_XiaXing
+,HG_DW_ShangXing
+,HG_DW_XiaXing
+,HG_TG_DongCheZu
+,HG_TG_JiChe
+,HG_TG_KeChe
+,HG_TG_HuoChe
+,HG_SS_DongCheZu
+,HG_SS_JiChe
+,HG_SS_CheLiang
+,HG_SS_QiTa
+,HG_ZhiJieSunShi
+,HG_XZ_JiDongChe
+,HG_XZ_FeiJiDongChe
+,HG_XZ_XingRen
+,HG_XZ_DaoKouQingKuang
+,HG_XZ_GongTieBingXing
+,HG_XZ_FangHuZhaLan
+,HG_XZ_GongTieLiJiao
+,HG_XZ_SuDuQuDuan
+,HG_XZ_QuXianBanJing
+,HG_XZ_PoDu
+,HG_SW_XingMing
+,HG_SW_DanWei
+,HG_SW_XingBie
+,HG_SW_NianLing
+,HG_SW_MinZu
+,HG_SW_GongZhong
+,HG_SW_ShangHaiChengDu
+,HG_SW_RenYuanShuXing
+,HG_SiW_LuNei
+,HG_SiW_LuWai
+,HG_ZS_LuNei
+,HG_ZS_LuWai
+,HG_QS_LuNei
+,HG_QS_LuWai
+,HG_ShiGuGaiKuang
+,HG_Ext1
+,HG_Ext2
+,HG_Ext3
+,ZR_ID 
+,ZR_ZeRenDanWei
+,ZR_ZeRenDanWeiShuXing
+,ZR_ZeRenBuMen
+,ZR_ZeRenChengDu
+,ZR_YuanYinLeiBie
+,ZR_ShiGuLeiBie
+,ZR_XingChe
+,ZR_ZhiBanJianCha
+,ZR_TianBaoShiJian
+,ZR_BaoGaoCiShu
+,ZR_ShiGuDiaoChaBaoGao
+,ZR_XianChangDianChaZiLiao
+,ZR_SunShiJiSuanZiLiao
+,ZR_ShiGuRenDingShu
+,ZR_AnJianBaoEr
+,ZR_QiTa
+,ZR_TePaiBanDiaoChaBaoGao
+,ZR_SheDuDiaoChaBaoGao
+,ZR_Ext1
+,ZR_Ext2
+,ZR_Ext3
+from sgdc.shigujibeninfo jb
+left join sgdc.shiguhouguoinfo hg on (jb.JB_ID = hg.JB_ID)
+left join sgdc.shiguzerenrendinginfo zr on (jb.JB_ID = zr.JB_ID) ;

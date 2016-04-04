@@ -30,8 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,11 +46,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SGModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SGModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SGModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Svc\datadictionaryinfo_Dao.cs" />
+    <Compile Include="Svc\shiguhouguoinfo_Dao.cs" />
+    <Compile Include="Svc\userinfo_Dao.cs" />
+    <Compile Include="Svc\shigujibeninfo_Dao.cs" />
+    <Compile Include="Svc\shiguzerenrendinginfo_Dao.cs" />
+    <Compile Include="Svc\UtilityEntityDao.cs" />
+    <Compile Include="Svc\v_shigu_Dao.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DBSQL\sgdc.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="SGModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SGModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="SGModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SGModel.edmx</DependentUpon>
+      <LastGenOutput>SGModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="SGModel.edmx.diagram">
+      <DependentUpon>SGModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SGDC.Model\SGDC.Model.csproj">
+      <Project>{e04c51d2-68b5-4b60-a72e-98969012a76b}</Project>
+      <Name>SGDC.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGDC.Utility\SGDC.Utility.csproj">
+      <Project>{d5211d9b-cf4a-4719-9f0c-c250c32fe81e}</Project>
+      <Name>SGDC.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

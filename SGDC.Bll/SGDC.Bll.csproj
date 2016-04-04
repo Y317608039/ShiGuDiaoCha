@@ -39,8 +39,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="shigujibeninfo_Bll.cs" />
+    <Compile Include="shiguhouguoinfo_Bll.cs" />
+    <Compile Include="datadictionaryinfo_Bll.cs" />
+    <Compile Include="shiguzerenrendinginfo_Bll.cs" />
+    <Compile Include="userinfo_Bll.cs" />
+    <Compile Include="v_shigu_Bll.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SGDC.Dao\SGDC.Dao.csproj">
+      <Project>{992fe065-bbfe-4516-888e-ba40d4bf380b}</Project>
+      <Name>SGDC.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGDC.Model\SGDC.Model.csproj">
+      <Project>{e04c51d2-68b5-4b60-a72e-98969012a76b}</Project>
+      <Name>SGDC.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SGDC.Utility\SGDC.Utility.csproj">
+      <Project>{d5211d9b-cf4a-4719-9f0c-c250c32fe81e}</Project>
+      <Name>SGDC.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

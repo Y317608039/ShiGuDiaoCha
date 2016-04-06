@@ -487,7 +487,7 @@ namespace SGDC.Dao.Svc
                         exp = Expression.Call(propertyAccess, method, valueExp);
                         break;
                     case FilterOp.IN:
-                        exp = Expression.Call(typeof(Enumerable), "Contains", new[] { typeof(object) }, valueExp, propertyAccess);
+                        exp = Expression.Call(typeof(Enumerable), "Contains", new[] { Type.GetType(propertyAccess.Type.FullName) }, valueExp, propertyAccess);
                         break;
                 }
 

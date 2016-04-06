@@ -15,6 +15,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SGDC.Web", "http://localhos
 	ProjectSection(WebsiteProperties) = preProject
 		UseIISExpress = "true"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{15096bbb-d2ea-40e8-bf3d-a44722a76dce}|SGDC.Bll.dll;{e04c51d2-68b5-4b60-a72e-98969012a76b}|SGDC.Model.dll;{d5211d9b-cf4a-4719-9f0c-c250c32fe81e}|SGDC.Utility.dll;{992FE065-BBFE-4516-888E-BA40D4BF380B}|SGDC.Dao.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_62753"
 		Debug.AspNetCompiler.PhysicalPath = "SGDC.Web\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_62753\"

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class views_homepage : BasePage
+public partial class views_HomePage : BasePage
 {
     protected void Page_Load(object sender, EventArgs e)
     {

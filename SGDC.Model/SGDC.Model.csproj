@@ -45,6 +45,15 @@
     <Compile Include="documentinfo.cs">
       <DependentUpon>SGModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ObjExt\datadictionaryinfo.cs" />
+    <Compile Include="ObjExt\documentinfo.cs" />
+    <Compile Include="ObjExt\shiguhouguoinfo.cs" />
+    <Compile Include="ObjExt\shiguhouguoshangwanginfo.cs" />
+    <Compile Include="ObjExt\shigujibeninfo.cs" />
+    <Compile Include="ObjExt\shiguzerendanweiinfo.cs" />
+    <Compile Include="ObjExt\shiguzereninfo.cs" />
+    <Compile Include="ObjExt\systemloginfo.cs" />
+    <Compile Include="ObjExt\userinfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SGModel.cs">
       <AutoGen>True</AutoGen>
@@ -85,6 +94,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,5 +1,5 @@
 /**
- * jQuery EasyUI 1.4.3
+ * jQuery EasyUI 1.4.2
  * 
  * Copyright (c) 2009-2015 www.jeasyui.com. All rights reserved.
  *
@@ -104,10 +104,6 @@
 			js:'jquery.splitbutton.js',
 			css:'splitbutton.css',
 			dependencies:['menubutton']
-		},
-		switchbutton:{
-			js:'jquery.switchbutton.js',
-			css:'switchbutton.css'
 		},
 		accordion:{
 			js:'jquery.accordion.js',

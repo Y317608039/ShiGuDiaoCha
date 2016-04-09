@@ -11,6 +11,22 @@ namespace SGDC.Bll
 {
     public class shiguzereninfo_Bll
     {
+        #region Clone
+        public shiguzereninfo Clone(shiguzereninfo obj)
+        {
+            return (shiguzereninfo)obj.Clone();
+        }
+        #endregion
+
+        #region Save
+        public shiguzereninfo Save(shiguzereninfo obj)
+        {
+            if (obj.ZR_ID <= 0) return Add(obj);
+            try { Modify(obj); return obj; }
+            catch (Exception) { return null; }
+        }
+        #endregion
+
         #region Add
         /// <summary> 新增对象，完成后返回新增的对象 </summary>
         /// <param name="item">要新增的对象</param>

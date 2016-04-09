@@ -1,5 +1,5 @@
 /**
- * jQuery EasyUI 1.4.3
+ * jQuery EasyUI 1.4.2
  * 
  * Copyright (c) 2009-2015 www.jeasyui.com. All rights reserved.
  *
@@ -10,7 +10,7 @@
 (function($){
 function _1(_2){
 var _3=0;
-if(typeof _2.selectionStart=="number"){
+if(_2.selectionStart){
 _3=_2.selectionStart;
 }else{
 if(_2.createTextRange){
@@ -23,7 +23,7 @@ _3=s.text.length;
 return _3;
 };
 function _5(_6,_7,_8){
-if(_6.setSelectionRange){
+if(_6.selectionStart){
 _6.setSelectionRange(_7,_8);
 }else{
 if(_6.createTextRange){

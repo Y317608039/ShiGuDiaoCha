@@ -14,9 +14,9 @@ namespace SGDC.Model
     
     public partial class systemloginfo
     {
-        public int SL_Id { get; set; }
-        public int SL_WrId { get; set; }
-        public string SL_WrName { get; set; }
+        public int SL_ID { get; set; }
+        public int SL_UserID { get; set; }
+        public string SL_UserName { get; set; }
         public string SL_Type { get; set; }
         public string SL_Desc { get; set; }
         public System.DateTime SL_CreateTime { get; set; }

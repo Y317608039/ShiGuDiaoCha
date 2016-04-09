@@ -11,6 +11,22 @@ namespace SGDC.Bll
 {
     public class shiguhouguoshangwanginfo_Bll
     {
+        #region Clone
+        public shiguhouguoshangwanginfo Clone(shiguhouguoshangwanginfo obj)
+        {
+            return (shiguhouguoshangwanginfo)obj.Clone();
+        }
+        #endregion
+
+        #region Save
+        public shiguhouguoshangwanginfo Save(shiguhouguoshangwanginfo obj)
+        {
+            if (obj.SW_ID <= 0) return Add(obj);
+            try { Modify(obj); return obj; }
+            catch (Exception) { return null; }
+        }
+        #endregion
+
         #region Add
         /// <summary> 新增对象，完成后返回新增的对象 </summary>
         /// <param name="item">要新增的对象</param>

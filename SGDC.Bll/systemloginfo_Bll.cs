@@ -11,6 +11,22 @@ namespace SGDC.Bll
 {
     public class systemloginfo_Bll
     {
+        #region Clone
+        public systemloginfo Clone(systemloginfo obj)
+        {
+            return (systemloginfo)obj.Clone();
+        }
+        #endregion
+
+        #region Save
+        public systemloginfo Save(systemloginfo obj)
+        {
+            if (obj.SL_ID <= 0) return Add(obj);
+            try { Modify(obj); return obj; }
+            catch (Exception) { return null; }
+        }
+        #endregion
+
         #region Add
         /// <summary> 新增对象，完成后返回新增的对象 </summary>
         /// <param name="item">要新增的对象</param>

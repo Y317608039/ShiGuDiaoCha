@@ -32,7 +32,7 @@
                 <ul>
                     <li>
                         <div class="">
-                            <a ref="Menu0001" href="#" rel="Views/DanWeiRenYuanXinXi/DanWeiJiBenXinXi.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">项目一</span></a>
+                            <a ref="Menu0001" href="#" rel="views/SystemParmsManage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">项目一</span></a>
                         </div>
                     </li>
                     <li>
@@ -44,24 +44,29 @@
             </div>
 
 
-            <div title="菜单二" style="padding: 5px;">
+            <div title="系统管理" style="padding: 5px;">
                 <ul>
                     <li>
                         <div class="">
-                            <a ref="Menu1001" href="#" rel="Views/jbxx/xljbxx.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">项目三</span></a>
+                            <a ref="Menu1001" href="#" rel="views/SystemParmsManage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">系统参数</span></a>
                         </div>
                     </li>
                     <li>
                         <div class="">
-                            <a ref="Menu1002" href="#" rel="Views/jbxx/xlxbxx.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">项目四</span></a>
+                            <a ref="Menu1002" href="#" rel="Views/jbxx/xlxbxx.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">人员信息</span></a>
+                        </div>
+                    </li> 
+                    <li>
+                        <div class="">
+                            <a ref="Menu1002" href="#" rel="Views/jbxx/xlxbxx.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">日志信息</span></a>
                         </div>
                     </li> 
                 </ul>
             </div> 
         </div>
     </div>
-    <div data-options="region:'south',border:false" style="height: 36px; background-color: #5c87b2; overflow: hidden; color: #000444; text-align: center; line-height: normal;">
-        <div style="padding: 10px; background-color: #4080b0">
+    <div data-options="region:'south',border:false" style="height: 20px; background-color: #5c87b2; overflow: hidden; color: #000444; text-align: center; line-height: normal;">
+        <div style="padding: 2px; background-color: #4080b0">
             <span style="color: white;">&nbsp;&nbsp; © All Right <a href="" style="color: white;"
                 target="_blank">有限公司</a> 2015-2015</span> &nbsp;&nbsp; <span style="color: white;"
                     class="STYLE7" id="ServerDateTime1">建议IE8.0+及分辨率在1024*768及以上使用</span>

@@ -18,6 +18,7 @@ namespace SGDC.Model
         public string DD_Type { get; set; }
         public string DD_Value { get; set; }
         public string DD_Desc { get; set; }
+        public string DD_Status { get; set; }
         public string DD_Ext1 { get; set; }
         public string DD_Ext2 { get; set; }
         public string DD_Ext3 { get; set; }

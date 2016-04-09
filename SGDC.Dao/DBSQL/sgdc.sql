@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2016-04-09 11:05:04
+Date: 2016-04-09 14:17:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -21,18 +21,21 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `datadictionaryinfo`;
 CREATE TABLE `datadictionaryinfo` (
   `DD_ID` int(10) NOT NULL AUTO_INCREMENT COMMENT '数据字典ID',
-  `DD_Type` char(100) NOT NULL DEFAULT '' COMMENT '数据字典类型',
-  `DD_Value` char(255) NOT NULL DEFAULT '' COMMENT '数据字典值',
-  `DD_Desc` char(255) NOT NULL DEFAULT '' COMMENT '数据字典描述',
+  `DD_Type` varchar(25) NOT NULL DEFAULT '' COMMENT '数据字典类型',
+  `DD_Value` varchar(25) NOT NULL DEFAULT '' COMMENT '数据字典值',
+  `DD_Desc` varchar(25) NOT NULL DEFAULT '' COMMENT '数据字典描述',
+  `DD_Status` varchar(25) NOT NULL DEFAULT '' COMMENT '数据字典',
   `DD_Ext1` varchar(255) DEFAULT NULL COMMENT '数据字典扩展信息1',
   `DD_Ext2` varchar(255) DEFAULT NULL COMMENT '数据字典扩展信息2',
   `DD_Ext3` varchar(255) DEFAULT NULL COMMENT '数据字典扩展信息3',
   PRIMARY KEY (`DD_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='数据字典信息';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='数据字典信息';
 
 -- ----------------------------
 -- Records of datadictionaryinfo
 -- ----------------------------
+INSERT INTO `datadictionaryinfo` VALUES ('1', '测试', '测试1', '测试1', '', '', '', '');
+INSERT INTO `datadictionaryinfo` VALUES ('2', '测试', '测试2', '测试2', '', '1', '2', '3');
 
 -- ----------------------------
 -- Table structure for documentinfo
@@ -266,16 +269,16 @@ CREATE TABLE `shiguzereninfo` (
 -- ----------------------------
 DROP TABLE IF EXISTS `systemloginfo`;
 CREATE TABLE `systemloginfo` (
-  `SL_Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '系统日志标识ID',
-  `SL_WrId` int(11) NOT NULL DEFAULT '0' COMMENT '操作人员Id',
-  `SL_WrName` varchar(255) NOT NULL DEFAULT '' COMMENT '操作人员姓名',
+  `SL_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '系统日志标识ID',
+  `SL_UserID` int(11) NOT NULL DEFAULT '0' COMMENT '操作人员Id',
+  `SL_UserName` varchar(255) NOT NULL DEFAULT '' COMMENT '操作人员姓名',
   `SL_Type` char(25) NOT NULL DEFAULT '' COMMENT '日志类型',
   `SL_Desc` varchar(3000) NOT NULL DEFAULT '' COMMENT '日志内容',
   `SL_CreateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '日志创建时间',
   `SL_Ext1` varchar(255) DEFAULT NULL COMMENT '日志扩展1',
   `SL_Ext2` varchar(255) DEFAULT NULL COMMENT '日志扩展2',
   `SL_Ext3` varchar(255) DEFAULT NULL COMMENT '日志扩展3',
-  PRIMARY KEY (`SL_Id`)
+  PRIMARY KEY (`SL_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统日志信息';
 
 -- ----------------------------

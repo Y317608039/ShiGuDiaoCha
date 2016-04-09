@@ -27,15 +27,15 @@ namespace SGDC.Dao
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<datadictionaryinfo> datadictionaryinfo { get; set; }
         public DbSet<documentinfo> documentinfo { get; set; }
         public DbSet<shiguhouguoinfo> shiguhouguoinfo { get; set; }
         public DbSet<shiguhouguoshangwanginfo> shiguhouguoshangwanginfo { get; set; }
         public DbSet<shigujibeninfo> shigujibeninfo { get; set; }
         public DbSet<shiguzerendanweiinfo> shiguzerendanweiinfo { get; set; }
         public DbSet<shiguzereninfo> shiguzereninfo { get; set; }
-        public DbSet<v_shigu> v_shigu { get; set; }
-        public DbSet<datadictionaryinfo> datadictionaryinfo { get; set; }
-        public DbSet<userinfo> userinfo { get; set; }
         public DbSet<systemloginfo> systemloginfo { get; set; }
+        public DbSet<userinfo> userinfo { get; set; }
+        public DbSet<v_shigu> v_shigu { get; set; }
     }
 }

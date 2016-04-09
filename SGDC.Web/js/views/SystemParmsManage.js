@@ -139,13 +139,13 @@
                 if (rows.length > 0) {
                     console.log(rows[0]);
                     $('#datadicmanager_edit').form('load', {
-                        datadicid: rows[0].DD_IDField,
-                        datadictype: rows[0].DD_TypeField,
-                        datadicname: rows[0].DD_ValueField,
-                        datadicdesc: rows[0].DD_DescField,
-                        datadicext1: rows[0].DD_Ext1Field,
-                        datadicext2: rows[0].DD_Ext2Field,
-                        datadicext3: rows[0].DD_Ext3Field
+                        datadicid: rows[0].DD_ID,
+                        datadictype: rows[0].DD_Type,
+                        datadicname: rows[0].DD_Value,
+                        datadicdesc: rows[0].DD_Desc,
+                        datadicext1: rows[0].DD_Ext1,
+                        datadicext2: rows[0].DD_Ext2,
+                        datadicext3: rows[0].DD_Ext3
                     }).dialog({ title: "修改文档" }).dialog('open');
                 } else if (rows.length === 0) {
                     $.messager.alert('警告操作！', '请选择要修改的记录！', 'warning');
@@ -168,7 +168,7 @@
                                 'views/SystemParmsManage.aspx',
                                 {
                                     method: 'DelItem',
-                                    datadicid: rows[0].DD_IDField
+                                    datadicid: rows[0].DD_ID
                                 },
                                 function (data) {
                                     if (data) {

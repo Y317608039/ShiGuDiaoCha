@@ -113,8 +113,7 @@ public partial class views_SystemParmsManage : BasePage
             {
                 DD_Type = datadictype,
                 DD_Value = datadicname,
-                DD_Desc = datadicdesc,
-                DD_Status = "",
+                DD_Desc = datadicdesc, 
                 DD_Ext1 = datadicext1,
                 DD_Ext2 = datadicext2,
                 DD_Ext3 = datadicext3

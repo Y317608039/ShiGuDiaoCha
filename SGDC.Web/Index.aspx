@@ -6,9 +6,9 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <link type="text/css" href="easyui/themes/default/easyui.css" rel="stylesheet" />
+    <link type="text/css" href="easyui/themes/metro/easyui.css" rel="stylesheet" />
     <link type="text/css" href="easyui/themes/icon.css" rel="stylesheet" />
-    <link type="text/css" href="styles/index.css" rel="stylesheet" /> 
+    <link type="text/css" href="styles/index.css" rel="stylesheet" />
 </head>
 <body class="easyui-layout">
     <div data-options="region:'north',border:false" style="overflow: hidden; height: 63px;" class="panel-body panel-body-noheader panel-body-noborder layout-body">
@@ -16,8 +16,8 @@
             <div style="float: left; width: 493px; height: 63px;">
                 <img style="width: 493px; height: 63px;" src="Images/top_bg.png" />
             </div>
-            <div style="float: right; height: 50px;"">
-               <div style="text-align: center; float: left; padding-top: 10px; padding-left: 10px;">
+            <div style="float: right; height: 50px;">
+                <div style="text-align: center; float: left; padding-top: 10px; padding-left: 10px;">
                     <a class="easyui-linkbutton" id="btnmodifypwd" data-options="iconCls:'icon-edit'">修改密码</a>
                 </div>
                 <div style="text-align: center; float: right; padding-top: 10px; padding-left: 10px;">
@@ -39,7 +39,7 @@
                         <div class="">
                             <a ref="Menu0002" href="#" rel="Views/DanWeiRenYuanXinXi/RenYuanJiBenXinXi.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">项目二</span></a>
                         </div>
-                    </li> 
+                    </li>
                 </ul>
             </div>
 
@@ -48,21 +48,21 @@
                 <ul>
                     <li>
                         <div class="">
+                            <a ref="Menu1002" href="#" rel="Views/jbxx/xlxbxx.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">人员信息</span></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
                             <a ref="Menu1001" href="#" rel="views/SystemParmsManage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">系统参数</span></a>
                         </div>
                     </li>
                     <li>
                         <div class="">
-                            <a ref="Menu1002" href="#" rel="Views/jbxx/xlxbxx.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">人员信息</span></a>
+                            <a ref="Menu1002" href="#" rel="views/LogInfoPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">日志信息</span></a>
                         </div>
-                    </li> 
-                    <li>
-                        <div class="">
-                            <a ref="Menu1002" href="#" rel="Views/jbxx/xlxbxx.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">日志信息</span></a>
-                        </div>
-                    </li> 
+                    </li>
                 </ul>
-            </div> 
+            </div>
         </div>
     </div>
     <div data-options="region:'south',border:false" style="height: 20px; background-color: #5c87b2; overflow: hidden; color: #000444; text-align: center; line-height: normal;">
@@ -77,7 +77,7 @@
             <div title="首页" style="padding: 0; display: block; overflow: hidden;" href="views/homepage.aspx">
             </div>
         </div>
-    </div> 
+    </div>
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>

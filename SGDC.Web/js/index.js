@@ -94,30 +94,9 @@ String.prototype.padRight = function (totalWidth, paddingChar) {
         return this + right.toString();
     }
 };
-DKFormartA = function (DK) {
-    var strDK = parseInt(parseFloat(DK) * 1000).toString();
-    var strReturnDK = '';
-    if (strDK.length <= 6) { 
-        strReturnDK = String.format('K000+{0}', (parseFloat(strDK) / 1000));
-    } else { 
-        strReturnDK = String.format('K{0}+{1}', strDK.substr(0, strDK.length - 6), (parseFloat(strDK.substr(strDK.length - 6)) / 1000));
-    }
-    return strReturnDK;
-};
 
-DKFormart = function (DK) {
-    var SplitDK = parseFloat(DK).toFixed(3).toString().split('.');
-    var KK = SplitDK[0].padLeft(6, '0');
-    var K1 = KK.substr(0, KK.length - 3);
-    var K2 = KK.substr(KK.length - 3);
-    var K3 = SplitDK[1].padRight(3, '0').substr(0, 3);
-
-    strReturnDK = "K" + K1 + "+" + K2 + "." + K3;
-
-    return strReturnDK;
-};
 //小数取位
-ValFormart = function (val,xiaoshuweishu) {
+ValFormart = function (val, xiaoshuweishu) {
     var SplitDK = parseFloat(val).toFixed(xiaoshuweishu).toString();
     return SplitDK;
 };

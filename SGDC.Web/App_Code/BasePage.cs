@@ -18,10 +18,11 @@ public class BasePage : Page
     private userinfo user = null;
     protected override void OnPreInit(EventArgs e)
     {
-        if (Session[SessionKey] == null)
-            //Response.Redirect(Request.ApplicationPath.TrimEnd('/') + "/Login.aspx", true);
 
-            base.OnPreInit(e);
+        if (Session[SessionKey] == null) Session[SessionKey] = (new userinfo_Bll()).Get(1);
+        //Response.Redirect(Request.ApplicationPath.TrimEnd('/') + "/Login.aspx", true);
+
+        base.OnPreInit(e);
     }
 
     //保存登陆用户信息

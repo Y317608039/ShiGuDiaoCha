@@ -42,15 +42,23 @@
                     </li>
                 </ul>
             </div>
-
-
-            <div title="系统管理" style="padding: 5px;">
+            <div title="基础信息管理" style="padding: 5px;">
                 <ul>
                     <li>
                         <div class="">
                             <a ref="Menu1002" href="#" rel="Views/jbxx/xlxbxx.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">人员信息</span></a>
                         </div>
                     </li>
+                    <li>
+                        <div class="">
+                            <a ref="Menu0002" href="#" rel="views/DocumentPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">文档信息</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div title="系统管理" style="padding: 5px;">
+                <ul> 
                     <li>
                         <div class="">
                             <a ref="Menu1001" href="#" rel="views/SystemParmsManage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">系统参数</span></a>

@@ -17,6 +17,21 @@
           <Property Name="DD_Ext2" Type="varchar" MaxLength="255" />
           <Property Name="DD_Ext3" Type="varchar" MaxLength="255" />
         </EntityType>
+        <EntityType Name="documentinfo">
+          <Key>
+            <PropertyRef Name="D_ID" />
+          </Key>
+          <Property Name="D_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="D_Type" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="D_Head" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="D_Subhead" Type="varchar" MaxLength="80" />
+          <Property Name="D_Content" Type="varchar" MaxLength="3000" Nullable="false" />
+          <Property Name="D_CreateTime" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="D_UpdateTime" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="D_Ext1" Type="varchar" MaxLength="255" />
+          <Property Name="D_Ext2" Type="varchar" MaxLength="255" />
+          <Property Name="D_Ext3" Type="varchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="shiguhouguoinfo">
           <Key>
             <PropertyRef Name="HG_ID" />
@@ -64,6 +79,23 @@
           <Property Name="HG_Ext1" Type="varchar" MaxLength="255" />
           <Property Name="HG_Ext2" Type="varchar" MaxLength="255" />
           <Property Name="HG_Ext3" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="shiguhouguoshangwanginfo">
+          <Key>
+            <PropertyRef Name="SW_ID" />
+          </Key>
+          <Property Name="SW_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JB_ID" Type="int" Nullable="false" />
+          <Property Name="SW_Name" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="SW_Unit" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="SW_Sex" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="SW_Age" Type="int" Nullable="false" />
+          <Property Name="SW_MinZu" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SW_ShangHaiChengDu" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SW_RenYuanShuXing" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SW_Ext1" Type="varchar" MaxLength="255" />
+          <Property Name="SW_Ext2" Type="varchar" MaxLength="255" />
+          <Property Name="SW_Ext3" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="shigujibeninfo">
           <Key>
@@ -118,11 +150,30 @@
           <Property Name="JB_FJ_XiaXing" Type="timestamp" Precision="0" />
           <Property Name="JB_KT_ShangXing" Type="timestamp" Precision="0" />
           <Property Name="JB_KT_XiaXing" Type="timestamp" Precision="0" />
+          <Property Name="JB_CreatTime" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="JB_UpdateTime" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="JB_ZB_X" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="&#xD;&#xA;JB_ZB_Y" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="JB_ZB_Z" Type="decimal" Precision="18" Scale="10" />
           <Property Name="JB_Ext1" Type="varchar" MaxLength="255" />
           <Property Name="JB_Ext2" Type="varchar" MaxLength="255" />
           <Property Name="JB_Ext3" Type="varchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="shiguzerenrendinginfo">
+        <EntityType Name="shiguzerendanweiinfo">
+          <Key>
+            <PropertyRef Name="ZRDW_ID" />
+          </Key>
+          <Property Name="ZRDW_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JB_ID" Type="int" Nullable="false" />
+          <Property Name="ZRDW_DanWei" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="ZRDW_DanWeiShuXing" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ZRDW_BuMen" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="ZRDW_ChengDu" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ZRDW_Ext1" Type="varchar" MaxLength="255" />
+          <Property Name="ZRDW_Ext2" Type="varchar" MaxLength="255" />
+          <Property Name="ZRDW_Ext3" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="shiguzereninfo">
           <Key>
             <PropertyRef Name="ZR_ID" />
           </Key>
@@ -149,6 +200,20 @@
           <Property Name="ZR_Ext1" Type="varchar" MaxLength="255" />
           <Property Name="ZR_Ext2" Type="varchar" MaxLength="255" />
           <Property Name="ZR_Ext3" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="systemloginfo">
+          <Key>
+            <PropertyRef Name="SL_Id" />
+          </Key>
+          <Property Name="SL_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SL_WrId" Type="int" Nullable="false" />
+          <Property Name="SL_WrName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SL_Type" Type="char" MaxLength="25" Nullable="false" />
+          <Property Name="SL_Desc" Type="varchar" MaxLength="3000" Nullable="false" />
+          <Property Name="SL_CreateTime" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="SL_Ext1" Type="varchar" MaxLength="255" />
+          <Property Name="SL_Ext2" Type="varchar" MaxLength="255" />
+          <Property Name="SL_Ext3" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="userinfo">
           <Key>
@@ -216,6 +281,8 @@
             <PropertyRef Name="JB_GXR_ZhiBanYuan" />
             <PropertyRef Name="JB_TianQi" />
             <PropertyRef Name="JB_ShiGuXingZhi" />
+            <PropertyRef Name="JB_CreatTime" />
+            <PropertyRef Name="JB_UpdateTime" />
           </Key>
           <Property Name="JB_ID" Type="int" Nullable="false" />
           <Property Name="JB_DD_Ju" Type="varchar" MaxLength="25" Nullable="false" />
@@ -266,6 +333,11 @@
           <Property Name="JB_FJ_XiaXing" Type="timestamp" Precision="0" />
           <Property Name="JB_KT_ShangXing" Type="timestamp" Precision="0" />
           <Property Name="JB_KT_XiaXing" Type="timestamp" Precision="0" />
+          <Property Name="JB_CreatTime" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="JB_UpdateTime" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="JB_ZB_X" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="JB_ZB_Y" Type="decimal" Precision="18" Scale="10" />
+          <Property Name="JB_ZB_Z" Type="decimal" Precision="18" Scale="10" />
           <Property Name="JB_Ext1" Type="varchar" MaxLength="255" />
           <Property Name="JB_Ext2" Type="varchar" MaxLength="255" />
           <Property Name="JB_Ext3" Type="varchar" MaxLength="255" />
@@ -336,9 +408,13 @@
         </EntityType>
         <EntityContainer Name="SGDCModelStoreContainer">
           <EntitySet Name="datadictionaryinfo" EntityType="Self.datadictionaryinfo" Schema="sgdc" store:Type="Tables" />
+          <EntitySet Name="documentinfo" EntityType="Self.documentinfo" Schema="sgdc" store:Type="Tables" />
           <EntitySet Name="shiguhouguoinfo" EntityType="Self.shiguhouguoinfo" Schema="sgdc" store:Type="Tables" />
+          <EntitySet Name="shiguhouguoshangwanginfo" EntityType="Self.shiguhouguoshangwanginfo" Schema="sgdc" store:Type="Tables" />
           <EntitySet Name="shigujibeninfo" EntityType="Self.shigujibeninfo" Schema="sgdc" store:Type="Tables" />
-          <EntitySet Name="shiguzerenrendinginfo" EntityType="Self.shiguzerenrendinginfo" Schema="sgdc" store:Type="Tables" />
+          <EntitySet Name="shiguzerendanweiinfo" EntityType="Self.shiguzerendanweiinfo" Schema="sgdc" store:Type="Tables" />
+          <EntitySet Name="shiguzereninfo" EntityType="Self.shiguzereninfo" Schema="sgdc" store:Type="Tables" />
+          <EntitySet Name="systemloginfo" EntityType="Self.systemloginfo" Schema="sgdc" store:Type="Tables" />
           <EntitySet Name="userinfo" EntityType="Self.userinfo" Schema="sgdc" store:Type="Tables" />
           <EntitySet Name="v_shigu" EntityType="Self.v_shigu" store:Type="Views" store:Schema="sgdc">
             <DefiningQuery>SELECT
@@ -391,6 +467,11 @@
 `v_shigu`.`JB_FJ_XiaXing`, 
 `v_shigu`.`JB_KT_ShangXing`, 
 `v_shigu`.`JB_KT_XiaXing`, 
+`v_shigu`.`JB_CreatTime`, 
+`v_shigu`.`JB_UpdateTime`, 
+`v_shigu`.`JB_ZB_X`, 
+`v_shigu`.`JB_ZB_Y`, 
+`v_shigu`.`JB_ZB_Z`, 
 `v_shigu`.`JB_Ext1`, 
 `v_shigu`.`JB_Ext2`, 
 `v_shigu`.`JB_Ext3`, 
@@ -465,17 +546,44 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SGDCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SGDCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="datadictionaryinfo" EntityType="SGDCModel.datadictionaryinfo" />
+          <EntitySet Name="documentinfo" EntityType="SGDCModel.documentinfo" />
+          <EntitySet Name="shiguhouguoinfo" EntityType="SGDCModel.shiguhouguoinfo" />
+          <EntitySet Name="shiguhouguoshangwanginfo" EntityType="SGDCModel.shiguhouguoshangwanginfo" />
+          <EntitySet Name="shigujibeninfo" EntityType="SGDCModel.shigujibeninfo" />
+          <EntitySet Name="shiguzerendanweiinfo" EntityType="SGDCModel.shiguzerendanweiinfo" />
+          <EntitySet Name="shiguzereninfo" EntityType="SGDCModel.shiguzereninfo" />
+          <EntitySet Name="systemloginfo" EntityType="SGDCModel.systemloginfo" />
+          <EntitySet Name="userinfo" EntityType="SGDCModel.userinfo" />
+          <EntitySet Name="v_shigu" EntityType="SGDCModel.v_shigu" />
+        </EntityContainer>
         <EntityType Name="datadictionaryinfo">
           <Key>
             <PropertyRef Name="DD_ID" />
           </Key>
           <Property Name="DD_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DD_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DD_Value" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DD_Desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DD_Type" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DD_Value" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DD_Desc" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="DD_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="DD_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="DD_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="documentinfo">
+          <Key>
+            <PropertyRef Name="D_ID" />
+          </Key>
+          <Property Name="D_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="D_Type" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="D_Head" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="D_Subhead" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="D_Content" Type="String" Nullable="false" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="D_CreateTime" Type="DateTime" Nullable="false" />
+          <Property Name="D_UpdateTime" Type="DateTime" Nullable="false" />
+          <Property Name="D_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="D_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="D_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="shiguhouguoinfo">
           <Key>
@@ -483,160 +591,202 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
           </Key>
           <Property Name="HG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="JB_ID" Type="Int32" Nullable="false" />
-          <Property Name="HG_ZD_ShangXing" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_ZD_XiaXing" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_DW_ShangXing" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_DW_XiaXing" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_TG_DongCheZu" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_TG_JiChe" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_TG_KeChe" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_TG_HuoChe" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SS_DongCheZu" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SS_JiChe" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SS_CheLiang" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SS_QiTa" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_ZhiJieSunShi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_XZ_JiDongChe" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_XZ_FeiJiDongChe" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_XZ_XingRen" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_XZ_DaoKouQingKuang" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_XZ_GongTieBingXing" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_XZ_FangHuZhaLan" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_XZ_GongTieLiJiao" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_XZ_SuDuQuDuan" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_XZ_QuXianBanJing" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_XZ_PoDu" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SW_XingMing" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SW_DanWei" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SW_XingBie" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SW_NianLing" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SW_MinZu" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SW_GongZhong" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SW_ShangHaiChengDu" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SW_RenYuanShuXing" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SiW_LuNei" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_SiW_LuWai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_ZS_LuNei" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_ZS_LuWai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_QS_LuNei" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_QS_LuWai" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HG_ShiGuGaiKuang" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HG_ZD_ShangXing" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_ZD_XiaXing" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_DW_ShangXing" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_DW_XiaXing" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_TG_DongCheZu" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_TG_JiChe" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_TG_KeChe" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_TG_HuoChe" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SS_DongCheZu" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SS_JiChe" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SS_CheLiang" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SS_QiTa" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_ZhiJieSunShi" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HG_XZ_JiDongChe" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HG_XZ_FeiJiDongChe" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HG_XZ_XingRen" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HG_XZ_DaoKouQingKuang" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_XZ_GongTieBingXing" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_XZ_FangHuZhaLan" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_XZ_GongTieLiJiao" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_XZ_SuDuQuDuan" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_XZ_QuXianBanJing" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HG_XZ_PoDu" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SW_XingMing" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SW_DanWei" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SW_XingBie" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SW_NianLing" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SW_MinZu" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SW_GongZhong" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SW_ShangHaiChengDu" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SW_RenYuanShuXing" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SiW_LuNei" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HG_SiW_LuWai" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HG_ZS_LuNei" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HG_ZS_LuWai" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HG_QS_LuNei" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HG_QS_LuWai" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HG_ShiGuGaiKuang" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="HG_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="HG_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="HG_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="shiguhouguoshangwanginfo">
+          <Key>
+            <PropertyRef Name="SW_ID" />
+          </Key>
+          <Property Name="SW_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JB_ID" Type="Int32" Nullable="false" />
+          <Property Name="SW_Name" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="SW_Unit" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="SW_Sex" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="SW_Age" Type="Int32" Nullable="false" />
+          <Property Name="SW_MinZu" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SW_ShangHaiChengDu" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SW_RenYuanShuXing" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SW_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SW_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SW_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="shigujibeninfo">
           <Key>
             <PropertyRef Name="JB_ID" />
           </Key>
           <Property Name="JB_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="JB_DD_Ju" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_DD_Xian" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_DD_XianBie" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_DD_QiDian" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_DD_ZhongDian" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_DD_XingBie" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_DD_GongLi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_DD_MiShu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_DD_Sheng" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_DD_Shi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_DD_Qu" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_DD_DanWei" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_DD_ChangSuo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_LC_CheCi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_LC_CheHao" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_LC_QiDian" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_LC_ZhongDian" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_LC_PeiShu" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_LC_DanDang" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_LC_LvKe" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_JC_XingHao" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_JC_BianHao" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_JC_PeiShu" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_JC_DanDang" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_JC_SuDu" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_JC_GongDian" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_JC_XinHao" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_BZ_DunWei" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_BZ_ShuLiang" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_BZ_JiChang" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_BZ_ZhongChe" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_BZ_KongChe" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_BZ_LieWei" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_BZ_WeiXianPin" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_BZ_ChaoXianChe" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_GXR_SiJi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_GXR_FuSiJi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_GXR_YunZhuanCheZhang" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_GXR_LieCheZhang" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_GXR_ZhiBanYuan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_TianQi" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="JB_ShiGuXingZhi" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JB_DD_Ju" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="JB_DD_Xian" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="JB_DD_XianBie" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_DD_QiDian" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="JB_DD_ZhongDian" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="JB_DD_XingBie" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_DD_GongLi" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_DD_MiShu" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_DD_Sheng" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_DD_Shi" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_DD_Qu" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_DD_DanWei" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="JB_DD_ChangSuo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="JB_LC_CheCi" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_LC_CheHao" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_LC_QiDian" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="JB_LC_ZhongDian" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="JB_LC_PeiShu" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="JB_LC_DanDang" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="JB_LC_LvKe" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_JC_XingHao" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_JC_BianHao" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_JC_PeiShu" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_JC_DanDang" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_JC_SuDu" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_JC_GongDian" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="JB_JC_XinHao" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_BZ_DunWei" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_BZ_ShuLiang" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_BZ_JiChang" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_BZ_ZhongChe" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_BZ_KongChe" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_BZ_LieWei" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_BZ_WeiXianPin" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_BZ_ChaoXianChe" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_GXR_SiJi" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_GXR_FuSiJi" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_GXR_YunZhuanCheZhang" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_GXR_LieCheZhang" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_GXR_ZhiBanYuan" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="JB_TianQi" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="JB_ShiGuXingZhi" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="JB_FS_ShangXing" Type="DateTime" />
           <Property Name="JB_FS_XiaXing" Type="DateTime" />
           <Property Name="JB_FJ_ShangXing" Type="DateTime" />
           <Property Name="JB_FJ_XiaXing" Type="DateTime" />
           <Property Name="JB_KT_ShangXing" Type="DateTime" />
           <Property Name="JB_KT_XiaXing" Type="DateTime" />
+          <Property Name="JB_CreatTime" Type="DateTime" Nullable="false" />
+          <Property Name="JB_UpdateTime" Type="DateTime" Nullable="false" />
+          <Property Name="JB_ZB_X" Type="Decimal" />
+          <Property Name="C__JB_ZB_Y" Type="Decimal" />
+          <Property Name="JB_ZB_Z" Type="Decimal" />
           <Property Name="JB_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="JB_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="JB_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="shiguzerenrendinginfo">
+        <EntityType Name="shiguzerendanweiinfo">
+          <Key>
+            <PropertyRef Name="ZRDW_ID" />
+          </Key>
+          <Property Name="ZRDW_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JB_ID" Type="Int32" Nullable="false" />
+          <Property Name="ZRDW_DanWei" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="ZRDW_DanWeiShuXing" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZRDW_BuMen" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="ZRDW_ChengDu" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZRDW_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ZRDW_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ZRDW_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="shiguzereninfo">
           <Key>
             <PropertyRef Name="ZR_ID" />
           </Key>
           <Property Name="ZR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="JB_ID" Type="Int32" Nullable="false" />
-          <Property Name="ZR_ZeRenDanWei" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_ZeRenDanWeiShuXing" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_ZeRenBuMen" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_ZeRenChengDu" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_YuanYinLeiBie" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_ShiGuLeiBie" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_XingChe" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_ZhiBanJianCha" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZR_ZeRenDanWei" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_ZeRenDanWeiShuXing" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_ZeRenBuMen" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_ZeRenChengDu" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_YuanYinLeiBie" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_ShiGuLeiBie" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_XingChe" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_ZhiBanJianCha" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="ZR_TianBaoShiJian" Type="DateTime" />
-          <Property Name="ZR_BaoGaoCiShu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_ShiGuDiaoChaBaoGao" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_XianChangDianChaZiLiao" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_SunShiJiSuanZiLiao" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_ShiGuRenDingShu" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_AnJianBaoEr" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_QiTa" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_TePaiBanDiaoChaBaoGao" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ZR_SheDuDiaoChaBaoGao" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ZR_BaoGaoCiShu" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_ShiGuDiaoChaBaoGao" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_XianChangDianChaZiLiao" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_SunShiJiSuanZiLiao" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_ShiGuRenDingShu" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_AnJianBaoEr" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_QiTa" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_TePaiBanDiaoChaBaoGao" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZR_SheDuDiaoChaBaoGao" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="ZR_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ZR_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ZR_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="systemloginfo">
+          <Key>
+            <PropertyRef Name="SL_Id" />
+          </Key>
+          <Property Name="SL_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SL_WrId" Type="Int32" Nullable="false" />
+          <Property Name="SL_WrName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SL_Type" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="SL_Desc" Type="String" Nullable="false" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="SL_CreateTime" Type="DateTime" Nullable="false" />
+          <Property Name="SL_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SL_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SL_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="userinfo">
           <Key>
             <PropertyRef Name="User_ID" />
           </Key>
           <Property Name="User_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="User_No" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="User_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="User_Phone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="User_Uint" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="User_Department" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="User_Pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="User_Role" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="User_Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="User_No" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="User_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="User_Phone" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="User_Uint" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="User_Department" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="User_Pwd" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="User_Role" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="User_Status" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="User_CreateTime" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="User_RoleID" Type="Int32" Nullable="false" />
           <Property Name="User_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="User_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="User_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="SGDCEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="datadictionaryinfo" EntityType="Self.datadictionaryinfo" />
-          <EntitySet Name="shiguhouguoinfo" EntityType="Self.shiguhouguoinfo" />
-          <EntitySet Name="shigujibeninfo" EntityType="Self.shigujibeninfo" />
-          <EntitySet Name="shiguzerenrendinginfo" EntityType="Self.shiguzerenrendinginfo" />
-          <EntitySet Name="userinfo" EntityType="Self.userinfo" />
-          <EntitySet Name="v_shigu" EntityType="SGDCModel.v_shigu" />
-        </EntityContainer>
         <EntityType Name="v_shigu">
           <Key>
             <PropertyRef Name="JB_ID" />
@@ -682,6 +832,8 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
             <PropertyRef Name="JB_GXR_ZhiBanYuan" />
             <PropertyRef Name="JB_TianQi" />
             <PropertyRef Name="JB_ShiGuXingZhi" />
+            <PropertyRef Name="JB_CreatTime" />
+            <PropertyRef Name="JB_UpdateTime" />
           </Key>
           <Property Name="JB_ID" Type="Int32" Nullable="false" />
           <Property Name="JB_DD_Ju" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
@@ -732,6 +884,11 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
           <Property Name="JB_FJ_XiaXing" Type="DateTime" />
           <Property Name="JB_KT_ShangXing" Type="DateTime" />
           <Property Name="JB_KT_XiaXing" Type="DateTime" />
+          <Property Name="JB_CreatTime" Type="DateTime" Nullable="false" />
+          <Property Name="JB_UpdateTime" Type="DateTime" Nullable="false" />
+          <Property Name="JB_ZB_X" Type="Decimal" />
+          <Property Name="JB_ZB_Y" Type="Decimal" />
+          <Property Name="JB_ZB_Z" Type="Decimal" />
           <Property Name="JB_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="JB_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="JB_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
@@ -809,169 +966,238 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
           <EntitySetMapping Name="datadictionaryinfo">
             <EntityTypeMapping TypeName="SGDCModel.datadictionaryinfo">
               <MappingFragment StoreEntitySet="datadictionaryinfo">
-                <ScalarProperty Name="DD_ID" ColumnName="DD_ID" />
-                <ScalarProperty Name="DD_Type" ColumnName="DD_Type" />
-                <ScalarProperty Name="DD_Value" ColumnName="DD_Value" />
-                <ScalarProperty Name="DD_Desc" ColumnName="DD_Desc" />
-                <ScalarProperty Name="DD_Ext1" ColumnName="DD_Ext1" />
-                <ScalarProperty Name="DD_Ext2" ColumnName="DD_Ext2" />
                 <ScalarProperty Name="DD_Ext3" ColumnName="DD_Ext3" />
+                <ScalarProperty Name="DD_Ext2" ColumnName="DD_Ext2" />
+                <ScalarProperty Name="DD_Ext1" ColumnName="DD_Ext1" />
+                <ScalarProperty Name="DD_Desc" ColumnName="DD_Desc" />
+                <ScalarProperty Name="DD_Value" ColumnName="DD_Value" />
+                <ScalarProperty Name="DD_Type" ColumnName="DD_Type" />
+                <ScalarProperty Name="DD_ID" ColumnName="DD_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="documentinfo">
+            <EntityTypeMapping TypeName="SGDCModel.documentinfo">
+              <MappingFragment StoreEntitySet="documentinfo">
+                <ScalarProperty Name="D_Ext3" ColumnName="D_Ext3" />
+                <ScalarProperty Name="D_Ext2" ColumnName="D_Ext2" />
+                <ScalarProperty Name="D_Ext1" ColumnName="D_Ext1" />
+                <ScalarProperty Name="D_UpdateTime" ColumnName="D_UpdateTime" />
+                <ScalarProperty Name="D_CreateTime" ColumnName="D_CreateTime" />
+                <ScalarProperty Name="D_Content" ColumnName="D_Content" />
+                <ScalarProperty Name="D_Subhead" ColumnName="D_Subhead" />
+                <ScalarProperty Name="D_Head" ColumnName="D_Head" />
+                <ScalarProperty Name="D_Type" ColumnName="D_Type" />
+                <ScalarProperty Name="D_ID" ColumnName="D_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="shiguhouguoinfo">
             <EntityTypeMapping TypeName="SGDCModel.shiguhouguoinfo">
               <MappingFragment StoreEntitySet="shiguhouguoinfo">
-                <ScalarProperty Name="HG_ID" ColumnName="HG_ID" />
-                <ScalarProperty Name="JB_ID" ColumnName="JB_ID" />
-                <ScalarProperty Name="HG_ZD_ShangXing" ColumnName="HG_ZD_ShangXing" />
-                <ScalarProperty Name="HG_ZD_XiaXing" ColumnName="HG_ZD_XiaXing" />
-                <ScalarProperty Name="HG_DW_ShangXing" ColumnName="HG_DW_ShangXing" />
-                <ScalarProperty Name="HG_DW_XiaXing" ColumnName="HG_DW_XiaXing" />
-                <ScalarProperty Name="HG_TG_DongCheZu" ColumnName="HG_TG_DongCheZu" />
-                <ScalarProperty Name="HG_TG_JiChe" ColumnName="HG_TG_JiChe" />
-                <ScalarProperty Name="HG_TG_KeChe" ColumnName="HG_TG_KeChe" />
-                <ScalarProperty Name="HG_TG_HuoChe" ColumnName="HG_TG_HuoChe" />
-                <ScalarProperty Name="HG_SS_DongCheZu" ColumnName="HG_SS_DongCheZu" />
-                <ScalarProperty Name="HG_SS_JiChe" ColumnName="HG_SS_JiChe" />
-                <ScalarProperty Name="HG_SS_CheLiang" ColumnName="HG_SS_CheLiang" />
-                <ScalarProperty Name="HG_SS_QiTa" ColumnName="HG_SS_QiTa" />
-                <ScalarProperty Name="HG_ZhiJieSunShi" ColumnName="HG_ZhiJieSunShi" />
-                <ScalarProperty Name="HG_XZ_JiDongChe" ColumnName="HG_XZ_JiDongChe" />
-                <ScalarProperty Name="HG_XZ_FeiJiDongChe" ColumnName="HG_XZ_FeiJiDongChe" />
-                <ScalarProperty Name="HG_XZ_XingRen" ColumnName="HG_XZ_XingRen" />
-                <ScalarProperty Name="HG_XZ_DaoKouQingKuang" ColumnName="HG_XZ_DaoKouQingKuang" />
-                <ScalarProperty Name="HG_XZ_GongTieBingXing" ColumnName="HG_XZ_GongTieBingXing" />
-                <ScalarProperty Name="HG_XZ_FangHuZhaLan" ColumnName="HG_XZ_FangHuZhaLan" />
-                <ScalarProperty Name="HG_XZ_GongTieLiJiao" ColumnName="HG_XZ_GongTieLiJiao" />
-                <ScalarProperty Name="HG_XZ_SuDuQuDuan" ColumnName="HG_XZ_SuDuQuDuan" />
-                <ScalarProperty Name="HG_XZ_QuXianBanJing" ColumnName="HG_XZ_QuXianBanJing" />
-                <ScalarProperty Name="HG_XZ_PoDu" ColumnName="HG_XZ_PoDu" />
-                <ScalarProperty Name="HG_SW_XingMing" ColumnName="HG_SW_XingMing" />
-                <ScalarProperty Name="HG_SW_DanWei" ColumnName="HG_SW_DanWei" />
-                <ScalarProperty Name="HG_SW_XingBie" ColumnName="HG_SW_XingBie" />
-                <ScalarProperty Name="HG_SW_NianLing" ColumnName="HG_SW_NianLing" />
-                <ScalarProperty Name="HG_SW_MinZu" ColumnName="HG_SW_MinZu" />
-                <ScalarProperty Name="HG_SW_GongZhong" ColumnName="HG_SW_GongZhong" />
-                <ScalarProperty Name="HG_SW_ShangHaiChengDu" ColumnName="HG_SW_ShangHaiChengDu" />
-                <ScalarProperty Name="HG_SW_RenYuanShuXing" ColumnName="HG_SW_RenYuanShuXing" />
-                <ScalarProperty Name="HG_SiW_LuNei" ColumnName="HG_SiW_LuNei" />
-                <ScalarProperty Name="HG_SiW_LuWai" ColumnName="HG_SiW_LuWai" />
-                <ScalarProperty Name="HG_ZS_LuNei" ColumnName="HG_ZS_LuNei" />
-                <ScalarProperty Name="HG_ZS_LuWai" ColumnName="HG_ZS_LuWai" />
-                <ScalarProperty Name="HG_QS_LuNei" ColumnName="HG_QS_LuNei" />
-                <ScalarProperty Name="HG_QS_LuWai" ColumnName="HG_QS_LuWai" />
-                <ScalarProperty Name="HG_ShiGuGaiKuang" ColumnName="HG_ShiGuGaiKuang" />
-                <ScalarProperty Name="HG_Ext1" ColumnName="HG_Ext1" />
-                <ScalarProperty Name="HG_Ext2" ColumnName="HG_Ext2" />
                 <ScalarProperty Name="HG_Ext3" ColumnName="HG_Ext3" />
+                <ScalarProperty Name="HG_Ext2" ColumnName="HG_Ext2" />
+                <ScalarProperty Name="HG_Ext1" ColumnName="HG_Ext1" />
+                <ScalarProperty Name="HG_ShiGuGaiKuang" ColumnName="HG_ShiGuGaiKuang" />
+                <ScalarProperty Name="HG_QS_LuWai" ColumnName="HG_QS_LuWai" />
+                <ScalarProperty Name="HG_QS_LuNei" ColumnName="HG_QS_LuNei" />
+                <ScalarProperty Name="HG_ZS_LuWai" ColumnName="HG_ZS_LuWai" />
+                <ScalarProperty Name="HG_ZS_LuNei" ColumnName="HG_ZS_LuNei" />
+                <ScalarProperty Name="HG_SiW_LuWai" ColumnName="HG_SiW_LuWai" />
+                <ScalarProperty Name="HG_SiW_LuNei" ColumnName="HG_SiW_LuNei" />
+                <ScalarProperty Name="HG_SW_RenYuanShuXing" ColumnName="HG_SW_RenYuanShuXing" />
+                <ScalarProperty Name="HG_SW_ShangHaiChengDu" ColumnName="HG_SW_ShangHaiChengDu" />
+                <ScalarProperty Name="HG_SW_GongZhong" ColumnName="HG_SW_GongZhong" />
+                <ScalarProperty Name="HG_SW_MinZu" ColumnName="HG_SW_MinZu" />
+                <ScalarProperty Name="HG_SW_NianLing" ColumnName="HG_SW_NianLing" />
+                <ScalarProperty Name="HG_SW_XingBie" ColumnName="HG_SW_XingBie" />
+                <ScalarProperty Name="HG_SW_DanWei" ColumnName="HG_SW_DanWei" />
+                <ScalarProperty Name="HG_SW_XingMing" ColumnName="HG_SW_XingMing" />
+                <ScalarProperty Name="HG_XZ_PoDu" ColumnName="HG_XZ_PoDu" />
+                <ScalarProperty Name="HG_XZ_QuXianBanJing" ColumnName="HG_XZ_QuXianBanJing" />
+                <ScalarProperty Name="HG_XZ_SuDuQuDuan" ColumnName="HG_XZ_SuDuQuDuan" />
+                <ScalarProperty Name="HG_XZ_GongTieLiJiao" ColumnName="HG_XZ_GongTieLiJiao" />
+                <ScalarProperty Name="HG_XZ_FangHuZhaLan" ColumnName="HG_XZ_FangHuZhaLan" />
+                <ScalarProperty Name="HG_XZ_GongTieBingXing" ColumnName="HG_XZ_GongTieBingXing" />
+                <ScalarProperty Name="HG_XZ_DaoKouQingKuang" ColumnName="HG_XZ_DaoKouQingKuang" />
+                <ScalarProperty Name="HG_XZ_XingRen" ColumnName="HG_XZ_XingRen" />
+                <ScalarProperty Name="HG_XZ_FeiJiDongChe" ColumnName="HG_XZ_FeiJiDongChe" />
+                <ScalarProperty Name="HG_XZ_JiDongChe" ColumnName="HG_XZ_JiDongChe" />
+                <ScalarProperty Name="HG_ZhiJieSunShi" ColumnName="HG_ZhiJieSunShi" />
+                <ScalarProperty Name="HG_SS_QiTa" ColumnName="HG_SS_QiTa" />
+                <ScalarProperty Name="HG_SS_CheLiang" ColumnName="HG_SS_CheLiang" />
+                <ScalarProperty Name="HG_SS_JiChe" ColumnName="HG_SS_JiChe" />
+                <ScalarProperty Name="HG_SS_DongCheZu" ColumnName="HG_SS_DongCheZu" />
+                <ScalarProperty Name="HG_TG_HuoChe" ColumnName="HG_TG_HuoChe" />
+                <ScalarProperty Name="HG_TG_KeChe" ColumnName="HG_TG_KeChe" />
+                <ScalarProperty Name="HG_TG_JiChe" ColumnName="HG_TG_JiChe" />
+                <ScalarProperty Name="HG_TG_DongCheZu" ColumnName="HG_TG_DongCheZu" />
+                <ScalarProperty Name="HG_DW_XiaXing" ColumnName="HG_DW_XiaXing" />
+                <ScalarProperty Name="HG_DW_ShangXing" ColumnName="HG_DW_ShangXing" />
+                <ScalarProperty Name="HG_ZD_XiaXing" ColumnName="HG_ZD_XiaXing" />
+                <ScalarProperty Name="HG_ZD_ShangXing" ColumnName="HG_ZD_ShangXing" />
+                <ScalarProperty Name="JB_ID" ColumnName="JB_ID" />
+                <ScalarProperty Name="HG_ID" ColumnName="HG_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shiguhouguoshangwanginfo">
+            <EntityTypeMapping TypeName="SGDCModel.shiguhouguoshangwanginfo">
+              <MappingFragment StoreEntitySet="shiguhouguoshangwanginfo">
+                <ScalarProperty Name="SW_Ext3" ColumnName="SW_Ext3" />
+                <ScalarProperty Name="SW_Ext2" ColumnName="SW_Ext2" />
+                <ScalarProperty Name="SW_Ext1" ColumnName="SW_Ext1" />
+                <ScalarProperty Name="SW_RenYuanShuXing" ColumnName="SW_RenYuanShuXing" />
+                <ScalarProperty Name="SW_ShangHaiChengDu" ColumnName="SW_ShangHaiChengDu" />
+                <ScalarProperty Name="SW_MinZu" ColumnName="SW_MinZu" />
+                <ScalarProperty Name="SW_Age" ColumnName="SW_Age" />
+                <ScalarProperty Name="SW_Sex" ColumnName="SW_Sex" />
+                <ScalarProperty Name="SW_Unit" ColumnName="SW_Unit" />
+                <ScalarProperty Name="SW_Name" ColumnName="SW_Name" />
+                <ScalarProperty Name="JB_ID" ColumnName="JB_ID" />
+                <ScalarProperty Name="SW_ID" ColumnName="SW_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="shigujibeninfo">
             <EntityTypeMapping TypeName="SGDCModel.shigujibeninfo">
               <MappingFragment StoreEntitySet="shigujibeninfo">
-                <ScalarProperty Name="JB_ID" ColumnName="JB_ID" />
-                <ScalarProperty Name="JB_DD_Ju" ColumnName="JB_DD_Ju" />
-                <ScalarProperty Name="JB_DD_Xian" ColumnName="JB_DD_Xian" />
-                <ScalarProperty Name="JB_DD_XianBie" ColumnName="JB_DD_XianBie" />
-                <ScalarProperty Name="JB_DD_QiDian" ColumnName="JB_DD_QiDian" />
-                <ScalarProperty Name="JB_DD_ZhongDian" ColumnName="JB_DD_ZhongDian" />
-                <ScalarProperty Name="JB_DD_XingBie" ColumnName="JB_DD_XingBie" />
-                <ScalarProperty Name="JB_DD_GongLi" ColumnName="JB_DD_GongLi" />
-                <ScalarProperty Name="JB_DD_MiShu" ColumnName="JB_DD_MiShu" />
-                <ScalarProperty Name="JB_DD_Sheng" ColumnName="JB_DD_Sheng" />
-                <ScalarProperty Name="JB_DD_Shi" ColumnName="JB_DD_Shi" />
-                <ScalarProperty Name="JB_DD_Qu" ColumnName="JB_DD_Qu" />
-                <ScalarProperty Name="JB_DD_DanWei" ColumnName="JB_DD_DanWei" />
-                <ScalarProperty Name="JB_DD_ChangSuo" ColumnName="JB_DD_ChangSuo" />
-                <ScalarProperty Name="JB_LC_CheCi" ColumnName="JB_LC_CheCi" />
-                <ScalarProperty Name="JB_LC_CheHao" ColumnName="JB_LC_CheHao" />
-                <ScalarProperty Name="JB_LC_QiDian" ColumnName="JB_LC_QiDian" />
-                <ScalarProperty Name="JB_LC_ZhongDian" ColumnName="JB_LC_ZhongDian" />
-                <ScalarProperty Name="JB_LC_PeiShu" ColumnName="JB_LC_PeiShu" />
-                <ScalarProperty Name="JB_LC_DanDang" ColumnName="JB_LC_DanDang" />
-                <ScalarProperty Name="JB_LC_LvKe" ColumnName="JB_LC_LvKe" />
-                <ScalarProperty Name="JB_JC_XingHao" ColumnName="JB_JC_XingHao" />
-                <ScalarProperty Name="JB_JC_BianHao" ColumnName="JB_JC_BianHao" />
-                <ScalarProperty Name="JB_JC_PeiShu" ColumnName="JB_JC_PeiShu" />
-                <ScalarProperty Name="JB_JC_DanDang" ColumnName="JB_JC_DanDang" />
-                <ScalarProperty Name="JB_JC_SuDu" ColumnName="JB_JC_SuDu" />
-                <ScalarProperty Name="JB_JC_GongDian" ColumnName="JB_JC_GongDian" />
-                <ScalarProperty Name="JB_JC_XinHao" ColumnName="JB_JC_XinHao" />
-                <ScalarProperty Name="JB_BZ_DunWei" ColumnName="JB_BZ_DunWei" />
-                <ScalarProperty Name="JB_BZ_ShuLiang" ColumnName="JB_BZ_ShuLiang" />
-                <ScalarProperty Name="JB_BZ_JiChang" ColumnName="JB_BZ_JiChang" />
-                <ScalarProperty Name="JB_BZ_ZhongChe" ColumnName="JB_BZ_ZhongChe" />
-                <ScalarProperty Name="JB_BZ_KongChe" ColumnName="JB_BZ_KongChe" />
-                <ScalarProperty Name="JB_BZ_LieWei" ColumnName="JB_BZ_LieWei" />
-                <ScalarProperty Name="JB_BZ_WeiXianPin" ColumnName="JB_BZ_WeiXianPin" />
-                <ScalarProperty Name="JB_BZ_ChaoXianChe" ColumnName="JB_BZ_ChaoXianChe" />
-                <ScalarProperty Name="JB_GXR_SiJi" ColumnName="JB_GXR_SiJi" />
-                <ScalarProperty Name="JB_GXR_FuSiJi" ColumnName="JB_GXR_FuSiJi" />
-                <ScalarProperty Name="JB_GXR_YunZhuanCheZhang" ColumnName="JB_GXR_YunZhuanCheZhang" />
-                <ScalarProperty Name="JB_GXR_LieCheZhang" ColumnName="JB_GXR_LieCheZhang" />
-                <ScalarProperty Name="JB_GXR_ZhiBanYuan" ColumnName="JB_GXR_ZhiBanYuan" />
-                <ScalarProperty Name="JB_TianQi" ColumnName="JB_TianQi" />
-                <ScalarProperty Name="JB_ShiGuXingZhi" ColumnName="JB_ShiGuXingZhi" />
-                <ScalarProperty Name="JB_FS_ShangXing" ColumnName="JB_FS_ShangXing" />
-                <ScalarProperty Name="JB_FS_XiaXing" ColumnName="JB_FS_XiaXing" />
-                <ScalarProperty Name="JB_FJ_ShangXing" ColumnName="JB_FJ_ShangXing" />
-                <ScalarProperty Name="JB_FJ_XiaXing" ColumnName="JB_FJ_XiaXing" />
-                <ScalarProperty Name="JB_KT_ShangXing" ColumnName="JB_KT_ShangXing" />
-                <ScalarProperty Name="JB_KT_XiaXing" ColumnName="JB_KT_XiaXing" />
-                <ScalarProperty Name="JB_Ext1" ColumnName="JB_Ext1" />
-                <ScalarProperty Name="JB_Ext2" ColumnName="JB_Ext2" />
                 <ScalarProperty Name="JB_Ext3" ColumnName="JB_Ext3" />
+                <ScalarProperty Name="JB_Ext2" ColumnName="JB_Ext2" />
+                <ScalarProperty Name="JB_Ext1" ColumnName="JB_Ext1" />
+                <ScalarProperty Name="JB_ZB_Z" ColumnName="JB_ZB_Z" />
+                <ScalarProperty Name="C__JB_ZB_Y" ColumnName="&#xD;&#xA;JB_ZB_Y" />
+                <ScalarProperty Name="JB_ZB_X" ColumnName="JB_ZB_X" />
+                <ScalarProperty Name="JB_UpdateTime" ColumnName="JB_UpdateTime" />
+                <ScalarProperty Name="JB_CreatTime" ColumnName="JB_CreatTime" />
+                <ScalarProperty Name="JB_KT_XiaXing" ColumnName="JB_KT_XiaXing" />
+                <ScalarProperty Name="JB_KT_ShangXing" ColumnName="JB_KT_ShangXing" />
+                <ScalarProperty Name="JB_FJ_XiaXing" ColumnName="JB_FJ_XiaXing" />
+                <ScalarProperty Name="JB_FJ_ShangXing" ColumnName="JB_FJ_ShangXing" />
+                <ScalarProperty Name="JB_FS_XiaXing" ColumnName="JB_FS_XiaXing" />
+                <ScalarProperty Name="JB_FS_ShangXing" ColumnName="JB_FS_ShangXing" />
+                <ScalarProperty Name="JB_ShiGuXingZhi" ColumnName="JB_ShiGuXingZhi" />
+                <ScalarProperty Name="JB_TianQi" ColumnName="JB_TianQi" />
+                <ScalarProperty Name="JB_GXR_ZhiBanYuan" ColumnName="JB_GXR_ZhiBanYuan" />
+                <ScalarProperty Name="JB_GXR_LieCheZhang" ColumnName="JB_GXR_LieCheZhang" />
+                <ScalarProperty Name="JB_GXR_YunZhuanCheZhang" ColumnName="JB_GXR_YunZhuanCheZhang" />
+                <ScalarProperty Name="JB_GXR_FuSiJi" ColumnName="JB_GXR_FuSiJi" />
+                <ScalarProperty Name="JB_GXR_SiJi" ColumnName="JB_GXR_SiJi" />
+                <ScalarProperty Name="JB_BZ_ChaoXianChe" ColumnName="JB_BZ_ChaoXianChe" />
+                <ScalarProperty Name="JB_BZ_WeiXianPin" ColumnName="JB_BZ_WeiXianPin" />
+                <ScalarProperty Name="JB_BZ_LieWei" ColumnName="JB_BZ_LieWei" />
+                <ScalarProperty Name="JB_BZ_KongChe" ColumnName="JB_BZ_KongChe" />
+                <ScalarProperty Name="JB_BZ_ZhongChe" ColumnName="JB_BZ_ZhongChe" />
+                <ScalarProperty Name="JB_BZ_JiChang" ColumnName="JB_BZ_JiChang" />
+                <ScalarProperty Name="JB_BZ_ShuLiang" ColumnName="JB_BZ_ShuLiang" />
+                <ScalarProperty Name="JB_BZ_DunWei" ColumnName="JB_BZ_DunWei" />
+                <ScalarProperty Name="JB_JC_XinHao" ColumnName="JB_JC_XinHao" />
+                <ScalarProperty Name="JB_JC_GongDian" ColumnName="JB_JC_GongDian" />
+                <ScalarProperty Name="JB_JC_SuDu" ColumnName="JB_JC_SuDu" />
+                <ScalarProperty Name="JB_JC_DanDang" ColumnName="JB_JC_DanDang" />
+                <ScalarProperty Name="JB_JC_PeiShu" ColumnName="JB_JC_PeiShu" />
+                <ScalarProperty Name="JB_JC_BianHao" ColumnName="JB_JC_BianHao" />
+                <ScalarProperty Name="JB_JC_XingHao" ColumnName="JB_JC_XingHao" />
+                <ScalarProperty Name="JB_LC_LvKe" ColumnName="JB_LC_LvKe" />
+                <ScalarProperty Name="JB_LC_DanDang" ColumnName="JB_LC_DanDang" />
+                <ScalarProperty Name="JB_LC_PeiShu" ColumnName="JB_LC_PeiShu" />
+                <ScalarProperty Name="JB_LC_ZhongDian" ColumnName="JB_LC_ZhongDian" />
+                <ScalarProperty Name="JB_LC_QiDian" ColumnName="JB_LC_QiDian" />
+                <ScalarProperty Name="JB_LC_CheHao" ColumnName="JB_LC_CheHao" />
+                <ScalarProperty Name="JB_LC_CheCi" ColumnName="JB_LC_CheCi" />
+                <ScalarProperty Name="JB_DD_ChangSuo" ColumnName="JB_DD_ChangSuo" />
+                <ScalarProperty Name="JB_DD_DanWei" ColumnName="JB_DD_DanWei" />
+                <ScalarProperty Name="JB_DD_Qu" ColumnName="JB_DD_Qu" />
+                <ScalarProperty Name="JB_DD_Shi" ColumnName="JB_DD_Shi" />
+                <ScalarProperty Name="JB_DD_Sheng" ColumnName="JB_DD_Sheng" />
+                <ScalarProperty Name="JB_DD_MiShu" ColumnName="JB_DD_MiShu" />
+                <ScalarProperty Name="JB_DD_GongLi" ColumnName="JB_DD_GongLi" />
+                <ScalarProperty Name="JB_DD_XingBie" ColumnName="JB_DD_XingBie" />
+                <ScalarProperty Name="JB_DD_ZhongDian" ColumnName="JB_DD_ZhongDian" />
+                <ScalarProperty Name="JB_DD_QiDian" ColumnName="JB_DD_QiDian" />
+                <ScalarProperty Name="JB_DD_XianBie" ColumnName="JB_DD_XianBie" />
+                <ScalarProperty Name="JB_DD_Xian" ColumnName="JB_DD_Xian" />
+                <ScalarProperty Name="JB_DD_Ju" ColumnName="JB_DD_Ju" />
+                <ScalarProperty Name="JB_ID" ColumnName="JB_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="shiguzerenrendinginfo">
-            <EntityTypeMapping TypeName="SGDCModel.shiguzerenrendinginfo">
-              <MappingFragment StoreEntitySet="shiguzerenrendinginfo">
-                <ScalarProperty Name="ZR_ID" ColumnName="ZR_ID" />
+          <EntitySetMapping Name="shiguzerendanweiinfo">
+            <EntityTypeMapping TypeName="SGDCModel.shiguzerendanweiinfo">
+              <MappingFragment StoreEntitySet="shiguzerendanweiinfo">
+                <ScalarProperty Name="ZRDW_Ext3" ColumnName="ZRDW_Ext3" />
+                <ScalarProperty Name="ZRDW_Ext2" ColumnName="ZRDW_Ext2" />
+                <ScalarProperty Name="ZRDW_Ext1" ColumnName="ZRDW_Ext1" />
+                <ScalarProperty Name="ZRDW_ChengDu" ColumnName="ZRDW_ChengDu" />
+                <ScalarProperty Name="ZRDW_BuMen" ColumnName="ZRDW_BuMen" />
+                <ScalarProperty Name="ZRDW_DanWeiShuXing" ColumnName="ZRDW_DanWeiShuXing" />
+                <ScalarProperty Name="ZRDW_DanWei" ColumnName="ZRDW_DanWei" />
                 <ScalarProperty Name="JB_ID" ColumnName="JB_ID" />
-                <ScalarProperty Name="ZR_ZeRenDanWei" ColumnName="ZR_ZeRenDanWei" />
-                <ScalarProperty Name="ZR_ZeRenDanWeiShuXing" ColumnName="ZR_ZeRenDanWeiShuXing" />
-                <ScalarProperty Name="ZR_ZeRenBuMen" ColumnName="ZR_ZeRenBuMen" />
-                <ScalarProperty Name="ZR_ZeRenChengDu" ColumnName="ZR_ZeRenChengDu" />
-                <ScalarProperty Name="ZR_YuanYinLeiBie" ColumnName="ZR_YuanYinLeiBie" />
-                <ScalarProperty Name="ZR_ShiGuLeiBie" ColumnName="ZR_ShiGuLeiBie" />
-                <ScalarProperty Name="ZR_XingChe" ColumnName="ZR_XingChe" />
-                <ScalarProperty Name="ZR_ZhiBanJianCha" ColumnName="ZR_ZhiBanJianCha" />
-                <ScalarProperty Name="ZR_TianBaoShiJian" ColumnName="ZR_TianBaoShiJian" />
-                <ScalarProperty Name="ZR_BaoGaoCiShu" ColumnName="ZR_BaoGaoCiShu" />
-                <ScalarProperty Name="ZR_ShiGuDiaoChaBaoGao" ColumnName="ZR_ShiGuDiaoChaBaoGao" />
-                <ScalarProperty Name="ZR_XianChangDianChaZiLiao" ColumnName="ZR_XianChangDianChaZiLiao" />
-                <ScalarProperty Name="ZR_SunShiJiSuanZiLiao" ColumnName="ZR_SunShiJiSuanZiLiao" />
-                <ScalarProperty Name="ZR_ShiGuRenDingShu" ColumnName="ZR_ShiGuRenDingShu" />
-                <ScalarProperty Name="ZR_AnJianBaoEr" ColumnName="ZR_AnJianBaoEr" />
-                <ScalarProperty Name="ZR_QiTa" ColumnName="ZR_QiTa" />
-                <ScalarProperty Name="ZR_TePaiBanDiaoChaBaoGao" ColumnName="ZR_TePaiBanDiaoChaBaoGao" />
-                <ScalarProperty Name="ZR_SheDuDiaoChaBaoGao" ColumnName="ZR_SheDuDiaoChaBaoGao" />
-                <ScalarProperty Name="ZR_Ext1" ColumnName="ZR_Ext1" />
-                <ScalarProperty Name="ZR_Ext2" ColumnName="ZR_Ext2" />
+                <ScalarProperty Name="ZRDW_ID" ColumnName="ZRDW_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shiguzereninfo">
+            <EntityTypeMapping TypeName="SGDCModel.shiguzereninfo">
+              <MappingFragment StoreEntitySet="shiguzereninfo">
                 <ScalarProperty Name="ZR_Ext3" ColumnName="ZR_Ext3" />
+                <ScalarProperty Name="ZR_Ext2" ColumnName="ZR_Ext2" />
+                <ScalarProperty Name="ZR_Ext1" ColumnName="ZR_Ext1" />
+                <ScalarProperty Name="ZR_SheDuDiaoChaBaoGao" ColumnName="ZR_SheDuDiaoChaBaoGao" />
+                <ScalarProperty Name="ZR_TePaiBanDiaoChaBaoGao" ColumnName="ZR_TePaiBanDiaoChaBaoGao" />
+                <ScalarProperty Name="ZR_QiTa" ColumnName="ZR_QiTa" />
+                <ScalarProperty Name="ZR_AnJianBaoEr" ColumnName="ZR_AnJianBaoEr" />
+                <ScalarProperty Name="ZR_ShiGuRenDingShu" ColumnName="ZR_ShiGuRenDingShu" />
+                <ScalarProperty Name="ZR_SunShiJiSuanZiLiao" ColumnName="ZR_SunShiJiSuanZiLiao" />
+                <ScalarProperty Name="ZR_XianChangDianChaZiLiao" ColumnName="ZR_XianChangDianChaZiLiao" />
+                <ScalarProperty Name="ZR_ShiGuDiaoChaBaoGao" ColumnName="ZR_ShiGuDiaoChaBaoGao" />
+                <ScalarProperty Name="ZR_BaoGaoCiShu" ColumnName="ZR_BaoGaoCiShu" />
+                <ScalarProperty Name="ZR_TianBaoShiJian" ColumnName="ZR_TianBaoShiJian" />
+                <ScalarProperty Name="ZR_ZhiBanJianCha" ColumnName="ZR_ZhiBanJianCha" />
+                <ScalarProperty Name="ZR_XingChe" ColumnName="ZR_XingChe" />
+                <ScalarProperty Name="ZR_ShiGuLeiBie" ColumnName="ZR_ShiGuLeiBie" />
+                <ScalarProperty Name="ZR_YuanYinLeiBie" ColumnName="ZR_YuanYinLeiBie" />
+                <ScalarProperty Name="ZR_ZeRenChengDu" ColumnName="ZR_ZeRenChengDu" />
+                <ScalarProperty Name="ZR_ZeRenBuMen" ColumnName="ZR_ZeRenBuMen" />
+                <ScalarProperty Name="ZR_ZeRenDanWeiShuXing" ColumnName="ZR_ZeRenDanWeiShuXing" />
+                <ScalarProperty Name="ZR_ZeRenDanWei" ColumnName="ZR_ZeRenDanWei" />
+                <ScalarProperty Name="JB_ID" ColumnName="JB_ID" />
+                <ScalarProperty Name="ZR_ID" ColumnName="ZR_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="systemloginfo">
+            <EntityTypeMapping TypeName="SGDCModel.systemloginfo">
+              <MappingFragment StoreEntitySet="systemloginfo">
+                <ScalarProperty Name="SL_Ext3" ColumnName="SL_Ext3" />
+                <ScalarProperty Name="SL_Ext2" ColumnName="SL_Ext2" />
+                <ScalarProperty Name="SL_Ext1" ColumnName="SL_Ext1" />
+                <ScalarProperty Name="SL_CreateTime" ColumnName="SL_CreateTime" />
+                <ScalarProperty Name="SL_Desc" ColumnName="SL_Desc" />
+                <ScalarProperty Name="SL_Type" ColumnName="SL_Type" />
+                <ScalarProperty Name="SL_WrName" ColumnName="SL_WrName" />
+                <ScalarProperty Name="SL_WrId" ColumnName="SL_WrId" />
+                <ScalarProperty Name="SL_Id" ColumnName="SL_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="userinfo">
             <EntityTypeMapping TypeName="SGDCModel.userinfo">
               <MappingFragment StoreEntitySet="userinfo">
-                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
-                <ScalarProperty Name="User_No" ColumnName="User_No" />
-                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
-                <ScalarProperty Name="User_Phone" ColumnName="User_Phone" />
-                <ScalarProperty Name="User_Uint" ColumnName="User_Uint" />
-                <ScalarProperty Name="User_Department" ColumnName="User_Department" />
-                <ScalarProperty Name="User_Pwd" ColumnName="User_Pwd" />
-                <ScalarProperty Name="User_Role" ColumnName="User_Role" />
-                <ScalarProperty Name="User_Status" ColumnName="User_Status" />
-                <ScalarProperty Name="User_CreateTime" ColumnName="User_CreateTime" />
-                <ScalarProperty Name="User_RoleID" ColumnName="User_RoleID" />
-                <ScalarProperty Name="User_Ext1" ColumnName="User_Ext1" />
-                <ScalarProperty Name="User_Ext2" ColumnName="User_Ext2" />
                 <ScalarProperty Name="User_Ext3" ColumnName="User_Ext3" />
+                <ScalarProperty Name="User_Ext2" ColumnName="User_Ext2" />
+                <ScalarProperty Name="User_Ext1" ColumnName="User_Ext1" />
+                <ScalarProperty Name="User_RoleID" ColumnName="User_RoleID" />
+                <ScalarProperty Name="User_CreateTime" ColumnName="User_CreateTime" />
+                <ScalarProperty Name="User_Status" ColumnName="User_Status" />
+                <ScalarProperty Name="User_Role" ColumnName="User_Role" />
+                <ScalarProperty Name="User_Pwd" ColumnName="User_Pwd" />
+                <ScalarProperty Name="User_Department" ColumnName="User_Department" />
+                <ScalarProperty Name="User_Uint" ColumnName="User_Uint" />
+                <ScalarProperty Name="User_Phone" ColumnName="User_Phone" />
+                <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+                <ScalarProperty Name="User_No" ColumnName="User_No" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1045,6 +1271,11 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
                 <ScalarProperty Name="JB_Ext3" ColumnName="JB_Ext3" />
                 <ScalarProperty Name="JB_Ext2" ColumnName="JB_Ext2" />
                 <ScalarProperty Name="JB_Ext1" ColumnName="JB_Ext1" />
+                <ScalarProperty Name="JB_ZB_Z" ColumnName="JB_ZB_Z" />
+                <ScalarProperty Name="JB_ZB_Y" ColumnName="JB_ZB_Y" />
+                <ScalarProperty Name="JB_ZB_X" ColumnName="JB_ZB_X" />
+                <ScalarProperty Name="JB_UpdateTime" ColumnName="JB_UpdateTime" />
+                <ScalarProperty Name="JB_CreatTime" ColumnName="JB_CreatTime" />
                 <ScalarProperty Name="JB_KT_XiaXing" ColumnName="JB_KT_XiaXing" />
                 <ScalarProperty Name="JB_KT_ShangXing" ColumnName="JB_KT_ShangXing" />
                 <ScalarProperty Name="JB_FJ_XiaXing" ColumnName="JB_FJ_XiaXing" />

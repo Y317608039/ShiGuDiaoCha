@@ -1,10 +1,10 @@
-﻿var map, layerWorld, marker, markers;
+﻿var map, layerWorld, markers;
 //var url = "http://192.168.1.114:8090/iserver/services/map-sde/rest/maps/25D@25D";
 var url = "http://139.196.242.134:8090/iserver/services/map-sdm/rest/maps/25D@25D";
 var infowin = null;
 $(
     function () {
-        init(); 
+        init();
     },
 
      init = function () {
@@ -37,7 +37,7 @@ $(
      mouseClickHandler = function (event) {
          closeInfoWin();
          //初始化popup类
-         popup = new SuperMap.Popup("chicken", marker.getLonLat(), new SuperMap.Size(220, 140), '<img src="supermap/images/xila.jpg">', true, null);
+         popup = new SuperMap.Popup("chicken", this.getLonLat(), new SuperMap.Size(220, 140), '<img src="supermap/images/xila.jpg">', true, null);
 
          infowin = popup;
          //添加弹窗到map图层
@@ -67,14 +67,14 @@ $(
         offset = new SuperMap.Pixel(-(size.w / 2), -size.h);
         icon = new SuperMap.Icon('supermap/images/markerbig_select.png', size, offset);
         //初始化标记覆盖物类
-        marker = new SuperMap.Marker(new SuperMap.LonLat(23.6530190, 37.9439259), icon);
+        var marker = new SuperMap.Marker(new SuperMap.LonLat(23.6530190, 37.9439259), icon);
         //添加覆盖物到标记图层
         markers.addMarker(marker);
 
         //初始化标记覆盖物类
-        marker = new SuperMap.Marker(new SuperMap.LonLat(23.6530190, 37.9439259), icon);
+        var marker1 = new SuperMap.Marker(new SuperMap.LonLat(1123.6530190, 37.9439259), new SuperMap.Icon('supermap/images/markerbig_select.png', new SuperMap.Size(21, 25), new SuperMap.Pixel(-(size.w / 2), -size.h)));
         //添加覆盖物到标记图层
-        markers.addMarker(marker);
+        markers.addMarker(marker1);
 
 
         //注册 click 事件,触发 mouseClickHandler()方法
@@ -82,6 +82,8 @@ $(
             "click": mouseClickHandler,
             "touchstart": mouseClickHandler //假如要在移动端的浏览器也实现点击弹框，则在注册touch类事件
         });
+
+        marker1.events.on({ "click": mouseClickHandler, "touchstart": mouseClickHandler });
     }
 );
 

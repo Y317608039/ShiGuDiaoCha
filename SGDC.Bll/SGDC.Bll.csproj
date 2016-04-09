@@ -43,7 +43,11 @@
     <Compile Include="shigujibeninfo_Bll.cs" />
     <Compile Include="shiguhouguoinfo_Bll.cs" />
     <Compile Include="datadictionaryinfo_Bll.cs" />
-    <Compile Include="shiguzerenrendinginfo_Bll.cs" />
+    <Compile Include="shiguzereninfo_Bll.cs" />
+    <Compile Include="shiguhouguoshangwanginfo_Bll.cs" />
+    <Compile Include="shiguzerendanweiinfo_Bll.cs" />
+    <Compile Include="documentinfo_Bll.cs" />
+    <Compile Include="systemloginfo_Bll.cs" />
     <Compile Include="userinfo_Bll.cs" />
     <Compile Include="v_shigu_Bll.cs" />
   </ItemGroup>

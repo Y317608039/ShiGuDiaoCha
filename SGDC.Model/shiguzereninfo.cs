@@ -12,7 +12,7 @@ namespace SGDC.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class shiguzerenrendinginfo
+    public partial class shiguzereninfo
     {
         public int ZR_ID { get; set; }
         public int JB_ID { get; set; }

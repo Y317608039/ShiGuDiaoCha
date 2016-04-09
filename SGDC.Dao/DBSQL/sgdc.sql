@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : my56
+Source Server         : mysql56
 Source Server Version : 50623
 Source Host           : 127.0.0.1:3308
 Source Database       : sgdc
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2016-04-05 01:35:52
+Date: 2016-04-09 11:05:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,10 +28,32 @@ CREATE TABLE `datadictionaryinfo` (
   `DD_Ext2` varchar(255) DEFAULT NULL COMMENT '数据字典扩展信息2',
   `DD_Ext3` varchar(255) DEFAULT NULL COMMENT '数据字典扩展信息3',
   PRIMARY KEY (`DD_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='数据字典';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='数据字典信息';
 
 -- ----------------------------
 -- Records of datadictionaryinfo
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for documentinfo
+-- ----------------------------
+DROP TABLE IF EXISTS `documentinfo`;
+CREATE TABLE `documentinfo` (
+  `D_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '文档ID',
+  `D_Type` varchar(25) NOT NULL DEFAULT '' COMMENT '文档类型',
+  `D_Head` varchar(100) NOT NULL DEFAULT '' COMMENT '文档标题',
+  `D_Subhead` varchar(80) DEFAULT NULL COMMENT '文档副标题',
+  `D_Content` varchar(3000) NOT NULL COMMENT '文档内容',
+  `D_CreateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '文档创建时间',
+  `D_UpdateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '文档修改时间',
+  `D_Ext1` varchar(255) DEFAULT NULL COMMENT '文档扩展信息1',
+  `D_Ext2` varchar(255) DEFAULT NULL COMMENT '文档扩展信息2',
+  `D_Ext3` varchar(255) DEFAULT NULL COMMENT '文档扩展信息3',
+  PRIMARY KEY (`D_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='基本文档信息';
+
+-- ----------------------------
+-- Records of documentinfo
 -- ----------------------------
 
 -- ----------------------------
@@ -90,6 +112,30 @@ CREATE TABLE `shiguhouguoinfo` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for shiguhouguoshangwanginfo
+-- ----------------------------
+DROP TABLE IF EXISTS `shiguhouguoshangwanginfo`;
+CREATE TABLE `shiguhouguoshangwanginfo` (
+  `SW_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '伤亡ID',
+  `JB_ID` int(11) NOT NULL COMMENT '基本ID',
+  `SW_Name` varchar(25) NOT NULL DEFAULT '' COMMENT '伤亡人员名称',
+  `SW_Unit` varchar(75) NOT NULL DEFAULT '' COMMENT '伤亡人员单位',
+  `SW_Sex` varchar(5) NOT NULL DEFAULT '' COMMENT '伤亡人员性别',
+  `SW_Age` int(11) NOT NULL DEFAULT '0' COMMENT '伤亡人员年龄',
+  `SW_MinZu` varchar(10) NOT NULL DEFAULT '' COMMENT '伤亡人员民族',
+  `SW_ShangHaiChengDu` varchar(255) NOT NULL DEFAULT '' COMMENT '伤亡人员伤害程度',
+  `SW_RenYuanShuXing` varchar(50) NOT NULL DEFAULT '' COMMENT '伤亡人员属性',
+  `SW_Ext1` varchar(255) DEFAULT NULL COMMENT '伤亡人员扩展信息1',
+  `SW_Ext2` varchar(255) DEFAULT NULL COMMENT '伤亡人员扩展信息2',
+  `SW_Ext3` varchar(255) DEFAULT NULL COMMENT '伤亡人员扩展信息3',
+  PRIMARY KEY (`SW_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='事故基本信息后果伤亡信息';
+
+-- ----------------------------
+-- Records of shiguhouguoshangwanginfo
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for shigujibeninfo
 -- ----------------------------
 DROP TABLE IF EXISTS `shigujibeninfo`;
@@ -143,6 +189,12 @@ CREATE TABLE `shigujibeninfo` (
   `JB_FJ_XiaXing` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '基本复旧时间下行',
   `JB_KT_ShangXing` timestamp NULL DEFAULT NULL COMMENT '基本开通时间上行',
   `JB_KT_XiaXing` timestamp NULL DEFAULT NULL COMMENT '基本开通时间下行',
+  `JB_CreatTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '基本信息创建时间',
+  `JB_UpdateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '基本信息修改时间',
+  `JB_ZB_X` decimal(18,10) DEFAULT NULL COMMENT '基本坐标X',
+  `
+JB_ZB_Y` decimal(18,10) DEFAULT NULL COMMENT '基本坐标Y',
+  `JB_ZB_Z` decimal(18,10) DEFAULT NULL COMMENT '基本坐标Z',
   `JB_Ext1` varchar(255) DEFAULT NULL COMMENT '基本扩展信息1',
   `JB_Ext2` varchar(255) DEFAULT NULL COMMENT '基本扩展信息2',
   `JB_Ext3` varchar(255) DEFAULT NULL COMMENT '基本扩展信息3',
@@ -154,10 +206,31 @@ CREATE TABLE `shigujibeninfo` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for shiguzerenrendinginfo
+-- Table structure for shiguzerendanweiinfo
 -- ----------------------------
-DROP TABLE IF EXISTS `shiguzerenrendinginfo`;
-CREATE TABLE `shiguzerenrendinginfo` (
+DROP TABLE IF EXISTS `shiguzerendanweiinfo`;
+CREATE TABLE `shiguzerendanweiinfo` (
+  `ZRDW_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '责任单位ID',
+  `JB_ID` int(11) NOT NULL DEFAULT '0' COMMENT '基本ID',
+  `ZRDW_DanWei` varchar(75) NOT NULL DEFAULT '' COMMENT '责任单位名称',
+  `ZRDW_DanWeiShuXing` varchar(25) NOT NULL DEFAULT '' COMMENT '责任单位属性',
+  `ZRDW_BuMen` varchar(75) NOT NULL DEFAULT '' COMMENT '责任单位部门',
+  `ZRDW_ChengDu` varchar(25) NOT NULL DEFAULT '' COMMENT '责任单位程度',
+  `ZRDW_Ext1` varchar(255) DEFAULT NULL COMMENT '责任单位扩展信息1',
+  `ZRDW_Ext2` varchar(255) DEFAULT NULL COMMENT '责任单位扩展信息2',
+  `ZRDW_Ext3` varchar(255) DEFAULT NULL COMMENT '责任单位扩展信息3',
+  PRIMARY KEY (`ZRDW_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='事故基本信息责任单位信息';
+
+-- ----------------------------
+-- Records of shiguzerendanweiinfo
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for shiguzereninfo
+-- ----------------------------
+DROP TABLE IF EXISTS `shiguzereninfo`;
+CREATE TABLE `shiguzereninfo` (
   `ZR_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '责任ID',
   `JB_ID` int(11) NOT NULL DEFAULT '0' COMMENT '基本ID',
   `ZR_ZeRenDanWei` varchar(75) NOT NULL DEFAULT '' COMMENT '责任单位',
@@ -178,14 +251,35 @@ CREATE TABLE `shiguzerenrendinginfo` (
   `ZR_QiTa` varchar(25) NOT NULL DEFAULT '' COMMENT '其它',
   `ZR_TePaiBanDiaoChaBaoGao` varchar(25) NOT NULL DEFAULT '' COMMENT '特派办调查报告',
   `ZR_SheDuDiaoChaBaoGao` varchar(25) NOT NULL DEFAULT '' COMMENT '深度调查报告',
-  `ZR_Ext1` varchar(255) DEFAULT NULL,
-  `ZR_Ext2` varchar(255) DEFAULT NULL,
-  `ZR_Ext3` varchar(255) DEFAULT NULL,
+  `ZR_Ext1` varchar(255) DEFAULT NULL COMMENT '责任扩展信息1',
+  `ZR_Ext2` varchar(255) DEFAULT NULL COMMENT '责任扩展信息2',
+  `ZR_Ext3` varchar(255) DEFAULT NULL COMMENT '责任扩展信息3',
   PRIMARY KEY (`ZR_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='事故基本信息责任部分';
 
 -- ----------------------------
--- Records of shiguzerenrendinginfo
+-- Records of shiguzereninfo
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for systemloginfo
+-- ----------------------------
+DROP TABLE IF EXISTS `systemloginfo`;
+CREATE TABLE `systemloginfo` (
+  `SL_Id` int(11) NOT NULL AUTO_INCREMENT COMMENT '系统日志标识ID',
+  `SL_WrId` int(11) NOT NULL DEFAULT '0' COMMENT '操作人员Id',
+  `SL_WrName` varchar(255) NOT NULL DEFAULT '' COMMENT '操作人员姓名',
+  `SL_Type` char(25) NOT NULL DEFAULT '' COMMENT '日志类型',
+  `SL_Desc` varchar(3000) NOT NULL DEFAULT '' COMMENT '日志内容',
+  `SL_CreateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '日志创建时间',
+  `SL_Ext1` varchar(255) DEFAULT NULL COMMENT '日志扩展1',
+  `SL_Ext2` varchar(255) DEFAULT NULL COMMENT '日志扩展2',
+  `SL_Ext3` varchar(255) DEFAULT NULL COMMENT '日志扩展3',
+  PRIMARY KEY (`SL_Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统日志信息';
+
+-- ----------------------------
+-- Records of systemloginfo
 -- ----------------------------
 
 -- ----------------------------
@@ -204,21 +298,23 @@ CREATE TABLE `userinfo` (
   `User_Status` varchar(10) NOT NULL DEFAULT '正常' COMMENT '用户状态(正常,已删除)',
   `User_CreateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '用户创建时间',
   `User_RoleID` int(11) NOT NULL DEFAULT '1' COMMENT '用户角色ID',
-  `User_Ext1` varchar(255) DEFAULT NULL,
-  `User_Ext2` varchar(255) DEFAULT NULL,
-  `User_Ext3` varchar(255) DEFAULT NULL,
+  `User_Ext1` varchar(255) DEFAULT NULL COMMENT '用户扩展信息1',
+  `User_Ext2` varchar(255) DEFAULT NULL COMMENT '用户扩展信息2',
+  `User_Ext3` varchar(255) DEFAULT NULL COMMENT '用户扩展信息3',
   PRIMARY KEY (`User_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='人员信息';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='人员信息';
 
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
+INSERT INTO `userinfo` VALUES ('1', 'zhangsan001', '张三', '18099998888', '单位', '部门', '123456', '管理员', '正常', '2016-04-06 10:03:49', '1', null, null, null);
+INSERT INTO `userinfo` VALUES ('2', 'lisi002', '李四', '15012345678', '单位', '部门', '123456', '记录员', '正常', '2016-04-06 10:04:34', '2', null, null, null);
 
 -- ----------------------------
 -- View structure for v_shigu
 -- ----------------------------
 DROP VIEW IF EXISTS `v_shigu`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `v_shigu` AS select 
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `v_shigu` AS select 
 jb.*
 ,HG_ID 
 ,HG_ZD_ShangXing
@@ -286,4 +382,4 @@ jb.*
 ,ZR_Ext3
 from sgdc.shigujibeninfo jb
 left join sgdc.shiguhouguoinfo hg on (jb.JB_ID = hg.JB_ID)
-left join sgdc.shiguzerenrendinginfo zr on (jb.JB_ID = zr.JB_ID) ;
+left join sgdc.shiguzereninfo zr on (jb.JB_ID = zr.JB_ID) ;

@@ -7,7 +7,7 @@ using SGDC.Model;
 
 namespace SGDC.Dao.Svc
 {
-    public class shiguzerenrendinginfo_Dao : UtilityEntityDal<shiguzerenrendinginfo>
+    public class documentinfo_Dao : UtilityEntityDal<documentinfo>
     {
     }
 }

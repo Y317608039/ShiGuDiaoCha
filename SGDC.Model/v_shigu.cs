@@ -63,6 +63,11 @@ namespace SGDC.Model
         public Nullable<System.DateTime> JB_FJ_XiaXing { get; set; }
         public Nullable<System.DateTime> JB_KT_ShangXing { get; set; }
         public Nullable<System.DateTime> JB_KT_XiaXing { get; set; }
+        public System.DateTime JB_CreatTime { get; set; }
+        public System.DateTime JB_UpdateTime { get; set; }
+        public Nullable<decimal> JB_ZB_X { get; set; }
+        public Nullable<decimal> JB_ZB_Y { get; set; }
+        public Nullable<decimal> JB_ZB_Z { get; set; }
         public string JB_Ext1 { get; set; }
         public string JB_Ext2 { get; set; }
         public string JB_Ext3 { get; set; }

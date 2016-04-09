@@ -59,10 +59,14 @@
     </Compile>
     <Compile Include="Svc\datadictionaryinfo_Dao.cs" />
     <Compile Include="Svc\shiguhouguoinfo_Dao.cs" />
+    <Compile Include="Svc\documentinfo_Dao.cs" />
+    <Compile Include="Svc\shiguhouguoshangwanginfo_Dao.cs" />
+    <Compile Include="Svc\shiguzerendanweiinfo_Dao.cs" />
+    <Compile Include="Svc\systemloginfo_Dao.cs" />
     <Compile Include="Svc\userinfo_Dao.cs" />
     <Compile Include="Svc\shigujibeninfo_Dao.cs" />
-    <Compile Include="Svc\shiguzerenrendinginfo_Dao.cs" />
-    <Compile Include="Svc\UtilityEntityDao.cs" />
+    <Compile Include="Svc\shiguzereninfo_Dao.cs" />
+    <Compile Include="Svc\UtilityEntityDal.cs" />
     <Compile Include="Svc\v_shigu_Dao.cs" />
   </ItemGroup>
   <ItemGroup>

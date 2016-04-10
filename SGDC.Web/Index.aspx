@@ -40,6 +40,11 @@
                             <a ref="Menu0002" href="#" rel="Views/DanWeiRenYuanXinXi/RenYuanJiBenXinXi.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">项目二</span></a>
                         </div>
                     </li>
+                    <li>
+                        <div class="">
+                            <a ref="Menu0003" href="#" rel="Views/FillAccidentForm.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">填充表单</span></a>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <div title="基础信息管理" style="padding: 5px;">

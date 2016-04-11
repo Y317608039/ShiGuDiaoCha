@@ -7,3 +7,13 @@ SGDC.Dao/bin/
 SGDC.Dao/obj/
 SGDC.Bll/bin/
 SGDC.Bll/obj/
+SGDC.Web/Bin/EntityFramework.dll
+SGDC.Web/Bin/SGDC.Bll.dll
+SGDC.Web/Bin/SGDC.Bll.pdb
+SGDC.Web/Bin/SGDC.Dao.dll
+SGDC.Web/Bin/SGDC.Dao.pdb
+SGDC.Web/Bin/SGDC.Model.dll
+SGDC.Web/Bin/SGDC.Model.pdb
+SGDC.Web/Bin/SGDC.Utility.dll
+SGDC.Web/Bin/SGDC.Utility.pdb
+SGDC.Web/Bin/zh-Hans/EntityFramework.resources.dll

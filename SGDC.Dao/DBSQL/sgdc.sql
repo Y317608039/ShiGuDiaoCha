@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2016-04-11 17:50:00
+Date: 2016-04-11 17:59:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -253,7 +253,7 @@ CREATE TABLE `shiguzereninfo` (
   `ZR_ZeRenChengDu` varchar(75) NOT NULL DEFAULT '' COMMENT '责任程度',
   `ZR_YuanYinLeiBie` varchar(15) NOT NULL DEFAULT '' COMMENT '原因类别',
   `ZR_ShiGuLeiBie` varchar(15) NOT NULL DEFAULT '' COMMENT '事故类别',
-  `ZR_XingChe` varchar(15) NOT NULL DEFAULT '' COMMENT '行车',
+  `ZR_ShiGuDengJi` varchar(15) NOT NULL DEFAULT '' COMMENT '事故等级',
   `ZR_ZhiBanJianCha` varchar(25) NOT NULL DEFAULT '' COMMENT '值班监察',
   `ZR_TianBaoShiJian` timestamp NULL DEFAULT NULL COMMENT '填报时间',
   `ZR_BaoGaoCiShu` varchar(10) NOT NULL DEFAULT '' COMMENT '报告次数',
@@ -396,7 +396,7 @@ jb.*
 ,ZR_ZeRenChengDu
 ,ZR_YuanYinLeiBie
 ,ZR_ShiGuLeiBie
-,ZR_XingChe
+,ZR_ShiGuDengJi
 ,ZR_ZhiBanJianCha
 ,ZR_TianBaoShiJian
 ,ZR_BaoGaoCiShu

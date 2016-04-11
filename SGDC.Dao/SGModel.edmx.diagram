@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="93407a3a637b43b4853bf1b56d33b05a" Name="Diagram1">
+      <Diagram DiagramId="93407a3a637b43b4853bf1b56d33b05a" Name="Diagram1" ZoomLevel="17">
         <EntityTypeShape EntityType="SGDCModel.datadictionaryinfo" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="SGDCModel.documentinfo" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="SGDCModel.shiguhouguoinfo" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="SGDCModel.shiguhouguoshangwanginfo" Width="1.5" PointX="0.75" PointY="4.75" />
         <EntityTypeShape EntityType="SGDCModel.shigujibeninfo" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="SGDCModel.shiguzerendanweiinfo" Width="1.5" PointX="8.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SGDCModel.shiguzereninfo" Width="1.5" PointX="0.75" PointY="8.75" />
-        <EntityTypeShape EntityType="SGDCModel.systemloginfo" Width="1.5" PointX="8.75" PointY="4.75" />
-        <EntityTypeShape EntityType="SGDCModel.userinfo" Width="1.5" PointX="8.75" PointY="8.75" />
-        <EntityTypeShape EntityType="SGDCModel.v_shigu" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SGDCModel.systemloginfo" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SGDCModel.userinfo" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SGDCModel.shiguzereninfo" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SGDCModel.v_shigu1" Width="1.5" PointX="3.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

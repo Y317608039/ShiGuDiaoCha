@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2016-04-09 14:17:31
+Date: 2016-04-11 17:50:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,18 +24,27 @@ CREATE TABLE `datadictionaryinfo` (
   `DD_Type` varchar(25) NOT NULL DEFAULT '' COMMENT '数据字典类型',
   `DD_Value` varchar(25) NOT NULL DEFAULT '' COMMENT '数据字典值',
   `DD_Desc` varchar(25) NOT NULL DEFAULT '' COMMENT '数据字典描述',
-  `DD_Status` varchar(25) NOT NULL DEFAULT '' COMMENT '数据字典',
   `DD_Ext1` varchar(255) DEFAULT NULL COMMENT '数据字典扩展信息1',
   `DD_Ext2` varchar(255) DEFAULT NULL COMMENT '数据字典扩展信息2',
   `DD_Ext3` varchar(255) DEFAULT NULL COMMENT '数据字典扩展信息3',
   PRIMARY KEY (`DD_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='数据字典信息';
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='数据字典信息';
 
 -- ----------------------------
 -- Records of datadictionaryinfo
 -- ----------------------------
-INSERT INTO `datadictionaryinfo` VALUES ('1', '测试', '测试1', '测试1', '', '', '', '');
-INSERT INTO `datadictionaryinfo` VALUES ('2', '测试', '测试2', '测试2', '', '1', '2', '3');
+INSERT INTO `datadictionaryinfo` VALUES ('4', '文档类别', '规章制度', '规章制度', '', '', '');
+INSERT INTO `datadictionaryinfo` VALUES ('5', '文档类别', '电报', '电报', '', '', '');
+INSERT INTO `datadictionaryinfo` VALUES ('6', '文档类别', '技术文档', '技术文档', '', '', '');
+INSERT INTO `datadictionaryinfo` VALUES ('7', '文档类别', '事故案例', '事故案例', '', '', '');
+INSERT INTO `datadictionaryinfo` VALUES ('8', '单位', '管理员', '管理员', null, null, null);
+INSERT INTO `datadictionaryinfo` VALUES ('9', '单位', '机关', '机关', null, null, null);
+INSERT INTO `datadictionaryinfo` VALUES ('10', '管理员职别', '管理员', '这是管理员职别', null, null, null);
+INSERT INTO `datadictionaryinfo` VALUES ('11', '管理员部门', '管理员', '这是管理员下拉列表', null, null, null);
+INSERT INTO `datadictionaryinfo` VALUES ('12', '机关部门', '办公室', '09办公室 描述', null, null, null);
+INSERT INTO `datadictionaryinfo` VALUES ('13', '机关部门', '段领导', '00段领导 描述', null, null, null);
+INSERT INTO `datadictionaryinfo` VALUES ('14', '机关职别', '段长', '这是机关职别', null, null, null);
+INSERT INTO `datadictionaryinfo` VALUES ('15', '机关职别', '书记', '这是机关职别', null, null, null);
 
 -- ----------------------------
 -- Table structure for documentinfo
@@ -53,11 +62,13 @@ CREATE TABLE `documentinfo` (
   `D_Ext2` varchar(255) DEFAULT NULL COMMENT '文档扩展信息2',
   `D_Ext3` varchar(255) DEFAULT NULL COMMENT '文档扩展信息3',
   PRIMARY KEY (`D_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='基本文档信息';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='基本文档信息';
 
 -- ----------------------------
 -- Records of documentinfo
 -- ----------------------------
+INSERT INTO `documentinfo` VALUES ('1', '电报', '电报001', '副标题是什么了', '这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.', '2016-04-09 17:28:13', '2016-04-09 17:28:13', '11', '22', '33');
+INSERT INTO `documentinfo` VALUES ('2', '规章制度', '1', '2', '33333333', '2016-04-09 17:28:43', '2016-04-09 17:38:07', '4', '5', '6');
 
 -- ----------------------------
 -- Table structure for shiguhouguoinfo
@@ -279,11 +290,29 @@ CREATE TABLE `systemloginfo` (
   `SL_Ext2` varchar(255) DEFAULT NULL COMMENT '日志扩展2',
   `SL_Ext3` varchar(255) DEFAULT NULL COMMENT '日志扩展3',
   PRIMARY KEY (`SL_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统日志信息';
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='系统日志信息';
 
 -- ----------------------------
 -- Records of systemloginfo
 -- ----------------------------
+INSERT INTO `systemloginfo` VALUES ('1', '1', '管理员', '删除', '系统参数 DD_ID:2, DD_Type:测试, DD_Value:测试2, DD_Desc:测试2, DD_Status:\'\', DD_Ext1:1, DD_Ext2:2, DD_Ext3:3', '2016-04-09 15:09:48', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('2', '1', '管理员', '新增', '系统参数 DD_ID:3, DD_Type:测试, DD_Value:ceshi111, DD_Desc:ceshi111, DD_Ext1:11, DD_Ext2:22, DD_Ext3:33', '2016-04-09 15:25:16', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('3', '1', '管理员', '修改', '系统参数 DD_ID:3', '2016-04-09 15:28:59', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('4', '1', '管理员', '修改', '系统参数 DD_ID:1, DD_Ext1:\'\' -> 1, DD_Ext2:\'\' -> 2, DD_Ext3:\'\' -> 3', '2016-04-09 15:30:43', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('5', '1', '管理员', '修改', '系统参数 DD_ID:1', '2016-04-09 15:31:57', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('6', '1', '管理员', '新增', '系统参数 DD_ID:4, DD_Type:文档类别, DD_Value:规章制度, DD_Desc:规章制度, DD_Ext1:\'\', DD_Ext2:\'\', DD_Ext3:\'\'', '2016-04-09 16:53:23', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('7', '1', '管理员', '删除', '系统参数 DD_ID:3, DD_Type:测试, DD_Value:ceshi111, DD_Desc:ceshi111, DD_Ext1:11, DD_Ext2:22, DD_Ext3:33', '2016-04-09 16:53:28', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('8', '1', '管理员', '删除', '系统参数 DD_ID:1, DD_Type:测试, DD_Value:测试1, DD_Desc:测试1, DD_Ext1:1, DD_Ext2:2, DD_Ext3:3', '2016-04-09 16:53:30', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('9', '1', '管理员', '新增', '系统参数 DD_ID:5, DD_Type:文档类别, DD_Value:电报, DD_Desc:电报, DD_Ext1:\'\', DD_Ext2:\'\', DD_Ext3:\'\'', '2016-04-09 16:53:50', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('10', '1', '管理员', '新增', '系统参数 DD_ID:6, DD_Type:文档类别, DD_Value:技术文档, DD_Desc:技术文档, DD_Ext1:\'\', DD_Ext2:\'\', DD_Ext3:\'\'', '2016-04-09 16:54:04', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('11', '1', '管理员', '新增', '系统参数 DD_ID:7, DD_Type:文档类别, DD_Value:事故案例, DD_Desc:事故案例, DD_Ext1:\'\', DD_Ext2:\'\', DD_Ext3:\'\'', '2016-04-09 16:54:18', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('12', '1', '管理员', '新增', '系统参数 D_ID:1, D_Type:电报, D_Head:电报001, D_Subhead:副标题是什么了, D_Content:这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是., D_CreateTime:2016/4/9 17:28:12, D_UpdateTime:2016/4/9 17:28:12, D_Ext1:11, D_Ext2:22, D_Ext3:33', '2016-04-09 17:28:13', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('13', '1', '管理员', '新增', '系统参数 D_ID:2, D_Type:规章制度, D_Head:1, D_Subhead:2, D_Content:3, D_CreateTime:2016/4/9 17:28:42, D_UpdateTime:2016/4/9 17:28:42, D_Ext1:4, D_Ext2:5, D_Ext3:6', '2016-04-09 17:28:43', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('14', '1', '管理员', '修改', '系统参数 D_ID:2, D_Content:3 -> 33333333, D_UpdateTime:2016/4/9 17:28:43 -> 2016/4/9 17:38:06', '2016-04-09 17:38:07', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('15', '1', '管理员', '新增', '系统参数 D_ID:3, D_Type:技术文档, D_Head:1, D_Subhead:w, D_Content:ds, D_CreateTime:2016/4/9 17:39:32, D_UpdateTime:2016/4/9 17:39:32, D_Ext1:DSA, D_Ext2:FX, D_Ext3:X', '2016-04-09 17:39:33', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('16', '1', '管理员', '删除', '系统参数 D_ID:3, D_Type:技术文档, D_Head:1, D_Subhead:w, D_Content:ds, D_CreateTime:2016/4/9 17:39:33, D_UpdateTime:2016/4/9 17:39:33, D_Ext1:DSA, D_Ext2:FX, D_Ext3:X', '2016-04-09 17:40:02', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('17', '1', '管理员', '删除', '系统参数 User_ID:2, User_No:lisi002, User_Name:李四, User_Phone:15012345678, User_Uint:单位, User_Department:部门, User_Pwd:123456, User_Role:记录员, User_Status:正常, User_CreateTime:2016/4/6 10:04:34, User_RoleID:2, User_Ext1:\'\', User_Ext2:\'\', User_Ext3:\'\'', '2016-04-11 17:03:27', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('18', '1', '管理员', '删除', '系统参数 User_ID:1, User_No:G001, User_Name:管理员, User_Phone:18099998888, User_Uint:单位, User_Department:部门, User_Pwd:123456, User_Role:管理员, User_Status:正常, User_CreateTime:2016/4/6 10:03:49, User_RoleID:1, User_Ext1:\'\', User_Ext2:\'\', User_Ext3:\'\'', '2016-04-11 17:05:22', null, null, null);
 
 -- ----------------------------
 -- Table structure for userinfo
@@ -305,13 +334,12 @@ CREATE TABLE `userinfo` (
   `User_Ext2` varchar(255) DEFAULT NULL COMMENT '用户扩展信息2',
   `User_Ext3` varchar(255) DEFAULT NULL COMMENT '用户扩展信息3',
   PRIMARY KEY (`User_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='人员信息';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='人员信息';
 
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
-INSERT INTO `userinfo` VALUES ('1', 'zhangsan001', '张三', '18099998888', '单位', '部门', '123456', '管理员', '正常', '2016-04-06 10:03:49', '1', null, null, null);
-INSERT INTO `userinfo` VALUES ('2', 'lisi002', '李四', '15012345678', '单位', '部门', '123456', '记录员', '正常', '2016-04-06 10:04:34', '2', null, null, null);
+INSERT INTO `userinfo` VALUES ('4', 'zhangsan001', '张三', '18098987878', '机关', '段领导', '4QrcOUm6Wau+VuBX8g+IPg==', '段长', '', '2016-04-11 17:25:18', '1', null, null, null);
 
 -- ----------------------------
 -- View structure for v_shigu

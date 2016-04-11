@@ -57,6 +57,11 @@
             <td>
                 <input id="usergrade" name="usergrade" class="easyui-combobox" style="width: 200px;"></td>
         </tr> 
+        <tr>
+            <td>接受报警：</td>
+            <td>
+                <input id="userjsbj" name="userjsbj" class="easyui-combobox" style="width: 200px;"></td>
+        </tr> 
     </table>
 </form>
 

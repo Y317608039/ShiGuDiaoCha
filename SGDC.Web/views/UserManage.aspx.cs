@@ -47,7 +47,7 @@ public partial class views_UserManage : BasePage
 
             LogType = SysLogType.删除.ToString();
             LogDesc = string.Format("系统参数 {0}", CompareEntityProperties(null, obj, false));
-            WriteSystemLog(); 
+            WriteSystemLog();
 
             DataContractJsonSerializer json = new DataContractJsonSerializer("Removed".GetType());
             json.WriteObject(Response.OutputStream, "Removed");
@@ -58,13 +58,14 @@ public partial class views_UserManage : BasePage
 
     private void SaveUserItem()
     {
-        string userid = Request["userid"];
-        string username = Request["username"];
-        string userno = Request["userno"];
-        string userphone = Request["userphone"];
-        string userunit = Request["userunit"];
-        string userdepartment = Request["userdepartment"];
-        string usergrade = Request["usergrade"];
+        string userid = Request["userid"]; userid = userid.Trim();
+        string username = Request["username"]; username = username.Trim();
+        string userno = Request["userno"]; userno = userno.Trim();
+        string userphone = Request["userphone"]; userphone = userphone.Trim();
+        string userunit = Request["userunit"]; userunit = userunit.Trim();
+        string userdepartment = Request["userdepartment"]; userdepartment = userdepartment.Trim();
+        string usergrade = Request["usergrade"]; usergrade = usergrade.Trim();
+        string userjsbj = Request["userjsbj"]; userjsbj = userjsbj.Trim();
 
         userinfo item = null;
         userinfo oldItem = null;
@@ -82,9 +83,10 @@ public partial class views_UserManage : BasePage
             item.User_Uint = userunit;
             item.User_Department = userdepartment;
             item.User_Role = usergrade;
+            item.User_Ext1 = userjsbj;
             #endregion
 
-            LogType = BasePage.SysLogType.修改.ToString();
+            LogType = SysLogType.修改.ToString();
         }
         else
         {
@@ -100,11 +102,12 @@ public partial class views_UserManage : BasePage
                 User_Pwd = Encrypt_MD5.Encrypt("123456"),
                 User_RoleID = 1,
                 User_Status = "",
+                User_Ext1 = userjsbj,
                 User_CreateTime = dtNow
             };
             #endregion
 
-            LogType = BasePage.SysLogType.新增.ToString();
+            LogType = SysLogType.新增.ToString();
         }
         item = UserBll.Save(item);
 

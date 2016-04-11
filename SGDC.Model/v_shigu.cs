@@ -120,7 +120,7 @@ namespace SGDC.Model
         public string ZR_ZeRenChengDu { get; set; }
         public string ZR_YuanYinLeiBie { get; set; }
         public string ZR_ShiGuLeiBie { get; set; }
-        public string ZR_XingChe { get; set; }
+        public string ZR_ShiGuDengJi { get; set; }
         public string ZR_ZhiBanJianCha { get; set; }
         public Nullable<System.DateTime> ZR_TianBaoShiJian { get; set; }
         public string ZR_BaoGaoCiShu { get; set; }

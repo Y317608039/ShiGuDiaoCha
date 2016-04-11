@@ -42,6 +42,11 @@
                 field: 'User_Role',
                 title: '职别',
                 width: 100
+            }, {
+                field: 'User_Ext1',
+                title: '接收报警',
+                width: 100,
+                formatter: function (value, row, index) { if (value && value==='是') { return '是'; } else { return '否'; } }
             }
             ]],
             toolbar: "#manage_tool"
@@ -69,7 +74,8 @@
                                 userphone: $('#userphone').val(),
                                 userunit: $('#userunit').combobox("getText"),
                                 userdepartment: $('#userdepartment').combobox("getText"),
-                                usergrade: $('#usergrade').combobox("getText")
+                                usergrade: $('#usergrade').combobox("getText"),
+                                userjsbj: $('#userjsbj').combobox("getText")
                             },
                             function (data, response, status) {
                                 data = $.parseJSON(data);
@@ -120,7 +126,8 @@
                         userphone: rows[0].User_Phone,
                         userunit: rows[0].User_Uint,
                         userdepartment: rows[0].User_Department,
-                        usergrade: rows[0].User_Role
+                        usergrade: rows[0].User_Role,
+                        userjsbj: rows[0].User_Ext1
                     }).dialog({ title: "修改人员" }).dialog('open');
                 } else if (rows.length === 0) {
                     $.messager.alert('警告操作！', '编辑记录至少选定一条数据！', 'warning');
@@ -221,6 +228,19 @@
                 fillDropDown(ddlDepartment, n.DicValue + "部门");
                 fillDropDown(ddlGrade, n.DicValue + "职别");
             }
+        });
+
+        $("#userjsbj").combobox({
+            valueField: "value", textField: "label", panelHeight: 100, data: [{
+                label: '　',
+                value: '　'
+            }, {
+                label: '是',
+                value: '是'
+            }, {
+                label: '否',
+                value: '否'
+            }]
         });
         //#endregion
 

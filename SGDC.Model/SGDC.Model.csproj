@@ -84,9 +84,6 @@
     <Compile Include="v_shigu.cs">
       <DependentUpon>SGModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="v_shigu1.cs">
-      <DependentUpon>SGModel.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SGModel.tt">

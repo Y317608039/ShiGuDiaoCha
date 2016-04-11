@@ -1,9 +1,8 @@
 ﻿$(
     function () {
 
-
         $('#gv_UserManage').datagrid({
-            url: 'views/UserManage.ashx',
+            url: 'views/UserManage.aspx',
             fit: true,
             fitColumns: true,
             rownumbers: true,
@@ -14,29 +13,33 @@
             pageSize: 10,
             pageList: [10, 20, 30, 50],
             pageNumber: 1,
-            idField: 'UserID',
-            queryParams: { mode: 'Qry' },
+            idField: 'User_ID',
+            queryParams: { method: 'QryList' },
             dataType: 'json',
             columns: [[
             {
-                field: 'UserNo',
+                field: 'User_No',
                 title: '编号',
-                width: 30
+                width: 60
                 //checkbox: true,
             }, {
-                field: 'UserName',
+                field: 'User_Name',
                 title: '用户名',
                 width: 100
             }, {
-                field: 'UserUint',
+                field: 'User_Phone',
+                title: '联系方式',
+                width: 100
+            }, {
+                field: 'User_Uint',
                 title: '单位',
                 width: 100
             }, {
-                field: 'UserDepartment',
+                field: 'User_Department',
                 title: '部门',
                 width: 100
             }, {
-                field: 'UserRole',
+                field: 'User_Role',
                 title: '职别',
                 width: 100
             }
@@ -55,33 +58,25 @@
                 iconCls: 'icon-add-new',
                 handler: function () {
                     if ($('#manager_edit').form('validate')) {
-                        $.ajax({
-                            url: 'views/UserManage.ashx',
-                            type: 'post',
-                            data: {
-                                mode: 'Edit',
-                                userid: $('input[name="userid"]').val(),
-                                userno: $('input[name="userno"]').val(),
-                                username: $('input[name="username"]').val(),
+                        $.messager.progress({ text: '正在保存中...' });
+                        $.post(
+                            'views/UserManage.aspx',
+                            {
+                                method: 'SaveItem',
+                                userid: $('#userid').val(),
+                                username: $('#username').val(),
+                                userno: $('#userno').val(),
+                                userphone: $('#userphone').val(),
                                 userunit: $('#userunit').combobox("getText"),
                                 userdepartment: $('#userdepartment').combobox("getText"),
-                                usergrade: $('#usergrade').combobox("getText"),
-                                usereatprice: $('#usereatprice').combobox("getText"),
+                                usergrade: $('#usergrade').combobox("getText")
                             },
-                            beforeSend: function () {
-                                $.messager.progress({
-                                    text: '正在保存中...'
-                                });
-                            },
-                            success: function (data, response, status) {
+                            function (data, response, status) {
                                 data = $.parseJSON(data);
                                 $.messager.progress('close');
                                 //console.log(data);
                                 if (data) {
-                                    $.messager.show({
-                                        title: '提示',
-                                        msg: '保存成功'
-                                    });
+                                    $.messager.show({title: '提示',msg: '保存成功'});
                                     $('#manager_edit').dialog('close').form('reset');
                                     $('#gv_UserManage').datagrid('reload');
                                     $('#gv_UserManage').datagrid('unselectAll');
@@ -89,9 +84,9 @@
                                     $.messager.alert('保存失败！', '未知错误导致失败，请重试！', 'warning');
                                 }
                             }
-                        });
+                        );
                     }
-                },
+                }
             }, {
                 text: '取消',
                 iconCls: 'icon-redo',
@@ -101,7 +96,7 @@
             }],
             onClose: function () {
                 $('#manager_edit').form('reset');
-            },
+            }
         });
 
         manage_tool = {
@@ -109,49 +104,24 @@
                 $('#manager_edit').dialog({ title: "添加用户" });
                 $('#manager_edit').dialog('open');
 
-                $('input[name="username"]').focus();
+                $('#username').focus();
             },
             edit: function () {
                 var rows = $('#gv_UserManage').datagrid('getSelections');
-                if (rows.length > 1) {
-                    $.messager.alert('警告操作！', '编辑记录只能选定一条数据！', 'warning');
-                } else if (rows.length == 1) {
-                    $.ajax({
-                        url: 'views/UserManage.ashx',
-                        type: 'post',
-                        data: {
-                            mode: 'Get',
-                            userid: rows[0].UserID,
-                        },
-                        beforeSend: function () {
-                            $.messager.progress({
-                                text: '正在获取中...'
-                            });
-                        },
-                        success: function (data, response, status) {
-                            $.messager.progress('close');
-
-                            if (data) {
-                                var obj = $.parseJSON(data);
-
-                                $('#manager_edit').form('load', {
-                                    userid: obj.UserID,
-                                    username: obj.UserName,
-                                    userno:obj.UserNo,
-                                    //userunit: obj.UserUint,
-                                    //userdepartment: obj.UserDepartment
-                                }).dialog('open');
-
-                                $('#userunit').combobox("select", obj.UserUint);
-                                $('#userdepartment').combobox("setText", obj.UserDepartment);
-                                $('#usergrade').combobox("setText", obj.UserRole);
-                                $("#usereatprice").combobox("select", obj.UserEatPrice);
-
-                            } else {
-                                $.messager.alert('获取失败！', '未知错误导致失败，请重试！', 'warning');
-                            }
-                        }
-                    });
+                //if (rows.length > 1) {
+                //    $.messager.alert('警告操作！', '编辑记录只能选定一条数据！', 'warning');
+                //} else
+                if (rows.length > 0) {
+                    console.log(rows[0]);
+                    $('#manager_edit').form('load', {
+                        userid: rows[0].User_ID,
+                        username: rows[0].User_Name,
+                        userno: rows[0].User_No,
+                        userphone: rows[0].User_Phone,
+                        userunit: rows[0].User_Uint,
+                        userdepartment: rows[0].User_Department,
+                        usergrade: rows[0].User_Role
+                    }).dialog({ title: "修改人员" }).dialog('open');
                 } else if (rows.length === 0) {
                     $.messager.alert('警告操作！', '编辑记录至少选定一条数据！', 'warning');
                 }
@@ -167,33 +137,21 @@
                 if (rows.length > 0) {
                     $.messager.confirm('确定操作', '您正在要删除所选的记录吗？', function (flag) {
                         if (flag) {
-                            var ids = [];
-                            for (var i = 0; i < rows.length; i++) {
-                                ids.push(rows[i].UserID);
-                            }
-                            console.log(ids.join(','));
-                            $.ajax({
-                                type: 'POST',
-                                url: 'views/UserManage.ashx',
-                                data: {
-                                    mode: 'Del',
-                                    userids: ids.join(',')
-                                },
-                                beforeSend: function () {
-                                    $('#gv_UserManage').datagrid('loading');
-                                },
-                                success: function (data) {
-                                    if (data) {
-                                        $('#gv_UserManage').datagrid('loaded');
-                                        $('#gv_UserManage').datagrid('load');
-                                        $('#gv_UserManage').datagrid('unselectAll');
-                                        $.messager.show({
-                                            title: '提示',
-                                            msg: data + '个用户被删除！'
-                                        });
-                                    }
-                                }
-                            });
+                            $.messager.progress({ text: '正在删除中...' });
+                            $.post(
+                               'views/UserManage.aspx',
+                               {
+                                   method: 'DelItem',
+                                   userid: rows[0].User_ID
+                               },
+                               function (data) {
+                                   if (data) {
+                                       $.messager.progress('close');
+                                       $('#gv_UserManage').datagrid('load');
+                                       $('#gv_UserManage').datagrid('unselectAll');
+                                       $.messager.show({ title: '提示', msg: '1 条记录被删除！' });
+                                   }
+                               });
                         }
                     });
                 } else {
@@ -207,33 +165,29 @@
                 } else if (rows.length == 1) {
                     $.messager.confirm('确定操作', '您确定要重置该用户密码吗？', function (flag) {
                         if (flag) {
-                            $.ajax({
-                                type: 'POST',
-                                url: 'views/UserManage.ashx',
-                                data: {
-                                    mode: 'ResetPwd',
+                            $.post(
+                                 'views/UserManage.aspx',
+                                {
+                                    method: 'ResetPwd',
                                     userid: rows[0].UserID
                                 },
-                                beforeSend: function () {
-                                    $('#gv_UserManage').datagrid('loading');
-                                },
-                                success: function (data) {
-                                    if (data) {
-                                        data = $.parseJSON(data);
-                                        //console.log(data);
-                                        $('#gv_UserManage').datagrid('loaded');
-                                        $('#gv_UserManage').datagrid('load');
-                                        $('#gv_UserManage').datagrid('unselectAll');
-                                        $.messager.show({
-                                            title: '提示',
-                                            msg: data.UserName + ' 密码重置成功！'
-                                        });
-                                    }
-                                },
-                            });
+                                 function (data) {
+                                     if (data) {
+                                         data = $.parseJSON(data);
+                                         //console.log(data);
+                                         $('#gv_UserManage').datagrid('loaded');
+                                         $('#gv_UserManage').datagrid('load');
+                                         $('#gv_UserManage').datagrid('unselectAll');
+                                         $.messager.show({
+                                             title: '提示',
+                                             msg: data.UserName + ' 密码重置成功！'
+                                         });
+                                     }
+                                 }
+                           );
                         }
                     });
-                } else if (rows.length == 0) {
+                } else if (rows.length === 0) {
                     $.messager.alert('警告操作！', '编辑记录至少选定一条数据！', 'warning');
                 }
 
@@ -246,7 +200,7 @@
             },
             search: function () {
                 $('#gv_UserManage').datagrid('load', {
-                    mode: 'Qry',
+                    method: 'QryList',
                     username: $('#search_username').val(),
                     userunit: $('#search_userunit').combobox("getText"),
                     userdpm: $("#search_userdepartment").combobox("getText"),
@@ -257,23 +211,17 @@
 
         //#region 编辑窗口下拉
         var ddlUnit = $('#userunit');
-        var ddlDepartment = $("#userdepartment");
-        var ddlGrade = $("#usergrade");
-        var ddlEatPrice = $("#usereatprice");
+        var ddlDepartment = $("#userdepartment"); ddlDepartment.combobox();
+        var ddlGrade = $("#usergrade"); ddlGrade.combobox();
 
-        ddlUnit.combobox();
-        fillDropDown(ddlUnit, "单位", false);
-        ddlDepartment.combobox();
-        ddlGrade.combobox();
-        ddlEatPrice.combobox();
+        fillDropDown(ddlUnit, "单位");
 
         ddlUnit.combobox({
-            onSelect: function (n) { 
-                fillDropDown(ddlDepartment, n.DataDictionaryValue + "部门", false);
-                fillDropDown(ddlGrade, n.DataDictionaryValue + "职别", false); 
+            onSelect: function (n) {
+                fillDropDown(ddlDepartment, n.DicValue + "部门");
+                fillDropDown(ddlGrade, n.DicValue + "职别");
             }
         });
-        
         //#endregion
 
         //#region 查询下拉
@@ -281,16 +229,10 @@
         var ddlSearchDepartment = $("#search_userdepartment");
         var ddlSearchGrade = $("#search_usergrade");
 
-        ddlSearchUnit.combobox();
-        fillDropDown(ddlSearchUnit, "单位", true);
-        ddlSearchDepartment.combobox();
-        ddlSearchGrade.combobox();
+        fillDropDown(ddlSearchUnit, "单位");
         ddlSearchUnit.combobox({
-            onSelect: function (n) {
-                fillDropDown(ddlSearchDepartment, n.DataDictionaryValue + "部门", true);
-                fillDropDown(ddlSearchGrade, n.DataDictionaryValue + "职别", true); 
-            }
-        }); 
+            onSelect: function (n) { fillDropDown(ddlSearchDepartment, n.DicValue + "部门"); fillDropDown(ddlSearchGrade, n.DicValue + "职别"); }
+        });
         //#endregion
     }
 );

@@ -114,7 +114,7 @@ public class BasePage : Page
                 string oldName = oldItem.Name; object oldValue = oldItem.GetValue(oldEntity, null);
                 if (newItem.PropertyType.IsValueType || newItem.PropertyType.Name.StartsWith("String"))
                 {
-                    if (!oldValue.Equals(newValue))
+                    if (!(oldValue == newValue))
                     {
                         if (Convert.ToString(oldValue) == "") oldValue = "''";
                         if (Convert.ToString(newValue) == "") newValue = "''";

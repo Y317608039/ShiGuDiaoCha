@@ -3,35 +3,37 @@
         $('#dochead').validatebox();
         $('#docdesc').textbox({ multiline: true });
 
-        $('#doctype').combobox({
-            panelHeight: 80,
-            valueField: 'DicValue',
-            textField: 'DicValue'
-        });
+        //$('#doctype').combobox({
+        //    panelHeight: 80,
+        //    valueField: 'DicValue',
+        //    textField: 'DicValue'
+        //});
 
-        $('#search_doctype').combobox({
-            panelHeight: 80,
-            valueField: 'DicValue',
-            textField: 'DicValue'
-        });
+        //$('#search_doctype').combobox({
+        //    panelHeight: 80,
+        //    valueField: 'DicValue',
+        //    textField: 'DicValue'
+        //});
 
+        fillDropDown($('#doctype'), '文档类别');
+        fillDropDown($('#search_doctype'), '文档类别');
         //#region 获取下拉集合
-        $.post(
-        'views/DocumentPage.aspx',
-        {
-            method: 'GetDocType'
-        },
-        function (data, response, status) {
-            data = $.parseJSON(data);
-            console.log(data);
-            if (data) {
-                $('#doctype').combobox("loadData", data);
-                $('#doctype').combobox("setText", "");
-                $('#search_doctype').combobox("loadData", data);
-                $('#search_doctype').combobox("setText", "");
-            }
-        }
-        );
+        //$.post(
+        //'views/DocumentPage.aspx',
+        //{
+        //    method: 'GetDocType'
+        //},
+        //function (data, response, status) {
+        //    data = $.parseJSON(data);
+        //    console.log(data);
+        //    if (data) {
+        //        $('#doctype').combobox("loadData", data);
+        //        $('#doctype').combobox("setText", "");
+        //        $('#search_doctype').combobox("loadData", data);
+        //        $('#search_doctype').combobox("setText", "");
+        //    }
+        //}
+        //);
 
         //#endregion
 

@@ -31,9 +31,9 @@ public partial class views_DocumentPage : BasePage
                 case "QryList":
                     GetdocListInfo();
                     break;
-                case "GetDocType":
-                    GetDocType();
-                    break;
+                //case "GetDocType":
+                //    GetDocType();
+                //    break;
             }
         }
     }

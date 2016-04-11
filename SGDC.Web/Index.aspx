@@ -46,7 +46,7 @@
                 <ul>
                     <li>
                         <div class="">
-                            <a ref="Menu1002" href="#" rel="Views/jbxx/xlxbxx.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">人员信息</span></a>
+                            <a ref="Menu1002" href="#" rel="views/UserManage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">人员信息</span></a>
                         </div>
                     </li>
                     <li>

@@ -32,7 +32,7 @@
                 <ul>
                     <li>
                         <div class="">
-                            <a ref="Menu0001" href="#" rel="views/SystemParmsManage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">项目一</span></a>
+                            <a ref="Menu0001" href="#" rel="views/AccidentBaseInfoPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">事故基本信息</span></a>
                         </div>
                     </li>
                     <li>

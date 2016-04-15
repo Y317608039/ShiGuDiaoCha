@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2016-04-11 17:59:57
+Date: 2016-04-15 18:09:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -206,18 +206,18 @@ CREATE TABLE `shigujibeninfo` (
   `JB_CreatTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '基本信息创建时间',
   `JB_UpdateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP COMMENT '基本信息修改时间',
   `JB_ZB_X` decimal(18,10) DEFAULT NULL COMMENT '基本坐标X',
-  `
-JB_ZB_Y` decimal(18,10) DEFAULT NULL COMMENT '基本坐标Y',
+  `JB_ZB_Y` decimal(18,10) DEFAULT NULL COMMENT '基本坐标Y',
   `JB_ZB_Z` decimal(18,10) DEFAULT NULL COMMENT '基本坐标Z',
   `JB_Ext1` varchar(255) DEFAULT NULL COMMENT '基本扩展信息1',
   `JB_Ext2` varchar(255) DEFAULT NULL COMMENT '基本扩展信息2',
   `JB_Ext3` varchar(255) DEFAULT NULL COMMENT '基本扩展信息3',
   PRIMARY KEY (`JB_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='事故基本信息基本部分';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='事故基本信息基本部分';
 
 -- ----------------------------
 -- Records of shigujibeninfo
 -- ----------------------------
+INSERT INTO `shigujibeninfo` VALUES ('3', '西安铁路局', '陇海线', '繁忙', '窑村', '临潼', '上行', '1048', '528', '陕西', '西安', '临潼', '西安车务段', '区间', 'Z20', '15', '西安', '北京西', '西安客车车辆段', '西安客运段', '1158', '和谐D3D', '329', '西安', '西安', '120', '电气化区段', '自动闭塞', '1062', '18', '43.2', '是', '否', '否', '否', '否', '席志平', '无', '无', '无', '宋万群', '雨', '列出脱轨', '2016-04-15 16:36:00', '2016-04-29 13:39:00', '2016-04-28 14:36:00', '2016-04-12 16:39:00', '2016-04-29 19:40:00', '2016-04-26 16:39:00', '2016-04-15 14:26:08', '2016-04-15 16:40:15', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for shiguzerendanweiinfo
@@ -334,18 +334,19 @@ CREATE TABLE `userinfo` (
   `User_Ext2` varchar(255) DEFAULT NULL COMMENT '用户扩展信息2',
   `User_Ext3` varchar(255) DEFAULT NULL COMMENT '用户扩展信息3',
   PRIMARY KEY (`User_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='人员信息';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='人员信息';
 
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
-INSERT INTO `userinfo` VALUES ('4', 'zhangsan001', '张三', '18098987878', '机关', '段领导', '4QrcOUm6Wau+VuBX8g+IPg==', '段长', '', '2016-04-11 17:25:18', '1', null, null, null);
+INSERT INTO `userinfo` VALUES ('4', 'zhangsan001', '张三', '18098987878', '机关', '段领导', '4QrcOUm6Wau+VuBX8g+IPg==', '段长', '', '2016-04-11 17:25:18', '1', '', null, null);
+INSERT INTO `userinfo` VALUES ('5', 'lisi002', '李四', '18256457845', '管理员', '管理员', '4QrcOUm6Wau+VuBX8g+IPg==', '管理员', '', '2016-04-11 19:52:55', '1', '是', null, null);
 
 -- ----------------------------
 -- View structure for v_shigu
 -- ----------------------------
 DROP VIEW IF EXISTS `v_shigu`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `v_shigu` AS select 
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `v_shigu` AS select 
 jb.*
 ,HG_ID 
 ,HG_ZD_ShangXing

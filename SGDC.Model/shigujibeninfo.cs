@@ -66,7 +66,7 @@ namespace SGDC.Model
         public System.DateTime JB_CreatTime { get; set; }
         public System.DateTime JB_UpdateTime { get; set; }
         public Nullable<decimal> JB_ZB_X { get; set; }
-        public Nullable<decimal> C__JB_ZB_Y { get; set; }
+        public Nullable<decimal> JB_ZB_Y { get; set; }
         public Nullable<decimal> JB_ZB_Z { get; set; }
         public string JB_Ext1 { get; set; }
         public string JB_Ext2 { get; set; }

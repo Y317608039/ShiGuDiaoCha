@@ -10,7 +10,8 @@ using SGDC.Model;
 using SGDC.Utility;
 
 public partial class views_DocumentPage : BasePage
-{/// <summary>
+{
+    /// <summary>
     /// 全局连接对象
     /// </summary>
     documentinfo_Bll DocBll;
@@ -72,7 +73,7 @@ public partial class views_DocumentPage : BasePage
             DocBll.Remove(Convert.ToInt32(docid));
 
             LogType = SysLogType.删除.ToString();
-            LogDesc = string.Format("系统参数 {0}", CompareEntityProperties(null, obj, false));
+            LogDesc = string.Format("文档 {0}", CompareEntityProperties(null, obj, false));
             WriteSystemLog();
 
             SetAllDataDictionary();
@@ -138,7 +139,7 @@ public partial class views_DocumentPage : BasePage
         }
         item = DocBll.Save(item);
 
-        LogDesc = string.Format("系统参数 {0}", CompareEntityProperties(oldItem, item, true));
+        LogDesc = string.Format("文档 {0}", CompareEntityProperties(oldItem, item, true));
         WriteSystemLog();
 
         DataContractJsonSerializer json = new DataContractJsonSerializer(item.GetType());

@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AccidentBaseInfoPage.aspx.cs" Inherits="views_AccidentBaseInfoPage" %>
 
-<!baseTYPE html>
+<!DOCTYPE html>
 <style type="text/css">
     #sgbaseinfo_edit input {
         width: 40px;

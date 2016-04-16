@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <link type="text/css" href="easyui/themes/metro/easyui.css" rel="stylesheet" />
+    <link type="text/css" href="easyui/themes/default/easyui.css" rel="stylesheet" />
     <link type="text/css" href="easyui/themes/icon.css" rel="stylesheet" />
     <link type="text/css" href="styles/index.css" rel="stylesheet" />
 </head>
@@ -37,12 +37,12 @@
                     </li>
                     <li>
                         <div class="">
-                            <a ref="Menu0002" href="#" rel="Views/DanWeiRenYuanXinXi/RenYuanJiBenXinXi.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">项目二</span></a>
+                            <a ref="Menu0002" href="#" rel="views/AccidentZeRenInfoPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">事故后果及责任信息</span></a>
                         </div>
                     </li>
                     <li>
                         <div class="">
-                            <a ref="Menu0003" href="#" rel="Views/FillAccidentForm.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">填充表单</span></a>
+                            <a ref="Menu0003" href="#" rel="views/FillAccidentForm.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">填充表单</span></a>
                         </div>
                     </li>
                 </ul>

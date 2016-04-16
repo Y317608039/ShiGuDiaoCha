@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2016-04-15 18:09:26
+Date: 2016-04-17 02:52:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -119,11 +119,12 @@ CREATE TABLE `shiguhouguoinfo` (
   `HG_Ext2` varchar(255) DEFAULT NULL COMMENT '后果扩展信息2',
   `HG_Ext3` varchar(255) DEFAULT NULL COMMENT '后果扩展信息3',
   PRIMARY KEY (`HG_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='事故基本信息后果部分';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='事故基本信息后果部分';
 
 -- ----------------------------
 -- Records of shiguhouguoinfo
 -- ----------------------------
+INSERT INTO `shiguhouguoinfo` VALUES ('1', '3', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '37', '36', '1', null, null, null);
 
 -- ----------------------------
 -- Table structure for shiguhouguoshangwanginfo
@@ -269,11 +270,12 @@ CREATE TABLE `shiguzereninfo` (
   `ZR_Ext2` varchar(255) DEFAULT NULL COMMENT '责任扩展信息2',
   `ZR_Ext3` varchar(255) DEFAULT NULL COMMENT '责任扩展信息3',
   PRIMARY KEY (`ZR_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='事故基本信息责任部分';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='事故基本信息责任部分';
 
 -- ----------------------------
 -- Records of shiguzereninfo
 -- ----------------------------
+INSERT INTO `shiguzereninfo` VALUES ('1', '3', '2', '3', '4', '5', '6', '7', '8', '9', '2016-04-17 03:43:00', '11', '12', '13', '14', '15', '16', '17', '18', '19', null, null, null);
 
 -- ----------------------------
 -- Table structure for systemloginfo

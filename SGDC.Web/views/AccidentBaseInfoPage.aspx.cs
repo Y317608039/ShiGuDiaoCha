@@ -71,9 +71,7 @@ public partial class views_AccidentBaseInfoPage : BasePage
 
             LogType = SysLogType.删除.ToString();
             LogDesc = string.Format("事故基本信息 {0}", CompareEntityProperties(null, obj, false));
-            WriteSystemLog();
-
-            SetAllDataDictionary();
+            WriteSystemLog(); 
 
             DataContractJsonSerializer json = new DataContractJsonSerializer("Removed".GetType());
             json.WriteObject(Response.OutputStream, "Removed");

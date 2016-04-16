@@ -1,13 +1,6 @@
 ﻿$(
-    function () {
-        $('#basehead').validatebox();
-        $('#basedesc').textbox({ multiline: true });
-
+    function () {  
         $('.sgbasetime').datetimebox({ showSeconds: false, width: 137 });
-
-        fillDropDown($('#basetype'), '文档类别');
-        fillDropDown($('#search_basetype'), '文档类别');
-
 
         $('#gv_sgbaseinfo').datagrid({
             url: 'views/AccidentBaseInfoPage.aspx',

@@ -34,6 +34,8 @@
             height: 28px;
             /*min-width: 30px;*/
             text-align: left;
+            -moz-word-break: break-all;
+            -o-word-break: break-all;
             word-break: break-all;
             word-wrap: break-word;
             padding: 1px 3px 1px 3px;
@@ -48,13 +50,33 @@
     }
 </style>
 
-<form id="sgzereninfo_edit" style="margin: 0; padding: 5px; color: #333;">
+<table id="gv_sgzereninfo"></table>
+
+<div id="sgzereninfo_tool" style="padding: 0px;">
+    <div style="padding: 0 0 0 10px; color: #333; border-bottom: solid 1px #ccc">
+        局属：<input class="textbox" id="search_txtZr_JB_DD_Ju" name="search_txtZr_JB_DD_Ju" style="width: 110px;">&nbsp;&nbsp;
+        线属：<input type="text" class="textbox" id="search_txtZr_JB_DD_Xian" name="search_txtZr_JB_DD_Xian" style="width: 110px;">&nbsp;&nbsp;  
+        车次：<input type="text" class="textbox" id="search_txtZr_JB_LC_CheCi" name="search_txtZr_JB_LC_CheCi" style="width: 110px;">&nbsp;&nbsp; 
+        <a href="#" class="easyui-linkbutton" iconcls="icon-search" onclick="sgzereninfo_tool.search();">查询</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-undo" onclick="sgzereninfo_tool.resetquery();">重置</a>
+    </div>
+    <div style="margin: 0px;">
+        <%--<a href="#" class="easyui-linkbutton" iconcls="icon-add-new" plain="true" onclick="sgzereninfo_tool.add();">添加</a>--%>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-edit-new" plain="true" onclick="sgzereninfo_tool.edit();">编辑</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-delete-new" plain="true" onclick="sgzereninfo_tool.remove();">删除</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-reload" plain="true" onclick="sgzereninfo_tool.reload();">刷新</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-redo" plain="true" id="redo" onclick="sgzereninfo_tool.redo();">取消选择</a>
+    </div>
+</div>
+
+<form id="sgzereninfo_edit" style="margin: 0; color: #333;">
     <input type="text" id="sgbaseinfoid" name="sgbaseinfoid" class="textbox" style="width: 200px; display: none;">
+    <input type="text" id="sghouguoinfoid" name="sghouguoinfoid" class="textbox" style="width: 200px; display: none;">
     <input type="text" id="sgzereninfoid" name="sgzereninfoid" class="textbox" style="width: 200px; display: none;">
 
-    <div id="tt" class="easyui-tabs" style="width: auto; height: 360px;">
+    <div id="sgzerentab" class="easyui-tabs" style="width: auto; height: 350px;">
         <div title="事故基本信息" style="padding: 20px;">
-            <table>
+            <table id="sgzenrenjibeninfo">
                 <tr>
                     <td rowspan="10">基<br />
                         本<br />
@@ -208,34 +230,37 @@
                     <td rowspan="2">发生时间</td>
                     <td>上行(单)</td>
                     <td colspan="3">
-                        <input type="text" id="txtQ_JB_JB_FS_ShangXing" name="txtQ_JB_JB_FS_ShangXing" /></td>
+                        <input type="text" id="txtQ_JB_FS_ShangXing" name="txtQ_JB_FS_ShangXing" /></td>
 
                     <td>复旧时间</td>
                     <td>上行(单)</td>
                     <td colspan="5">
-                        <input type="text" id="txtQ_JB_JB_FJ_ShangXing" name="txtQ_JB_JB_FJ_ShangXing" /></td>
+                        <input type="text" id="txtQ_JB_FJ_ShangXing" name="txtQ_JB_FJ_ShangXing" /></td>
                     <td>开通时间</td>
                     <td>上行(单)</td>
                     <td colspan="6">
-                        <input type="text" id="txtQ_JB_JB_KT_ShangXing" name="txtQ_JB_JB_KT_ShangXing" /></td>
+                        <input type="text" id="txtQ_JB_KT_ShangXing" name="txtQ_JB_KT_ShangXing" /></td>
                 </tr>
                 <tr>
                     <td>下行</td>
                     <td colspan="3">
-                        <input type="text" id="txtQ_JB_JB_FS_XiaXing" name="txtQ_JB_JB_FS_XiaXing" /></td>
+                        <input type="text" id="txtQ_JB_FS_XiaXing" name="txtQ_JB_FS_XiaXing" /></td>
                     <td colspan="2">下行</td>
                     <td colspan="5">
-                        <input type="text" id="txtQ_JB_JB_FJ_XiaXing" name="txtQ_JB_JB_FJ_XiaXing" /></td>
+                        <input type="text" id="txtQ_JB_FJ_XiaXing" name="txtQ_JB_FJ_XiaXing" /></td>
                     <td colspan="2">下行</td>
                     <td colspan="6">
-                        <input type="text" id="txtQ_JB_JB_KT_XiaXing" name="txtQ_JB_JB_KT_XiaXing" /></td>
+                        <input type="text" id="txtQ_JB_KT_XiaXing" name="txtQ_JB_KT_XiaXing" /></td>
                 </tr>
             </table>
         </div>
         <div title="事故后果信息" style="padding: 20px;">
-            <table id="sghouguoinfo">
+             <table id="sghouguoinfo">
                 <tr>
-                    <td rowspan="9">事故后果</td>
+                    <td rowspan="10">事<br />
+                        故<br />
+                        后<br />
+                        果</td>
                     <td>中断时间</td>
                     <td>上行(单)</td>
                     <td>
@@ -268,9 +293,9 @@
                     <td>
                         <input type="text" id="txtHG_TG_DongCheZu" name="txtHG_TG_DongCheZu" /></td>
                     <td>
-                        <input type="text" id="txtHG_TG_DongJiChe" name="txtHG_TG_DongJiChe" /></td>
+                        <input type="text" id="txtHG_TG_JiChe" name="txtHG_TG_JiChe" /></td>
                     <td>
-                        <input type="text" id="txtHG_TG_DongKeChe" name="txtHG_TG_DongKeChe" /></td>
+                        <input type="text" id="txtHG_TG_KeChe" name="txtHG_TG_KeChe" /></td>
                     <td>
                         <input type="text" id="txtHG_TG_HuoChe" name="txtHG_TG_HuoChe" /></td>
                     <td>
@@ -300,25 +325,25 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" id="txtJB_XG_JiDongChe" name="txtJB_XG_JiDongChe" /></td>
+                        <input type="text" id="txtHG_XZ_JiDongChe" name="txtHG_XZ_JiDongChe" /></td>
                     <td>
-                        <input type="text" id="txtJB_XG_FeiJiDongChe" name="txtJB_XG_FeiJiDongChe" /></td>
+                        <input type="text" id="txtHG_XZ_FeiJiDongChe" name="txtHG_XZ_FeiJiDongChe" /></td>
                     <td>
-                        <input type="text" id="txtJB_XG_XingRen" name="txtJB_XG_XingRen" /></td>
+                        <input type="text" id="txtHG_XZ_XingRen" name="txtHG_XZ_XingRen" /></td>
                     <td>
-                        <input type="text" id="txtJB_XG_DaoKouQingKuang" name="txtJB_XG_DaoKouQingKuang" /></td>
+                        <input type="text" id="txtHG_XZ_DaoKouQingKuang" name="txtHG_XZ_DaoKouQingKuang" /></td>
                     <td>
-                        <input type="text" id="txtJB_XG_GongTieBingXing" name="txtJB_XG_GongTieBingXing" /></td>
+                        <input type="text" id="txtHG_XZ_GongTieBingXing" name="txtHG_XZ_GongTieBingXing" /></td>
                     <td>
-                        <input type="text" id="txtJB_XG_FangHuZhaLan" name="txtJB_XG_FangHuZhaLan" /></td>
+                        <input type="text" id="txtHG_XZ_FangHuZhaLan" name="txtHG_XZ_FangHuZhaLan" /></td>
                     <td>
-                        <input type="text" id="txtJB_XG_GongTieLiJiao" name="txtJB_XG_GongTieLiJiao" /></td>
+                        <input type="text" id="txtHG_XZ_GongTieLiJiao" name="txtHG_XZ_GongTieLiJiao" /></td>
                     <td colspan="2">
-                        <input type="text" id="txtJB_XG_SuDuQuDuan" name="txtJB_XG_SuDuQuDuan" /></td>
+                        <input type="text" id="txtHG_XZ_SuDuQuDuan" name="txtHG_XZ_SuDuQuDuan" /></td>
                     <td>
-                        <input type="text" id="txtJB_XG_QuXianBanJin" name="txtJB_XG_QuXianBanJin" /></td>
+                        <input type="text" id="txtHG_XZ_QuXianBanJing" name="txtHG_XZ_QuXianBanJing" /></td>
                     <td>
-                        <input type="text" id="txtJB_XG_PoDu" name="txtJB_XG_PoDu" /></td>
+                        <input type="text" id="txtHG_XZ_PoDu" name="txtHG_XZ_PoDu" /></td>
                 </tr>
                 <tr>
                     <td rowspan="4">伤亡人员情况</td>
@@ -336,21 +361,21 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" id="txtSW_SW_Name" name="txtSW_SW_Name" /></td>
+                        <input type="text" id="txtHG_SW_XingMing" name="txtHG_SW_XingMing" /></td>
                     <td>
-                        <input type="text" id="txtSW_SW_Unit" name="txtSW_SW_Unit" /></td>
+                        <input type="text" id="txtHG_SW_DanWei" name="txtHG_SW_DanWei" /></td>
                     <td>
-                        <input type="text" id="txtSW_SW_Sex" name="txtSW_SW_Sex" /></td>
+                        <input type="text" id="txtHG_SW_XingBie" name="txtHG_SW_XingBie" /></td>
                     <td>
-                        <input type="text" id="txtSW_SW_Age" name="txtSW_SW_Age" /></td>
+                        <input type="text" id="txtHG_SW_NianLing" name="txtHG_SW_NianLing" /></td>
                     <td>
-                        <input type="text" id="txtSW_SW_MinZu" name="txtSW_SW_MinZu" /></td>
+                        <input type="text" id="txtHG_SW_MinZu" name="txtHG_SW_MinZu" /></td>
                     <td>
-                        <input type="text" id="txtSW_SW_GongZhong" name="txtSW_SW_GongZhong" /></td>
+                        <input type="text" id="txtHG_SW_GongZhong" name="txtHG_SW_GongZhong" /></td>
                     <td>
-                        <input type="text" id="txtSW_SW_ShangHaiChengDu" name="txtSW_SW_ShangHaiChengDu" /></td>
+                        <input type="text" id="txtHG_SW_ShangHaiChengDu" name="txtHG_SW_ShangHaiChengDu" /></td>
                     <td>
-                        <input type="text" id="txtSW_SW_RenYuanShuXing" name="txtSW_SW_RenYuanShuXing" /></td>
+                        <input type="text" id="txtHG_SW_RenYuanShuXing" name="txtHG_SW_RenYuanShuXing" /></td>
                     <td>死亡人数</td>
                     <td>
                         <input type="text" id="txtHG_SiW_LuNei" name="txtHG_SiW_LuNei" /></td>
@@ -394,7 +419,7 @@
                 <tr>
                     <td>事故概况</td>
                     <td colspan="7">
-                        <input type="text" id="txtHG_HG_ShiGuGaiKuang" name="txtHG_HG_ShiGuGaiKuang" /></td>
+                        <input type="text" id="txtHG_ShiGuGaiKuang" name="txtHG_ShiGuGaiKuang" /></td>
                 </tr>
                 <tr>
                     <td rowspan="4">责任认定</td>
@@ -409,13 +434,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" id="txtZRDW_DanWeiShungXing" name="txtZRDW_DanWeiShungXing" /></td>
+                        <input type="text" id="txtZR_ZeRenDanWei" name="txtZR_ZeRenDanWei" /></td>
                     <td>
-                        <input type="text" id="txtZRDW_BuMen" name="txtZRDW_BuMen" /></td>
+                        <input type="text" id="txtZR_ZeRenDanWeiShuXing" name="txtZR_ZeRenDanWeiShuXing" /></td>
                     <td>
-                        <input type="text" id="txtZRDW_ChengDu" name="txtZRDW_ChengDu" /></td>
+                        <input type="text" id="txtZR_ZeRenBuMen" name="txtZR_ZeRenBuMen" /></td>
                     <td>
-                        <input type="text" id="txtZRDW_DanWei" name="txtZRDW_DanWei" /></td>
+                        <input type="text" id="txtZR_ZeRenChengDu" name="txtZR_ZeRenChengDu" /></td>
                     <td rowspan="3">
                         <input type="text" id="txtZR_YuanYinLeiBie" name="txtZR_YuanYinLeiBie" /></td>
                 </tr>
@@ -440,7 +465,7 @@
                         <input type="text" id="txtZR_ZhiBanJianCha" name="txtZR_ZhiBanJianCha" /></td>
                     <td>填报时间</td>
                     <td colspan="2">
-                        <input type="text" id="txtZR_TianBaoShiJian_Y" name="txtZR_TianBaoShiJian" /></td>
+                        <input type="text" id="dtbZR_TianBaoShiJian" name="dtbZR_TianBaoShiJian" class="easyui-datetimebox sgbasetime" /></td>
                     <td>第</td>
                     <td>
                         <input type="text" id="txtZR_BaoGaoCiShu" name="txtZR_BaoGaoCiShu" /></td>
@@ -455,10 +480,10 @@
                         <input type="text" id="txtZR_ShiGuDiaoChaBaoGao" name="txtZR_ShiGuDiaoChaBaoGao" /></td>
                     <td>现场调查有关资料</td>
                     <td>
-                        <input type="text" id="txtZR_XianChangDiaoChaZiLiao" name="txtZR_XianChangDiaoChaZiLiao" /></td>
+                        <input type="text" id="txtZR_XianChangDianChaZiLiao" name="txtZR_XianChangDianChaZiLiao" /></td>
                     <td>损失计算材料</td>
                     <td>
-                        <input type="text" id="txtZR_SunShiDiaoChaZiLiao" name="txtZR_SunShiDiaoChaZiLiao" /></td>
+                        <input type="text" id="txtZR_SunShiJiSuanZiLiao" name="txtZR_SunShiJiSuanZiLiao" /></td>
                     <td>事故认定书</td>
                     <td>
                         <input type="text" id="txtZR_ShiGuRenDingShu" name="txtZR_ShiGuRenDingShu" /></td>
@@ -482,3 +507,5 @@
 
     </div>
 </form>
+
+<script type="text/javascript" src="js/views/AccidentZeRenInfoPage.js"></script>

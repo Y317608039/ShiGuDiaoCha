@@ -343,7 +343,7 @@
                                 'views/AccidentZeRenInfoPage.aspx',
                                 {
                                     method: 'DelItem',
-                                    sgzereninfoid: rows[0].JB_ID
+                                    sgbaseinfoid: rows[0].JB_ID
                                 },
                                 function (data) {
                                     if (data) {

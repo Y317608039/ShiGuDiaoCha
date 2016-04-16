@@ -71,7 +71,7 @@ public partial class views_AccidentZeRenInfoPage : BasePage
         string sgbaseinfoid = Request["sgbaseinfoid"];
         if (sgbaseinfoid.Length > 0)
         {
-            v_shigu obj = VSgBll.Get(Convert.ToInt32(sgbaseinfoid));//用于记录删除日志
+            v_shigu obj = VSgBll.GetByFilter(new List<Filter> { new Filter { Name = "JB_ID", Op = FilterOp.Equals, Value = Convert.ToInt32(sgbaseinfoid) } }).First();//用于记录删除日志
 
             SgHgBll.Remove(obj.HG_ID); SgZrBll.Remove(obj.ZR_ID);
 
@@ -285,7 +285,7 @@ public partial class views_AccidentZeRenInfoPage : BasePage
             sgZrItem.ZR_ShiGuLeiBie = txtZR_ShiGuLeiBie;
             sgZrItem.ZR_ShiGuDengJi = txtZR_ShiGuDengJi;
             sgZrItem.ZR_ZhiBanJianCha = txtZR_ZhiBanJianCha;
-            sgZrItem.ZR_TianBaoShiJian = dtbZR_TianBaoShiJian.Length > 0 ? Convert.ToDateTime(dtbZR_TianBaoShiJian) : dtNow; 
+            sgZrItem.ZR_TianBaoShiJian = dtbZR_TianBaoShiJian.Length > 0 ? Convert.ToDateTime(dtbZR_TianBaoShiJian) : dtNow;
             sgZrItem.ZR_BaoGaoCiShu = txtZR_BaoGaoCiShu;
             sgZrItem.ZR_ShiGuDiaoChaBaoGao = txtZR_ShiGuDiaoChaBaoGao;
             sgZrItem.ZR_XianChangDianChaZiLiao = txtZR_XianChangDianChaZiLiao;

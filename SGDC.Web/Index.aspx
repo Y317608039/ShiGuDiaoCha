@@ -28,7 +28,7 @@
     </div>
     <div data-options="region:'west',split:true" title="功能导航" style="width: 200px;">
         <div id="expandMenu" class="easyui-accordion" data-options="fit:true,border:false">
-            <div title="菜单一" style="padding: 5px;">
+            <div title="事故点信息管理" style="padding: 5px;">
                 <ul>
                     <li>
                         <div class="">
@@ -40,11 +40,11 @@
                             <a ref="Menu0002" href="#" rel="views/AccidentZeRenInfoPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">事故后果及责任信息</span></a>
                         </div>
                     </li>
-                    <li>
+                    <%--<li>
                         <div class="">
                             <a ref="Menu0003" href="#" rel="views/FillAccidentForm.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">填充表单</span></a>
                         </div>
-                    </li>
+                    </li>--%>
                 </ul>
             </div>
             <div title="基础信息管理" style="padding: 5px;">

@@ -3,34 +3,38 @@
 <!DOCTYPE html>
 <style type="text/css">
     #sgbaseinfo_edit input {
-        width: 40px;
-        /*margin: 0 3px 0 3px;*/
+        width: 60px;
     }
 
     #sgbaseinfo_edit td[colspan="2"] input {
-        width: 92px;
+        width: 130px;
     }
 
     #sgbaseinfo_edit td[colspan="3"] input {
-        width: 146px;
+        width: 190px;
     }
 
     #sgbaseinfo_edit table {
         border-collapse: collapse;
         border: none;
-        /*width: auto;*/
+        width: 99%;
         margin: auto;
-        font-size: 10px;
+        font-size: 11px;
     }
 
         #sgbaseinfo_edit table td {
             border: solid 1px #666;
-            height: 28px;
+            /*height: 30px;*/
             /*min-width: 30px;*/
             text-align: left;
             word-break: break-all;
             word-wrap: break-word;
-            padding: 1px 3px 1px 3px;
+            padding: 6px 3px;
+            vertical-align: top;
+        }
+
+        #sgbaseinfo_edit table tr td:nth-child(1), #sgbaseinfo_edit table tr td:nth-child(2) {
+            vertical-align: middle;
         }
 </style>
 
@@ -63,28 +67,28 @@
                 况</td>
             <td rowspan="2">地点</td>
             <td colspan="2">
-                <input type="text" id="txtJB_DD_Ju" name="txtJB_DD_Ju" /></td>
+                <input type="text" id="txtJB_DD_Ju" name="txtJB_DD_Ju" class="requiredinput"  /></td>
             <td>局</td>
             <td>
-                <input type="text" id="txtJB_DD_Xian" name="txtJB_DD_Xian" /></td>
+                <input type="text" id="txtJB_DD_Xian" name="txtJB_DD_Xian"  class="requiredinput" /></td>
             <td>线</td>
             <td>线别</td>
             <td>
                 <input type="text" id="txtJB_DD_XianBie" name="txtJB_DD_XianBie" /></td>
             <td>
-                <input type="text" id="txtJB_DD_QiDian" name="txtJB_DD_QiDian" /></td>
+                <input type="text" id="txtJB_DD_QiDian" name="txtJB_DD_QiDian"  class="requiredinput"/></td>
             <td colspan="2">站至</td>
             <td>
-                <input type="text" id="txtJB_DD_ZhongDian" name="txtJB_DD_ZhongDian" /></td>
+                <input type="text" id="txtJB_DD_ZhongDian" name="txtJB_DD_ZhongDian"  class="requiredinput"/></td>
             <td>站</td>
             <td>上下行</td>
             <td>
-                <input type="text" id="txtJB_DD_XingBie" name="txtJB_DD_XingBie" /></td>
+                <input type="text" id="txtJB_DD_XingBie" name="txtJB_DD_XingBie"  class="requiredinput"/></td>
             <td>
-                <input type="text" id="txtJB_DD_GongLi" name="txtJB_DD_GongLi" /></td>
+                <input type="text" id="txtJB_DD_GongLi" name="txtJB_DD_GongLi"  class="requiredinput"/></td>
             <td>公里股道</td>
             <td>
-                <input type="text" id="txtJB_DD_MiShu" name="txtJB_DD_MiShu" /></td>
+                <input type="text" id="txtJB_DD_MiShu" name="txtJB_DD_MiShu"  class="requiredinput"/></td>
             <td colspan="2">米</td>
         </tr>
         <tr>
@@ -108,7 +112,7 @@
         <tr>
             <td>列车</td>
             <td colspan="2">
-                <input type="text" id="txtJB_LC_CheCi" name="txtJB_LC_CheCi" /></td>
+                <input type="text" id="txtJB_LC_CheCi" name="txtJB_LC_CheCi"  class="requiredinput"/></td>
             <td>次</td>
             <td>
                 <input type="text" id="txtJB_LC_CheHao" name="txtJB_LC_CheHao" /></td>
@@ -133,7 +137,7 @@
         <tr>
             <td>机车</td>
             <td colspan="2">
-                <input type="text" id="txtJB_JC_XingHao" name="txtJB_JC_XingHao" /></td>
+                <input type="text" id="txtJB_JC_XingHao" name="txtJB_JC_XingHao"  class="requiredinput"/></td>
             <td>型</td>
             <td>
                 <input type="text" id="txtJB_JC_BianHao" name="txtJB_JC_BianHao" /></td>

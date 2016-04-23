@@ -1,39 +1,10 @@
 ﻿$(
     function () {
         $('#dochead').validatebox();
-        $('#docdesc').textbox({ multiline: true });
-
-        //$('#doctype').combobox({
-        //    panelHeight: 80,
-        //    valueField: 'DicValue',
-        //    textField: 'DicValue'
-        //});
-
-        //$('#search_doctype').combobox({
-        //    panelHeight: 80,
-        //    valueField: 'DicValue',
-        //    textField: 'DicValue'
-        //});
+        //$('#docdesc').textbox({ multiline: true });  
 
         fillDropDown($('#doctype'), '文档类别');
         fillDropDown($('#search_doctype'), '文档类别');
-        //#region 获取下拉集合
-        //$.post(
-        //'views/DocumentPage.aspx',
-        //{
-        //    method: 'GetDocType'
-        //},
-        //function (data, response, status) {
-        //    data = $.parseJSON(data);
-        //    console.log(data);
-        //    if (data) {
-        //        $('#doctype').combobox("loadData", data);
-        //        $('#doctype').combobox("setText", "");
-        //        $('#search_doctype').combobox("loadData", data);
-        //        $('#search_doctype').combobox("setText", "");
-        //    }
-        //}
-        //);
 
         //#endregion
 
@@ -72,7 +43,12 @@
                 field: 'D_Content',
                 title: '文档描述',
                 width: 100,
-                formatter: function (value, row, index) { if (value && value.length > 30) { return value.substr(0, 30) + '...'; } else { return value; } }
+                formatter: function (value, row, index) {
+                    if (value) {
+                        var temptext = DelHtmlTags(decodeURI(value));
+                        if (temptext.length > 30) return temptext.substr(0, 30) + '...'; else return temptext;
+                    } else { return value; }
+                }
             },
             {
                 field: 'D_CreateTime',
@@ -91,7 +67,7 @@
         });
 
         $('#sgdocumentr_edit').dialog({
-            width: 350,
+            width: 900,
             title: '编辑文档',
             modal: true,
             closed: true,
@@ -102,6 +78,9 @@
                 handler: function () {
                     if ($('#sgdocumentr_edit').form('validate')) {
                         $.messager.progress({ text: '正在保存中...' });
+                        editor.sync();
+                        console.log($('#docdesc').val());
+                        console.log(encodeURIComponent($('#docdesc').val()));
                         $.post(
                             'views/DocumentPage.aspx',
                             {
@@ -110,10 +89,10 @@
                                 doctype: $('#doctype').combobox("getText"),
                                 dochead: $('#dochead').val(),
                                 docsubhead: $('#docsubhead').val(),
-                                docdesc: $('#docdesc').val(),
-                                docext1: $('#docext1').val(),
-                                docext2: $('#docext2').val(),
-                                docext3: $('#docext3').val()
+                                docdesc: encodeURIComponent($('#docdesc').val())
+                                //docext1: $('#docext1').val(),
+                                //docext2: $('#docext2').val(),
+                                //docext3: $('#docext3').val()
                             },
                             function (data, response, status) {
                                 data = $.parseJSON(data);
@@ -148,7 +127,19 @@
 
         sgdocument_tool = {
             add: function () {
-                $('#sgdocumentr_edit').dialog({ title: "添加文档" });
+                $('#sgdocumentr_edit').dialog({
+                    title: "添加文档", onOpen: function () {
+                        //KindEditor.create('#docdesc', {
+                        //    resizeType: 1,
+                        //    allowPreviewEmoticons: false,
+                        //    allowImageUpload: false,
+                        //    items: [
+                        //        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                        //        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                        //        'insertunorderedlist']
+                        //});
+                    }
+                });
                 $('#sgdocumentr_edit').dialog('open');
 
                 $('#doctype').focus();
@@ -165,11 +156,12 @@
                         doctype: rows[0].D_Type,
                         dochead: rows[0].D_Head,
                         docsubhead: rows[0].D_Subhead,
-                        docdesc: rows[0].D_Content,
-                        docext1: rows[0].D_Ext1,
-                        docext2: rows[0].D_Ext2,
-                        docext3: rows[0].D_Ext3
+                        //docdesc: rows[0].D_Content,
+                        //docext1: rows[0].D_Ext1,
+                        //docext2: rows[0].D_Ext2,
+                        //docext3: rows[0].D_Ext3
                     }).dialog({ title: "修改文档" }).dialog('open');
+                    editor.html(decodeURIComponent(rows[0].D_Content));
                 } else if (rows.length === 0) {
                     $.messager.alert('警告操作！', '请选择要修改的记录！', 'warning');
                 }
@@ -224,5 +216,15 @@
                 });
             }
         };
+        var editor = KindEditor.create('#docdesc', {
+            resizeType: 1,
+            allowPreviewEmoticons: false,
+            allowImageUpload: false,
+            items: [
+                'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                'insertunorderedlist']
+        });
+
     }
 );

@@ -9,6 +9,7 @@
     <link type="text/css" href="easyui/themes/default/easyui.css" rel="stylesheet" />
     <link type="text/css" href="easyui/themes/icon.css" rel="stylesheet" />
     <link type="text/css" href="styles/index.css" rel="stylesheet" />
+    <link href="kindeditor/themes/default/default.css" rel="stylesheet" />
 </head>
 <body class="easyui-layout">
     <div data-options="region:'north',border:false" style="overflow: hidden; height: 63px;" class="panel-body panel-body-noheader panel-body-noborder layout-body">
@@ -16,11 +17,12 @@
             <div style="float: left; width: 493px; height: 63px;">
                 <img style="width: 493px; height: 63px;" src="Images/top_bg.png" />
             </div>
+            <div style="margin: 8px 15px 15px -360px; font-size: 28px; float: left;" class="daoying">铁 路 事 故 调 查 管 理 系 统</div>
             <div style="float: right; height: 50px;">
-                <div style="text-align: center; float: left; padding-top: 10px; padding-left: 10px;">
+                <div style="text-align: center; float: left; padding-top: 35px; padding-left: 10px;">
                     <a class="easyui-linkbutton" id="btnmodifypwd" data-options="iconCls:'icon-edit'">修改密码</a>
                 </div>
-                <div style="text-align: center; float: right; padding-top: 10px; padding-left: 10px;">
+                <div style="text-align: center; float: right; padding-top: 35px; padding-left: 10px;">
                     <a class="easyui-linkbutton" id="btnexit" data-options="iconCls:'icon-redo'" onclick="exitclick()">退出</a>
                 </div>
             </div>
@@ -63,7 +65,7 @@
             </div>
 
             <div title="系统管理" style="padding: 5px;">
-                <ul> 
+                <ul>
                     <li>
                         <div class="">
                             <a ref="Menu1001" href="#" rel="views/SystemParmsManage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">系统参数</span></a>
@@ -92,10 +94,17 @@
         </div>
     </div>
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Ttudj3z5XkdxXZGlRasVplqGAkLduSx7"></script>
+    <script type="text/javascript" src="js/views/DistanceTool_min.js"></script>
+    <script type="text/javascript" src="js/views/AreaRestriction_min.js"></script>
+
+    <%-- <script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>--%>
+    
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="easyui/jquery.form.js"></script>
-    <script src="supermap/libs/SuperMap.Include.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <%--<script src="supermap/libs/SuperMap.Include.js"></script>--%>
 </body>
 </html>

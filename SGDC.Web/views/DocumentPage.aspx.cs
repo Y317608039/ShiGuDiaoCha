@@ -92,9 +92,9 @@ public partial class views_DocumentPage : BasePage
         string dochead = Request["dochead"];
         string docsubhead = Request["docsubhead"];
         string docdesc = Request["docdesc"];
-        string docext1 = Request["docext1"];
-        string docext2 = Request["docext2"];
-        string docext3 = Request["docext3"];
+        //string docext1 = Request["docext1"];
+        //string docext2 = Request["docext2"];
+        //string docext3 = Request["docext3"];
 
         documentinfo item = null;
         documentinfo oldItem = null;
@@ -110,9 +110,9 @@ public partial class views_DocumentPage : BasePage
             item.D_Head = dochead;
             item.D_Subhead = docsubhead;
             item.D_Content = docdesc;
-            item.D_Ext1 = docext1;
-            item.D_Ext2 = docext2;
-            item.D_Ext3 = docext3;
+            //item.D_Ext1 = docext1;
+            //item.D_Ext2 = docext2;
+            //item.D_Ext3 = docext3;
             item.D_UpdateTime = dtNow;
             #endregion
 
@@ -127,9 +127,9 @@ public partial class views_DocumentPage : BasePage
                 D_Head = dochead,
                 D_Subhead = docsubhead,
                 D_Content = docdesc,
-                D_Ext1 = docext1,
-                D_Ext2 = docext2,
-                D_Ext3 = docext3,
+                //D_Ext1 = docext1,
+                //D_Ext2 = docext2,
+                //D_Ext3 = docext3,
                 D_CreateTime = dtNow,
                 D_UpdateTime = dtNow
             };

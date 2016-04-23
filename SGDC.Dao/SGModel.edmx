@@ -25,7 +25,7 @@
           <Property Name="D_Type" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="D_Head" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="D_Subhead" Type="varchar" MaxLength="80" />
-          <Property Name="D_Content" Type="varchar" MaxLength="3000" Nullable="false" />
+          <Property Name="D_Content" Type="text" Nullable="false" />
           <Property Name="D_CreateTime" Type="timestamp" Precision="0" Nullable="false" />
           <Property Name="D_UpdateTime" Type="timestamp" Precision="0" Nullable="false" />
           <Property Name="D_Ext1" Type="varchar" MaxLength="255" />
@@ -548,7 +548,6 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
       <Schema Namespace="SGDCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="SGDCEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="datadictionaryinfo" EntityType="SGDCModel.datadictionaryinfo" />
-          <EntitySet Name="documentinfo" EntityType="SGDCModel.documentinfo" />
           <EntitySet Name="shiguhouguoinfo" EntityType="SGDCModel.shiguhouguoinfo" />
           <EntitySet Name="shiguhouguoshangwanginfo" EntityType="SGDCModel.shiguhouguoshangwanginfo" />
           <EntitySet Name="shiguzerendanweiinfo" EntityType="SGDCModel.shiguzerendanweiinfo" />
@@ -557,6 +556,7 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
           <EntitySet Name="shiguzereninfo" EntityType="SGDCModel.shiguzereninfo" />
           <EntitySet Name="shigujibeninfo" EntityType="SGDCModel.shigujibeninfo" />
           <EntitySet Name="v_shigu" EntityType="SGDCModel.v_shigu" />
+          <EntitySet Name="documentinfo" EntityType="SGDCModel.documentinfo" />
         </EntityContainer>
         <EntityType Name="datadictionaryinfo">
           <Key>
@@ -569,21 +569,6 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
           <Property Name="DD_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="DD_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="DD_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="documentinfo">
-          <Key>
-            <PropertyRef Name="D_ID" />
-          </Key>
-          <Property Name="D_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="D_Type" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="D_Head" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="D_Subhead" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="D_Content" Type="String" Nullable="false" MaxLength="3000" FixedLength="false" Unicode="false" />
-          <Property Name="D_CreateTime" Type="DateTime" Nullable="false" />
-          <Property Name="D_UpdateTime" Type="DateTime" Nullable="false" />
-          <Property Name="D_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="D_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="D_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="shiguhouguoinfo">
           <Key>
@@ -957,6 +942,21 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
           <Property Name="ZR_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ZR_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="documentinfo">
+          <Key>
+            <PropertyRef Name="D_ID" />
+          </Key>
+          <Property Name="D_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="D_Type" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="D_Head" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="D_Subhead" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="D_Content" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="D_CreateTime" Type="DateTime" Nullable="false" />
+          <Property Name="D_UpdateTime" Type="DateTime" Nullable="false" />
+          <Property Name="D_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="D_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="D_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -973,22 +973,6 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
                 <ScalarProperty Name="DD_Value" ColumnName="DD_Value" />
                 <ScalarProperty Name="DD_Type" ColumnName="DD_Type" />
                 <ScalarProperty Name="DD_ID" ColumnName="DD_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="documentinfo">
-            <EntityTypeMapping TypeName="SGDCModel.documentinfo">
-              <MappingFragment StoreEntitySet="documentinfo">
-                <ScalarProperty Name="D_Ext3" ColumnName="D_Ext3" />
-                <ScalarProperty Name="D_Ext2" ColumnName="D_Ext2" />
-                <ScalarProperty Name="D_Ext1" ColumnName="D_Ext1" />
-                <ScalarProperty Name="D_UpdateTime" ColumnName="D_UpdateTime" />
-                <ScalarProperty Name="D_CreateTime" ColumnName="D_CreateTime" />
-                <ScalarProperty Name="D_Content" ColumnName="D_Content" />
-                <ScalarProperty Name="D_Subhead" ColumnName="D_Subhead" />
-                <ScalarProperty Name="D_Head" ColumnName="D_Head" />
-                <ScalarProperty Name="D_Type" ColumnName="D_Type" />
-                <ScalarProperty Name="D_ID" ColumnName="D_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1325,6 +1309,22 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
                 <ScalarProperty Name="JB_DD_Xian" ColumnName="JB_DD_Xian" />
                 <ScalarProperty Name="JB_DD_Ju" ColumnName="JB_DD_Ju" />
                 <ScalarProperty Name="JB_ID" ColumnName="JB_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="documentinfo">
+            <EntityTypeMapping TypeName="SGDCModel.documentinfo">
+              <MappingFragment StoreEntitySet="documentinfo">
+                <ScalarProperty Name="D_Ext3" ColumnName="D_Ext3" />
+                <ScalarProperty Name="D_Ext2" ColumnName="D_Ext2" />
+                <ScalarProperty Name="D_Ext1" ColumnName="D_Ext1" />
+                <ScalarProperty Name="D_UpdateTime" ColumnName="D_UpdateTime" />
+                <ScalarProperty Name="D_CreateTime" ColumnName="D_CreateTime" />
+                <ScalarProperty Name="D_Content" ColumnName="D_Content" />
+                <ScalarProperty Name="D_Subhead" ColumnName="D_Subhead" />
+                <ScalarProperty Name="D_Head" ColumnName="D_Head" />
+                <ScalarProperty Name="D_Type" ColumnName="D_Type" />
+                <ScalarProperty Name="D_ID" ColumnName="D_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

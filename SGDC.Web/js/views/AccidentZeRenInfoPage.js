@@ -1,6 +1,6 @@
 ﻿$(
     function () { 
-        $('#txtHG_ShiGuGaiKuang').textbox({ multiline: true, width: 980 });
+        $('#txtHG_ShiGuGaiKuang').textbox({ multiline: true, width: 1132 });
         //$('input').textbox();
         $('#sgzerentab').tabs({ border: false });
         //$('#sgzenrenjibeninfo input').textbox({ readonly: true });
@@ -81,7 +81,7 @@
         });
 
         $('#sgzereninfo_edit').dialog({
-            width: 1150,
+            width: 1250,
             title: '编辑事故责任信息',
             modal: true,
             closed: true,

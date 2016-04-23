@@ -20,7 +20,7 @@
     </div>
 </div>
 
-<form id="datadicmanager_edit" style="margin: 0; padding: 5px 0 0 25px; color: #333;">
+<form id="datadicmanager_edit" style="margin: 0; padding: 5px 0 0 25px; color: #333;"  class="showform">
     <input type="text" id="datadicid" name="datadicid" class="textbox" style="width: 200px; display: none;">
     <table>
         <tr>

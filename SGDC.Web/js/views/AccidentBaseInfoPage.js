@@ -1,6 +1,8 @@
 ﻿$(
-    function () {  
+    function () {
         $('.sgbasetime').datetimebox({ showSeconds: false, width: 137 });
+
+        $('.requiredinput').css({ border: 'solid 1px orangered' }).validatebox({ required: true, missingMessage: '该项是必输项.' });
 
         $('#gv_sgbaseinfo').datagrid({
             url: 'views/AccidentBaseInfoPage.aspx',
@@ -40,7 +42,7 @@
                 //formatter: function (value, row, index) { if (value && value.length > 30) { return value.substr(0, 30) + '...'; } else { return value; } }
             },
             {
-                field: 'JB_DD_XianBie',
+                field: 'JB_DD_XingBie',
                 title: '上下行',
                 width: 30
             },
@@ -76,7 +78,7 @@
         });
 
         $('#sgbaseinfo_edit').dialog({
-            width: 1050,
+            width: 1250,
             title: '编辑事故基本信息',
             modal: true,
             closed: true,

@@ -3,50 +3,57 @@
 <!DOCTYPE html>
 
 <style type="text/css">
+    .sgtabs {
+        padding-top: 5px;
+    }
+
     #sgzereninfo_edit input {
-        width: 40px;
-        /*margin: 0 3px 0 3px;*/
+        width: 60px;
     }
 
         #sgzereninfo_edit input[id^="txtQ_JB"] {
             border: 0px;
-            /*margin: 0 3px 0 3px;*/
         }
 
     #sgzereninfo_edit td[colspan="2"] input {
-        width: 92px;
+        width: 130px;
     }
 
     #sgzereninfo_edit td[colspan="3"] input, #sgzereninfo_edit td[colspan="5"] input, #sgzereninfo_edit td[colspan="6"] input {
-        width: 146px;
+        width: 190px;
     }
 
     #sgzereninfo_edit table {
         border-collapse: collapse;
         border: none;
-        width: 98%;
+        width: 99%;
         margin: auto;
-        font-size: 10px;
+        font-size: 11px;
     }
 
         #sgzereninfo_edit table td {
             border: solid 1px #666;
-            height: 28px;
+            /*height: 30px;*/
             /*min-width: 30px;*/
             text-align: left;
             -moz-word-break: break-all;
             -o-word-break: break-all;
             word-break: break-all;
             word-wrap: break-word;
-            padding: 1px 3px 1px 3px;
+            padding: 6px 3px;
+            vertical-align: top;
+        }
+
+        #sgzereninfo_edit table tr td:nth-child(1), #sgzereninfo_edit table tr td:nth-child(2) {
+            vertical-align: middle;
         }
 
     #sghouguoinfo input {
-        width: 67px;
+        width: 90px;
     }
 
     #sgzereninfo input {
-        width: 120px;
+        width: 150px;
     }
 </style>
 
@@ -74,8 +81,8 @@
     <input type="text" id="sghouguoinfoid" name="sghouguoinfoid" class="textbox" style="width: 200px; display: none;">
     <input type="text" id="sgzereninfoid" name="sgzereninfoid" class="textbox" style="width: 200px; display: none;">
 
-    <div id="sgzerentab" class="easyui-tabs" style="width: auto; height: 350px;">
-        <div title="事故基本信息" style="padding: 20px;">
+    <div id="sgzerentab" class="easyui-tabs" style="width: auto; height: auto;">
+        <div title="事故基本信息" class="sgtabs">
             <table id="sgzenrenjibeninfo">
                 <tr>
                     <td rowspan="10">基<br />
@@ -254,8 +261,8 @@
                 </tr>
             </table>
         </div>
-        <div title="事故后果信息" style="padding: 20px;">
-             <table id="sghouguoinfo">
+        <div title="事故后果信息" class="sgtabs">
+            <table id="sghouguoinfo">
                 <tr>
                     <td rowspan="10">事<br />
                         故<br />
@@ -414,7 +421,7 @@
                 </tr>
             </table>
         </div>
-        <div title="事故责任信息" style="padding: 20px;">
+        <div title="事故责任信息" class="sgtabs">
             <table id="sgzereninfo">
                 <tr>
                     <td>事故概况</td>
@@ -454,7 +461,7 @@
                         <input type="text" id="txtZR_ShiGuDengJi" name="txtZR_ShiGuDengJi" /></td>
                 </tr>
                 <tr>
-                    <td></td>
+                    <td>&nbsp;</td>
                     <td></td>
                     <td></td>
                     <td></td>

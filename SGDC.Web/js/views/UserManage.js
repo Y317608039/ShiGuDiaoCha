@@ -1,6 +1,8 @@
 ﻿$(
     function () {
 
+        $('#userphone').validatebox({ validType: 'phoneRex' });
+
         $('#gv_UserManage').datagrid({
             url: 'views/UserManage.aspx',
             fit: true,

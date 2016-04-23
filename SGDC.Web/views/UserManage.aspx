@@ -24,23 +24,23 @@
     </div>
 </div>
 
-<form id="manager_edit" style="margin: 0; padding: 5px 0 0 25px; color: #333;">
+<form id="manager_edit" style="margin: 0; padding: 5px 0 0 25px; color: #333;" class="showform">
     <input type="text" id="userid" name="userid" class="textbox" style="width: 200px; display: none;">
     <table>
         <tr>
             <td>用户名：</td>
             <td>
-                <input type="text" id ="username" name="username" class="textbox" style="width: 193px;"></td>
+                <input type="text" id="username" name="username" class="textbox" style="width: 193px;"></td>
         </tr>
         <tr>
             <td>用户编号：</td>
             <td>
-                <input type="text" id ="userno" name="userno" class="textbox" style="width: 193px;"></td>
+                <input type="text" id="userno" name="userno" class="textbox" style="width: 193px;"></td>
         </tr>
         <tr>
             <td>联系方式：</td>
             <td>
-                <input type="text" id ="userphone" name="userphone" class="textbox" style="width: 193px;"></td>
+                <input type="text" id="userphone" name="userphone" class="textbox" style="width: 193px;"></td>
         </tr>
         <tr>
             <td>单&nbsp;位：</td>
@@ -56,12 +56,12 @@
             <td>职&nbsp;别：</td>
             <td>
                 <input id="usergrade" name="usergrade" class="easyui-combobox" style="width: 200px;"></td>
-        </tr> 
+        </tr>
         <tr>
-            <td>接受报警：</td>
+            <td>短信接收报警：</td>
             <td>
                 <input id="userjsbj" name="userjsbj" class="easyui-combobox" style="width: 200px;"></td>
-        </tr> 
+        </tr>
     </table>
 </form>
 

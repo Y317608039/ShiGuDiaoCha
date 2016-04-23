@@ -17,3 +17,5 @@ SGDC.Web/Bin/SGDC.Model.pdb
 SGDC.Web/Bin/SGDC.Utility.dll
 SGDC.Web/Bin/SGDC.Utility.pdb
 SGDC.Web/Bin/zh-Hans/EntityFramework.resources.dll
+SGDC.Web/Default.aspx
+SGDC.Web/Default.aspx.cs

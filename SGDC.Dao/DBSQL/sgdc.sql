@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2016-04-17 02:52:48
+Date: 2016-04-23 19:13:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,7 +55,7 @@ CREATE TABLE `documentinfo` (
   `D_Type` varchar(25) NOT NULL DEFAULT '' COMMENT '文档类型',
   `D_Head` varchar(100) NOT NULL DEFAULT '' COMMENT '文档标题',
   `D_Subhead` varchar(80) DEFAULT NULL COMMENT '文档副标题',
-  `D_Content` varchar(3000) NOT NULL COMMENT '文档内容',
+  `D_Content` text NOT NULL COMMENT '文档内容',
   `D_CreateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '文档创建时间',
   `D_UpdateTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '文档修改时间',
   `D_Ext1` varchar(255) DEFAULT NULL COMMENT '文档扩展信息1',
@@ -68,7 +68,7 @@ CREATE TABLE `documentinfo` (
 -- Records of documentinfo
 -- ----------------------------
 INSERT INTO `documentinfo` VALUES ('1', '电报', '电报001', '副标题是什么了', '这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.这事测试内容,嗯,就是.', '2016-04-09 17:28:13', '2016-04-09 17:28:13', '11', '22', '33');
-INSERT INTO `documentinfo` VALUES ('2', '规章制度', '1', '2', '33333333', '2016-04-09 17:28:43', '2016-04-09 17:38:07', '4', '5', '6');
+INSERT INTO `documentinfo` VALUES ('2', '规章制度', '1', '2', '%3Cp%20style%3D%22text-align%3Acenter%3B%22%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20align%3D%22center%22%20style%3D%22margin-left%3A0cm%3Btext-align%3Acenter%3B%22%3E%0A%09%09%3Cb%3E%E3%80%8A%3C%2Fb%3E%3Cb%3EWeb%3C%2Fb%3E%3Cb%3E%E6%8A%80%E6%9C%AF%E4%B8%8E%E5%BC%80%E5%8F%91%EF%BC%88%3C%2Fb%3E%3Cb%3EASP.NET%3C%2Fb%3E%3Cb%3E%EF%BC%89%E3%80%8B%3C%2Fb%3E%3Cb%3E%3C%2Fb%3E%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20align%3D%22center%22%20style%3D%22margin-left%3A0cm%3Btext-align%3Acenter%3B%22%3E%0A%09%09%3Cb%3E%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E8%AF%B4%E6%98%8E%E4%B9%A6%3C%2Fb%3E%3Cb%3E%3C%2Fb%3E%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22margin-left%3A0cm%3B%22%3E%0A%09%09%3Cspan%3E%26nbsp%3B%3C%2Fspan%3E%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22margin-left%3A0cm%3B%22%3E%0A%09%09%3Cspan%3E%26nbsp%3B%3C%2Fspan%3E%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22margin-left%3A0cm%3B%22%3E%0A%09%09%3Cspan%3E%26nbsp%3B%3C%2Fspan%3E%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22margin-left%3A0cm%3B%22%3E%0A%09%09%3Cspan%3E%26nbsp%3B%3C%2Fspan%3E%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22margin-left%3A0cm%3B%22%3E%0A%09%09%3Cspan%3E%26nbsp%3B%3C%2Fspan%3E%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22margin-left%3A0cm%3Btext-indent%3A91.1pt%3B%22%3E%0A%09%09%E8%AE%BE%20%E8%AE%A1%20%E9%A2%98%20%E7%9B%AE%EF%BC%9A%3Cu%3E%20%3C%2Fu%3E%3Cu%3E%E7%BD%91%E4%B8%8A%E6%8A%95%E7%A5%A8%E7%B3%BB%E7%BB%9F%3C%2Fu%3E%3Cu%3E%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%20%3C%2Fu%3E%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22margin-left%3A0cm%3Btext-indent%3A91.1pt%3B%22%3E%0A%09%09%E6%8C%87%20%E5%AF%BC%20%E8%80%81%20%E5%B8%88%EF%BC%9A%3Cu%3E%20%3C%2Fu%3E%3Cspan%3E%3C%2Fspan%3E%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22margin-left%3A0cm%3Btext-indent%3A91.1pt%3B%22%3E%0A%09%09%E5%AD%A6%20%E7%94%9F%20%E5%AD%A6%20%E5%8F%B7%EF%BC%9A%3Cu%3E%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%20%3C%2Fu%3E%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22margin-left%3A0cm%3Btext-indent%3A91.1pt%3B%22%3E%0A%09%09%E5%AD%A6%20%E7%94%9F%20%E5%A7%93%20%E5%90%8D%EF%BC%9A%3Cu%3E%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%20%3C%2Fu%3E%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22margin-left%3A0cm%3Btext-indent%3A91.1pt%3B%22%3E%0A%09%09%E5%90%8C%26nbsp%3B%20%E7%BB%84%26nbsp%3B%26nbsp%3B%0A%E4%BA%BA%EF%BC%9A%3Cu%3E%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%20%3C%2Fu%3E%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22text-indent%3A90.0pt%3B%22%3E%0A%09%09%26nbsp%3B%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22text-indent%3A90.0pt%3B%22%3E%0A%09%09%26nbsp%3B%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22text-indent%3A90.0pt%3B%22%3E%0A%09%09%26nbsp%3B%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22text-indent%3A90.0pt%3B%22%3E%0A%09%09%26nbsp%3B%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22text-indent%3A90.0pt%3B%22%3E%0A%09%09%26nbsp%3B%0A%09%3C%2Fp%3E%0A%09%3Cp%20class%3D%22MsoNormal%22%20style%3D%22text-indent%3A90.0pt%3B%22%3E%0A%09%09%E6%97%B6%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%26nbsp%3B%20%E9%97%B4%EF%BC%9A%3Cu%3E%20201%20%3C%2Fu%3E%3Cu%3E%E5%B9%B4%3C%2Fu%3E%3Cu%3E%26nbsp%3B%20%3C%2Fu%3E%3Cu%3E%E6%9C%88%3C%2Fu%3E%3Cu%3E%26nbsp%3B%20%3C%2Fu%3E%3Cu%3E%E6%97%A5%3C%2Fu%3E%3Cu%3E%20%3Cspan%3E%3C%2Fspan%3E%3C%2Fu%3E%0A%09%3C%2Fp%3E%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09%3Cbr%20%2F%3E%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09%3Cbr%20%2F%3E%0A%3C%2Fp%3E', '2016-04-09 17:28:43', '2016-04-23 16:58:16', '4', '5', '6');
 
 -- ----------------------------
 -- Table structure for shiguhouguoinfo
@@ -213,7 +213,7 @@ CREATE TABLE `shigujibeninfo` (
   `JB_Ext2` varchar(255) DEFAULT NULL COMMENT '基本扩展信息2',
   `JB_Ext3` varchar(255) DEFAULT NULL COMMENT '基本扩展信息3',
   PRIMARY KEY (`JB_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='事故基本信息基本部分';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='事故基本信息基本部分';
 
 -- ----------------------------
 -- Records of shigujibeninfo
@@ -336,13 +336,14 @@ CREATE TABLE `userinfo` (
   `User_Ext2` varchar(255) DEFAULT NULL COMMENT '用户扩展信息2',
   `User_Ext3` varchar(255) DEFAULT NULL COMMENT '用户扩展信息3',
   PRIMARY KEY (`User_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='人员信息';
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='人员信息';
 
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
 INSERT INTO `userinfo` VALUES ('4', 'zhangsan001', '张三', '18098987878', '机关', '段领导', '4QrcOUm6Wau+VuBX8g+IPg==', '段长', '', '2016-04-11 17:25:18', '1', '', null, null);
 INSERT INTO `userinfo` VALUES ('5', 'lisi002', '李四', '18256457845', '管理员', '管理员', '4QrcOUm6Wau+VuBX8g+IPg==', '管理员', '', '2016-04-11 19:52:55', '1', '是', null, null);
+INSERT INTO `userinfo` VALUES ('6', 'we', 'qq', '029-32323333', '机关', '段领导', '4QrcOUm6Wau+VuBX8g+IPg==', '书记', '', '2016-04-23 11:35:45', '1', '是', null, null);
 
 -- ----------------------------
 -- View structure for v_shigu

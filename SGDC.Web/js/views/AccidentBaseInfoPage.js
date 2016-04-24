@@ -176,6 +176,17 @@
             }
         });
 
+        $('#sgbaseinfo_ditu').dialog({
+            width: 1000,
+            title: '编辑事故点坐标信息',
+            modal: true,
+            closed: true,
+            iconCls: 'icon-user-add',
+            onClose: function () {
+                $('#sgbaseinfo_ditu').form('reset');
+            }
+        });
+
         sgbaseinfo_tool = {
             add: function () {
                 $('#sgbaseinfo_edit').dialog({ title: "添加事故基本信息" });
@@ -185,12 +196,10 @@
             },
             edit: function () {
                 var rows = $('#gv_sgbaseinfo').datagrid('getSelections');
-                //if (rows.length > 1) {
-                //    $.messager.alert('警告操作！', '编辑记录只能选定一条数据！', 'warning');
-                //} else
                 if (rows.length > 0) {
                     console.log(rows[0]);
                     $('#sgbaseinfo_edit').form('load', {
+                        //#region 填充表单 
                         sgbaseinfoid: rows[0].JB_ID,
                         txtJB_DD_Ju: rows[0].JB_DD_Ju,
                         txtJB_DD_Xian: rows[0].JB_DD_Xian,
@@ -240,6 +249,7 @@
                         dtbJB_FJ_XiaXing: DateFormat(rows[0].JB_FJ_XiaXing),
                         dtbJB_KT_ShangXing: DateFormat(rows[0].JB_KT_ShangXing),
                         dtbJB_KT_XiaXing: DateFormat(rows[0].JB_KT_XiaXing),
+                        //#endregion
                     }).dialog({ title: "修改事故基本信息" }).dialog('open');
                 } else if (rows.length === 0) {
                     $.messager.alert('警告操作！', '请选择要修改的记录！', 'warning');
@@ -291,8 +301,19 @@
                     search_txtJB_DD_Xian: $('#search_txtJB_DD_Xian').val(),
                     search_txtJB_LC_CheCi: $('#search_txtJB_LC_CheCi').val()
                 });
+            },
+            editpoint: function () {
+                var rows = $('#gv_sgbaseinfo').datagrid('getSelections');
+                if (rows.length > 0) {
+                    console.log(rows[0]);
+                    $('#sgbaseinfo_ditu').form('load', { sgbaseinfodianid: rows[0].JB_ID }).dialog({ title: "编辑事故点坐标信息" }).dialog('open');
+                } else if (rows.length === 0) {
+                    $.messager.alert('警告操作！', '请选择要标记点坐标的记录！', 'warning');
+                }
+
             }
         };
 
     }
+
 );

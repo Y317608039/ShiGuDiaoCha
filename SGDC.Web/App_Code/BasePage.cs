@@ -19,7 +19,7 @@ public class BasePage : Page
     protected override void OnPreInit(EventArgs e)
     {
 
-        if (Session[SessionKey] == null) Session[SessionKey] = (new userinfo_Bll()).Get(1);
+        if (Session[SessionKey] == null) Session[SessionKey] = (new userinfo_Bll()).Get(5);
         //Response.Redirect(Request.ApplicationPath.TrimEnd('/') + "/Login.aspx", true);
 
         base.OnPreInit(e);
@@ -110,11 +110,12 @@ public class BasePage : Page
             {
                 PropertyInfo newItem = newProperties[i];
                 PropertyInfo oldItem = oldProperties[i];
-                string newName = newItem.Name; object newValue = newItem.GetValue(newEntity, null);
-                string oldName = oldItem.Name; object oldValue = oldItem.GetValue(oldEntity, null);
+
+                string newName = newItem.Name; object newValue = newItem.GetValue(newEntity, null) ?? "";
+                string oldName = oldItem.Name; object oldValue = oldItem.GetValue(oldEntity, null) ?? "";
                 if (newItem.PropertyType.IsValueType || newItem.PropertyType.Name.StartsWith("String"))
                 {
-                    if (!(oldValue == newValue))
+                    if (!oldValue.Equals(newValue))
                     {
                         if (Convert.ToString(oldValue) == "") oldValue = "''";
                         if (Convert.ToString(newValue) == "") newValue = "''";

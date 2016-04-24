@@ -54,8 +54,72 @@
         <a href="#" class="easyui-linkbutton" iconcls="icon-delete-new" plain="true" onclick="sgbaseinfo_tool.remove();">删除</a>
         <a href="#" class="easyui-linkbutton" iconcls="icon-reload" plain="true" onclick="sgbaseinfo_tool.reload();">刷新</a>
         <a href="#" class="easyui-linkbutton" iconcls="icon-redo" plain="true" id="redo" onclick="sgbaseinfo_tool.redo();">取消选择</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-edit-new" plain="true" id="editpoint" onclick="sgbaseinfo_tool.editpoint();">编辑事故点坐标</a>
     </div>
 </div>
+
+<form id="sgbaseinfo_ditu" style="margin: 0; padding: 0px; color: #333;">
+    <div style="position: fixed; margin: 10px 0 0 10px; z-index: 999;">
+        <input type="text" id="sgbaseinfodianid" name="sgbaseinfodianid" style="display: none;" />
+        <input type="text" id="txtsgbaseinfoeditpoint" name="txtsgbaseinfoeditpoint" class="mapquery" />
+        <div style="position: fixed; margin: -45px 0 0 302px;">
+            <div class="ditubutton" style="background: url('images/chaxun.png'); background-size: 100%;" title="查询" onclick="sgbaseinfoqueryPoint();"></div>
+        </div>
+    </div>
+    <div id="sgbaseinfomap" style="width: 100%; height: 500px;"></div>
+    <script type="text/javascript">
+        //#region 添加事故坐标点
+        /********************************************************************************************************************************************************/
+        var sgdianmap = new BMap.Map("sgbaseinfomap", { mapType: BMAP_HYBRID_MAP });
+        sgdianmap.centerAndZoom(new BMap.Point(108.952, 34.268), 12);
+        sgdianmap.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+        sgdianmap.setCurrentCity("西安");          // 设置地图显示的城市 此项是必须设置的
+        sgdianmap.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+
+        sgdianmap.addEventListener("click", function (e) {
+            var pointx = e.point.lng;
+            var pointy = e.point.lat;
+            $.messager.confirm('确认', String.format('您确认将以下坐标点标记到事故点吗？X:{0}<br/>Y:{1}', pointx, pointy), function (r) {
+                if (r) {
+                    var sgbaseinfodianid = $('#sgbaseinfodianid').val();
+                    if (sgbaseinfodianid.length > 0) {
+                        $.messager.progress({ text: '正在标记坐标点...' });
+                        $.post(
+                            'views/AccidentBaseInfoPage.aspx',
+                            {
+                                method: 'SaveItemPoint',
+                                sgbaseinfodianid: sgbaseinfodianid,
+                                pointx: pointx,
+                                pointy: pointy
+                            },
+                            function (data, response, status) {
+                                data = $.parseJSON(data);
+                                $.messager.progress('close');
+                                //console.log(data);
+                                if (data) {
+                                    $.messager.show({ title: '提示', msg: '标记坐标点成功' });
+                                    $('#sgbaseinfo_ditu').dialog('close').form('reset');
+                                    $('#gv_sgbaseinfo').datagrid('reload');
+                                    $('#gv_sgbaseinfo').datagrid('unselectAll');
+                                } else {
+                                    $.messager.alert('标记坐标点失败！', '未知错误导致失败，请重试！', 'warning');
+                                }
+                            }
+                        );
+                    }
+                }
+            });
+        });
+
+        function sgbaseinfoqueryPoint() {
+            var querytext = $('#txtsgbaseinfoeditpoint').val();
+            var localsg = new BMap.LocalSearch(sgdianmap, { renderOptions: { map: sgdianmap } });
+            localsg.search(querytext);
+        }
+        /********************************************************************************************************************************************************/
+        //#endregion
+    </script>
+</form>
 
 <form id="sgbaseinfo_edit" style="margin: 0; padding: 5px; color: #333;">
     <input type="text" id="sgbaseinfoid" name="sgbaseinfoid" class="textbox" style="width: 200px; display: none;">
@@ -67,28 +131,28 @@
                 况</td>
             <td rowspan="2">地点</td>
             <td colspan="2">
-                <input type="text" id="txtJB_DD_Ju" name="txtJB_DD_Ju" class="requiredinput"  /></td>
+                <input type="text" id="txtJB_DD_Ju" name="txtJB_DD_Ju" class="requiredinput" /></td>
             <td>局</td>
             <td>
-                <input type="text" id="txtJB_DD_Xian" name="txtJB_DD_Xian"  class="requiredinput" /></td>
+                <input type="text" id="txtJB_DD_Xian" name="txtJB_DD_Xian" class="requiredinput" /></td>
             <td>线</td>
             <td>线别</td>
             <td>
                 <input type="text" id="txtJB_DD_XianBie" name="txtJB_DD_XianBie" /></td>
             <td>
-                <input type="text" id="txtJB_DD_QiDian" name="txtJB_DD_QiDian"  class="requiredinput"/></td>
+                <input type="text" id="txtJB_DD_QiDian" name="txtJB_DD_QiDian" class="requiredinput" /></td>
             <td colspan="2">站至</td>
             <td>
-                <input type="text" id="txtJB_DD_ZhongDian" name="txtJB_DD_ZhongDian"  class="requiredinput"/></td>
+                <input type="text" id="txtJB_DD_ZhongDian" name="txtJB_DD_ZhongDian" class="requiredinput" /></td>
             <td>站</td>
             <td>上下行</td>
             <td>
-                <input type="text" id="txtJB_DD_XingBie" name="txtJB_DD_XingBie"  class="requiredinput"/></td>
+                <input type="text" id="txtJB_DD_XingBie" name="txtJB_DD_XingBie" class="requiredinput" /></td>
             <td>
-                <input type="text" id="txtJB_DD_GongLi" name="txtJB_DD_GongLi"  class="requiredinput"/></td>
+                <input type="text" id="txtJB_DD_GongLi" name="txtJB_DD_GongLi" class="requiredinput" /></td>
             <td>公里股道</td>
             <td>
-                <input type="text" id="txtJB_DD_MiShu" name="txtJB_DD_MiShu"  class="requiredinput"/></td>
+                <input type="text" id="txtJB_DD_MiShu" name="txtJB_DD_MiShu" class="requiredinput" /></td>
             <td colspan="2">米</td>
         </tr>
         <tr>
@@ -112,7 +176,7 @@
         <tr>
             <td>列车</td>
             <td colspan="2">
-                <input type="text" id="txtJB_LC_CheCi" name="txtJB_LC_CheCi"  class="requiredinput"/></td>
+                <input type="text" id="txtJB_LC_CheCi" name="txtJB_LC_CheCi" class="requiredinput" /></td>
             <td>次</td>
             <td>
                 <input type="text" id="txtJB_LC_CheHao" name="txtJB_LC_CheHao" /></td>
@@ -137,7 +201,7 @@
         <tr>
             <td>机车</td>
             <td colspan="2">
-                <input type="text" id="txtJB_JC_XingHao" name="txtJB_JC_XingHao"  class="requiredinput"/></td>
+                <input type="text" id="txtJB_JC_XingHao" name="txtJB_JC_XingHao" class="requiredinput" /></td>
             <td>型</td>
             <td>
                 <input type="text" id="txtJB_JC_BianHao" name="txtJB_JC_BianHao" /></td>

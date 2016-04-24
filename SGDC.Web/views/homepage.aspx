@@ -6,13 +6,7 @@
 <script src="js/views/homepage.js"></script>--%>
 
 <style type="text/css">
-    #r-result {
-        position: fixed;
-        margin: 10px 0 0 100px;
-        z-index: 999;
-    }
-
-    #suggestId {
+    .mapquery {
         width: 300px;
         height: 30px;
         font-size: 20px;
@@ -20,23 +14,38 @@
         /*background: #666;*/
         opacity: 0.5;
     }
+
+    .ditubutton {
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        margin: 10px 0 0 2px;
+        opacity: 0.8;
+        float: left;
+        z-index: 5;
+    }
 </style>
 
-<div id="r-result">
-    <input type="text" id="suggestId" />
-    <input type="button" id="openDis" value="打开测量工具" onclick="openDis()" />
-    <input type="button" id="btnQuery" value="查询" onclick="queryPoint()" />
+<div id="r-result" style=" position: fixed;margin: 10px 0 0 100px;z-index: 999;">
+    <input type="text" id="suggestId" class="mapquery" />
+    <%--<input type="button" id="openDis" value="打开测量工具" onclick="openDis();" />
+    <input type="button" id="btnQuery" value="查询" onclick="queryPoint();" />--%>
+    <div style="position: fixed; margin: -45px 0 0 302px;">
+        <div class="ditubutton" style="background: url('images/chaxun.png'); background-size: 100%;" title="查询" onclick="queryPoint();"></div>
+        <div class="ditubutton" style="background: url('images/celiang.png'); background-size: 100%;" title="打开测量工具" onclick="openDis();"></div>
+    </div>
+
     <!-- <input type="button" id="clearDis" value="清除线段" onclick="javasrcipt:{map.clearOverlays();}"/> -->
 </div>
 <div id="searchResultPanel" style="border: 1px solid #C0C0C0; width: 150px; height: auto; display: none;"></div>
 <div id="container" style="height: 100%;"></div>
 <script type="text/javascript">
     var map = new BMap.Map("container", { mapType: BMAP_HYBRID_MAP }); // 创建地图实例  
-    var point = new BMap.Point(116.404, 39.915); // 创建点坐标  
-    map.centerAndZoom(point, 15); // 初始化地图，设置中心点坐标和地图级别
+    var point = new BMap.Point(108.952, 34.268); // 创建点坐标  
+    map.centerAndZoom(point, 12); // 初始化地图，设置中心点坐标和地图级别
 
     map.addControl(new BMap.NavigationControl());
-    map.addControl(new BMap.NavigationControl());
+    //map.addControl(new BMap.NavigationControl());
     map.addControl(new BMap.ScaleControl());
     map.addControl(new BMap.OverviewMapControl());
     map.addControl(new BMap.MapTypeControl());
@@ -58,9 +67,9 @@
     }));
 
     var myDis = new BMapLib.DistanceTool(map);
-    map.addEventListener("click", function(e) {
-    	alert(e.point.lng + "," + e.point.lat);
-    });
+    //map.addEventListener("click", function (e) {
+    //    alert(e.point.lng + "," + e.point.lat); 
+    //});
 
     // 百度地图API功能
     function G(id) {

@@ -32,8 +32,48 @@ public partial class views_AccidentBaseInfoPage : BasePage
                 case "QryList":
                     GetSgJbListInfo();
                     break;
+                case "SaveItemPoint":
+                    SaveSuJbItemPoint();
+                    break;
             }
         }
+    }
+
+    private void SaveSuJbItemPoint()
+    {
+        #region 控件取值
+        string sgbaseinfodianid = Request["sgbaseinfodianid"];
+        string pointx = Request["pointx"];
+        string pointy = Request["pointy"];
+        #endregion
+
+        shigujibeninfo item = null;
+        shigujibeninfo oldItem = null;
+        DateTime dtNow = DateTime.Now;
+        if (sgbaseinfodianid.Length > 0)
+            item = SgJbBll.Get(Convert.ToInt32(sgbaseinfodianid));
+        if (item != null)
+        {
+            oldItem = SgJbBll.Clone(item);
+
+            #region 修改
+            item.JB_ZB_X = Convert.ToDecimal(pointx);
+            item.JB_ZB_Y = Convert.ToDecimal(pointy);
+            item.JB_UpdateTime = dtNow;
+
+            #endregion
+
+            LogType = SysLogType.修改.ToString();
+        }
+
+        item = SgJbBll.Save(item);
+
+        LogDesc = string.Format("事故基本信息 {0}", CompareEntityProperties(oldItem, item, true));
+        WriteSystemLog();
+
+        DataContractJsonSerializer json = new DataContractJsonSerializer(item.GetType());
+        json.WriteObject(Response.OutputStream, item);
+        Response.End();
     }
 
     private void GetSgJbListInfo()
@@ -71,7 +111,7 @@ public partial class views_AccidentBaseInfoPage : BasePage
 
             LogType = SysLogType.删除.ToString();
             LogDesc = string.Format("事故基本信息 {0}", CompareEntityProperties(null, obj, false));
-            WriteSystemLog(); 
+            WriteSystemLog();
 
             DataContractJsonSerializer json = new DataContractJsonSerializer("Removed".GetType());
             json.WriteObject(Response.OutputStream, "Removed");

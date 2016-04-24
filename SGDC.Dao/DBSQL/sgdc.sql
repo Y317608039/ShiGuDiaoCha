@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2016-04-23 19:13:31
+Date: 2016-04-25 01:55:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,7 +28,7 @@ CREATE TABLE `datadictionaryinfo` (
   `DD_Ext2` varchar(255) DEFAULT NULL COMMENT '数据字典扩展信息2',
   `DD_Ext3` varchar(255) DEFAULT NULL COMMENT '数据字典扩展信息3',
   PRIMARY KEY (`DD_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='数据字典信息';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='数据字典信息';
 
 -- ----------------------------
 -- Records of datadictionaryinfo
@@ -45,6 +45,7 @@ INSERT INTO `datadictionaryinfo` VALUES ('12', '机关部门', '办公室', '09�
 INSERT INTO `datadictionaryinfo` VALUES ('13', '机关部门', '段领导', '00段领导 描述', null, null, null);
 INSERT INTO `datadictionaryinfo` VALUES ('14', '机关职别', '段长', '这是机关职别', null, null, null);
 INSERT INTO `datadictionaryinfo` VALUES ('15', '机关职别', '书记', '这是机关职别', null, null, null);
+INSERT INTO `datadictionaryinfo` VALUES ('16', '机关部门', '佛挡杀佛打算', 'fdas ', '', '', '');
 
 -- ----------------------------
 -- Table structure for documentinfo
@@ -213,12 +214,12 @@ CREATE TABLE `shigujibeninfo` (
   `JB_Ext2` varchar(255) DEFAULT NULL COMMENT '基本扩展信息2',
   `JB_Ext3` varchar(255) DEFAULT NULL COMMENT '基本扩展信息3',
   PRIMARY KEY (`JB_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='事故基本信息基本部分';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='事故基本信息基本部分';
 
 -- ----------------------------
 -- Records of shigujibeninfo
 -- ----------------------------
-INSERT INTO `shigujibeninfo` VALUES ('3', '西安铁路局', '陇海线', '繁忙', '窑村', '临潼', '上行', '1048', '528', '陕西', '西安', '临潼', '西安车务段', '区间', 'Z20', '15', '西安', '北京西', '西安客车车辆段', '西安客运段', '1158', '和谐D3D', '329', '西安', '西安', '120', '电气化区段', '自动闭塞', '1062', '18', '43.2', '是', '否', '否', '否', '否', '席志平', '无', '无', '无', '宋万群', '雨', '列出脱轨', '2016-04-15 16:36:00', '2016-04-29 13:39:00', '2016-04-28 14:36:00', '2016-04-12 16:39:00', '2016-04-29 19:40:00', '2016-04-26 16:39:00', '2016-04-15 14:26:08', '2016-04-15 16:40:15', null, null, null, null, null, null);
+INSERT INTO `shigujibeninfo` VALUES ('3', '西安铁路局', '陇海线', '繁忙', '窑村', '临潼', '上行', '1048', '528', '陕西', '西安', '临潼', '西安车务段', '区间', 'Z20', '15', '西安', '北京西', '西安客车车辆段', '西安客运段', '1158', '和谐D3D', '329', '西安', '西安', '120', '电气化区段', '自动闭塞', '1062', '18', '43.2', '是', '否', '否', '否', '否', '席志平', '无', '无', '无', '宋万群', '雨', '列出脱轨', '2016-04-15 16:36:00', '2016-04-29 13:39:00', '2016-04-28 14:36:00', '2016-04-12 16:39:00', '2016-04-29 19:40:00', '2016-04-26 16:39:00', '2016-04-15 14:26:08', '2016-04-25 01:53:25', '108.9376270000', '34.2875680000', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for shiguzerendanweiinfo
@@ -292,7 +293,7 @@ CREATE TABLE `systemloginfo` (
   `SL_Ext2` varchar(255) DEFAULT NULL COMMENT '日志扩展2',
   `SL_Ext3` varchar(255) DEFAULT NULL COMMENT '日志扩展3',
   PRIMARY KEY (`SL_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='系统日志信息';
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='系统日志信息';
 
 -- ----------------------------
 -- Records of systemloginfo
@@ -315,6 +316,9 @@ INSERT INTO `systemloginfo` VALUES ('15', '1', '管理员', '新增', '系统参
 INSERT INTO `systemloginfo` VALUES ('16', '1', '管理员', '删除', '系统参数 D_ID:3, D_Type:技术文档, D_Head:1, D_Subhead:w, D_Content:ds, D_CreateTime:2016/4/9 17:39:33, D_UpdateTime:2016/4/9 17:39:33, D_Ext1:DSA, D_Ext2:FX, D_Ext3:X', '2016-04-09 17:40:02', null, null, null);
 INSERT INTO `systemloginfo` VALUES ('17', '1', '管理员', '删除', '系统参数 User_ID:2, User_No:lisi002, User_Name:李四, User_Phone:15012345678, User_Uint:单位, User_Department:部门, User_Pwd:123456, User_Role:记录员, User_Status:正常, User_CreateTime:2016/4/6 10:04:34, User_RoleID:2, User_Ext1:\'\', User_Ext2:\'\', User_Ext3:\'\'', '2016-04-11 17:03:27', null, null, null);
 INSERT INTO `systemloginfo` VALUES ('18', '1', '管理员', '删除', '系统参数 User_ID:1, User_No:G001, User_Name:管理员, User_Phone:18099998888, User_Uint:单位, User_Department:部门, User_Pwd:123456, User_Role:管理员, User_Status:正常, User_CreateTime:2016/4/6 10:03:49, User_RoleID:1, User_Ext1:\'\', User_Ext2:\'\', User_Ext3:\'\'', '2016-04-11 17:05:22', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('19', '5', '李四', '修改', '事故基本信息 JB_ID:3, JB_ID:3 -> 3, JB_FS_ShangXing:2016/4/15 16:36:00 -> 2016/4/15 16:36:00, JB_FS_XiaXing:2016/4/29 13:39:00 -> 2016/4/29 13:39:00, JB_FJ_ShangXing:2016/4/28 14:36:00 -> 2016/4/28 14:36:00, JB_FJ_XiaXing:2016/4/12 16:39:00 -> 2016/4/12 16:39:00, JB_KT_ShangXing:2016/4/29 19:40:00 -> 2016/4/29 19:40:00, JB_KT_XiaXing:2016/4/26 16:39:00 -> 2016/4/26 16:39:00, JB_CreatTime:2016/4/15 14:26:08 -> 2016/4/15 14:26:08, JB_UpdateTime:2016/4/25 1:33:01 -> 2016/4/25 1:38:25, JB_ZB_X:108.9399270000 -> 108.937052, JB_ZB_Y:34.2952030000 -> 34.305223', '2016-04-25 01:38:26', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('20', '5', '李四', '修改', '系统参数 DD_ID:16, DD_Value:aaaa -> 佛挡杀佛打算', '2016-04-25 01:53:05', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('21', '5', '李四', '修改', '事故基本信息 JB_ID:3, JB_UpdateTime:2016/4/25 1:38:26 -> 2016/4/25 1:53:24, JB_ZB_X:108.9370520000 -> 108.937627, JB_ZB_Y:34.3052230000 -> 34.287568', '2016-04-25 01:53:25', null, null, null);
 
 -- ----------------------------
 -- Table structure for userinfo

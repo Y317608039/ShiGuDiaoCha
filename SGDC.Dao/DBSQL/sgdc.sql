@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2016-04-25 01:55:15
+Date: 2016-04-25 17:40:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -177,7 +177,7 @@ CREATE TABLE `shigujibeninfo` (
   `JB_LC_PeiShu` varchar(25) NOT NULL DEFAULT '' COMMENT '基本列车配属',
   `JB_LC_DanDang` varchar(25) NOT NULL DEFAULT '' COMMENT '基本列车担当',
   `JB_LC_LvKe` varchar(15) NOT NULL DEFAULT '' COMMENT '基本列车旅客',
-  `JB_JC_XingHao` varchar(15) NOT NULL DEFAULT '' COMMENT '基本机车型号s',
+  `JB_JC_XingHao` varchar(15) NOT NULL DEFAULT '' COMMENT '基本机车型号',
   `JB_JC_BianHao` varchar(15) NOT NULL DEFAULT '' COMMENT '基本机车编号',
   `JB_JC_PeiShu` varchar(15) NOT NULL DEFAULT '' COMMENT '基本机车配属',
   `JB_JC_DanDang` varchar(15) NOT NULL DEFAULT '' COMMENT '基本机车担当',
@@ -214,12 +214,14 @@ CREATE TABLE `shigujibeninfo` (
   `JB_Ext2` varchar(255) DEFAULT NULL COMMENT '基本扩展信息2',
   `JB_Ext3` varchar(255) DEFAULT NULL COMMENT '基本扩展信息3',
   PRIMARY KEY (`JB_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='事故基本信息基本部分';
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='事故基本信息基本部分';
 
 -- ----------------------------
 -- Records of shigujibeninfo
 -- ----------------------------
-INSERT INTO `shigujibeninfo` VALUES ('3', '西安铁路局', '陇海线', '繁忙', '窑村', '临潼', '上行', '1048', '528', '陕西', '西安', '临潼', '西安车务段', '区间', 'Z20', '15', '西安', '北京西', '西安客车车辆段', '西安客运段', '1158', '和谐D3D', '329', '西安', '西安', '120', '电气化区段', '自动闭塞', '1062', '18', '43.2', '是', '否', '否', '否', '否', '席志平', '无', '无', '无', '宋万群', '雨', '列出脱轨', '2016-04-15 16:36:00', '2016-04-29 13:39:00', '2016-04-28 14:36:00', '2016-04-12 16:39:00', '2016-04-29 19:40:00', '2016-04-26 16:39:00', '2016-04-15 14:26:08', '2016-04-25 01:53:25', '108.9376270000', '34.2875680000', null, null, null, null);
+INSERT INTO `shigujibeninfo` VALUES ('3', '西安铁路局', '陇海线', '繁忙', '窑村', '临潼', '上行', '1048', '528', '陕西', '西安', '临潼', '西安车务段', '区间', 'Z20', '15', '西安', '北京西', '西安客车车辆段', '西安客运段', '1158', '和谐D3D', '329', '西安', '西安', '120', '电气化区段', '自动闭塞', '1062', '18', '43.2', '是', '否', '否', '否', '否', '席志平', '无', '无', '无', '宋万群', '雨', '列出脱轨', '2016-04-15 16:36:00', '2016-04-29 13:39:00', '2016-04-28 14:36:00', '2016-04-12 16:39:00', '2016-04-29 19:40:00', '2016-04-26 16:39:00', '2016-04-15 14:26:08', '2016-04-25 10:29:40', '109.2758220000', '34.0871950000', null, null, null, null);
+INSERT INTO `shigujibeninfo` VALUES ('4', 'aa', 'bb', '', 'cc', 'dd', 'ee', 'dddd', 'ff', '', '', '', '', '', '22', '', '', '', '', '', '', '33', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', null, null, null, null, null, null, '2016-04-25 10:48:48', '2016-04-25 10:55:41', '108.8197690000', '34.1930260000', null, null, null, null);
+INSERT INTO `shigujibeninfo` VALUES ('5', '1', '2', '', '3', '4', '5', '6', '7', '', '', '', '', '', '8', '', '', '', '', '', '', '9', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', null, null, null, null, null, null, '2016-04-25 10:58:01', '2016-04-25 13:08:25', '109.5136920000', '34.3228750000', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for shiguzerendanweiinfo
@@ -293,7 +295,7 @@ CREATE TABLE `systemloginfo` (
   `SL_Ext2` varchar(255) DEFAULT NULL COMMENT '日志扩展2',
   `SL_Ext3` varchar(255) DEFAULT NULL COMMENT '日志扩展3',
   PRIMARY KEY (`SL_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='系统日志信息';
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COMMENT='系统日志信息';
 
 -- ----------------------------
 -- Records of systemloginfo
@@ -319,6 +321,39 @@ INSERT INTO `systemloginfo` VALUES ('18', '1', '管理员', '删除', '系统参
 INSERT INTO `systemloginfo` VALUES ('19', '5', '李四', '修改', '事故基本信息 JB_ID:3, JB_ID:3 -> 3, JB_FS_ShangXing:2016/4/15 16:36:00 -> 2016/4/15 16:36:00, JB_FS_XiaXing:2016/4/29 13:39:00 -> 2016/4/29 13:39:00, JB_FJ_ShangXing:2016/4/28 14:36:00 -> 2016/4/28 14:36:00, JB_FJ_XiaXing:2016/4/12 16:39:00 -> 2016/4/12 16:39:00, JB_KT_ShangXing:2016/4/29 19:40:00 -> 2016/4/29 19:40:00, JB_KT_XiaXing:2016/4/26 16:39:00 -> 2016/4/26 16:39:00, JB_CreatTime:2016/4/15 14:26:08 -> 2016/4/15 14:26:08, JB_UpdateTime:2016/4/25 1:33:01 -> 2016/4/25 1:38:25, JB_ZB_X:108.9399270000 -> 108.937052, JB_ZB_Y:34.2952030000 -> 34.305223', '2016-04-25 01:38:26', null, null, null);
 INSERT INTO `systemloginfo` VALUES ('20', '5', '李四', '修改', '系统参数 DD_ID:16, DD_Value:aaaa -> 佛挡杀佛打算', '2016-04-25 01:53:05', null, null, null);
 INSERT INTO `systemloginfo` VALUES ('21', '5', '李四', '修改', '事故基本信息 JB_ID:3, JB_UpdateTime:2016/4/25 1:38:26 -> 2016/4/25 1:53:24, JB_ZB_X:108.9370520000 -> 108.937627, JB_ZB_Y:34.3052230000 -> 34.287568', '2016-04-25 01:53:25', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('22', '5', '李四', '修改', '事故基本信息 JB_ID:3, JB_UpdateTime:2016/4/25 1:53:25 -> 2016/4/25 9:37:57, JB_ZB_X:108.9376270000 -> 109.248225, JB_ZB_Y:34.2875680000 -> 34.157963', '2016-04-25 09:37:58', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('23', '5', '李四', '修改', '事故基本信息 JB_ID:3, JB_UpdateTime:2016/4/25 9:37:58 -> 2016/4/25 10:16:07, JB_ZB_X:109.2482250000 -> 109.006186, JB_ZB_Y:34.1579630000 -> 34.248248', '2016-04-25 10:16:08', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('24', '5', '李四', '修改', '事故基本信息 JB_ID:3, JB_UpdateTime:2016/4/25 10:16:08 -> 2016/4/25 10:18:39, JB_ZB_X:109.0061860000 -> 109.163713, JB_ZB_Y:34.2482480000 -> 34.150315', '2016-04-25 10:18:40', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('25', '5', '李四', '修改', '事故基本信息 JB_ID:3, JB_UpdateTime:2016/4/25 10:18:40 -> 2016/4/25 10:20:08, JB_ZB_X:109.1637130000 -> 109.136117, JB_ZB_Y:34.1503150000 -> 34.21482', '2016-04-25 10:20:09', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('26', '5', '李四', '修改', '事故基本信息 JB_ID:3, JB_UpdateTime:2016/4/25 10:20:08 -> 2016/4/25 10:20:17, JB_ZB_X:109.1361170000 -> 109.093573, JB_ZB_Y:34.2148200000 -> 34.20049', '2016-04-25 10:20:18', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('27', '5', '李四', '修改', '事故基本信息 JB_ID:3, JB_UpdateTime:2016/4/25 10:20:18 -> 2016/4/25 10:20:31, JB_ZB_X:109.0935730000 -> 109.143591, JB_ZB_Y:34.2004900000 -> 34.1723', '2016-04-25 10:20:32', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('28', '5', '李四', '修改', '事故基本信息 JB_ID:3, JB_UpdateTime:2016/4/25 10:20:32 -> 2016/4/25 10:20:59, JB_ZB_X:109.1435910000 -> 109.187285, JB_ZB_Y:34.1723000000 -> 34.138364', '2016-04-25 10:20:59', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('29', '5', '李四', '修改', '事故基本信息 JB_ID:3, JB_UpdateTime:2016/4/25 10:20:59 -> 2016/4/25 10:29:40, JB_ZB_X:109.1872850000 -> 109.275822, JB_ZB_Y:34.1383640000 -> 34.087195', '2016-04-25 10:29:40', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('30', '5', '李四', '新增', '事故基本信息 JB_ID:4, JB_DD_Ju:aa, JB_DD_Xian:bb, JB_DD_XianBie:\'\', JB_DD_QiDian:cc, JB_DD_ZhongDian:dd, JB_DD_XingBie:ee, JB_DD_GongLi:dddd, JB_DD_MiShu:ff, JB_DD_Sheng:\'\', JB_DD_Shi:\'\', JB_DD_Qu:\'\', JB_DD_DanWei:\'\', JB_DD_ChangSuo:\'\', JB_LC_CheCi:22, JB_LC_CheHao:\'\', JB_LC_QiDian:\'\', JB_LC_ZhongDian:\'\', JB_LC_PeiShu:\'\', JB_LC_DanDang:\'\', JB_LC_LvKe:\'\', JB_JC_XingHao:33, JB_JC_BianHao:\'\', JB_JC_PeiShu:\'\', JB_JC_DanDang:\'\', JB_JC_SuDu:\'\', JB_JC_GongDian:\'\', JB_JC_XinHao:\'\', JB_BZ_DunWei:\'\', JB_BZ_ShuLiang:\'\', JB_BZ_JiChang:\'\', JB_BZ_ZhongChe:\'\', JB_BZ_KongChe:\'\', JB_BZ_LieWei:\'\', JB_BZ_WeiXianPin:\'\', JB_BZ_ChaoXianChe:\'\', JB_GXR_SiJi:\'\', JB_GXR_FuSiJi:\'\', JB_GXR_YunZhuanCheZhang:\'\', JB_GXR_LieCheZhang:\'\', JB_GXR_ZhiBanYuan:\'\', JB_TianQi:\'\', JB_ShiGuXingZhi:\'\', JB_FS_ShangXing:\'\', JB_FS_XiaXing:\'\', JB_FJ_ShangXing:\'\', JB_FJ_XiaXing:\'\', JB_KT_ShangXing:\'\', JB_KT_XiaXing:\'\', JB_CreatTime:2016/4/25 10:48:48, JB_UpdateTime:2016/4/25 10:48:48, JB_ZB_X:\'\', JB_ZB_Y:\'\', JB_ZB_Z:\'\', JB_Ext1:\'\', JB_Ext2:\'\', JB_Ext3:\'\'', '2016-04-25 10:48:48', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('31', '5', '李四', '修改', '事故基本信息 JB_ID:4, JB_UpdateTime:2016/4/25 10:48:48 -> 2016/4/25 10:55:40, JB_ZB_X:\'\' -> 108.819769, JB_ZB_Y:\'\' -> 34.193026', '2016-04-25 10:55:41', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('32', '5', '李四', '新增', '事故基本信息 JB_ID:5, JB_DD_Ju:1, JB_DD_Xian:2, JB_DD_XianBie:\'\', JB_DD_QiDian:3, JB_DD_ZhongDian:4, JB_DD_XingBie:5, JB_DD_GongLi:6, JB_DD_MiShu:7, JB_DD_Sheng:\'\', JB_DD_Shi:\'\', JB_DD_Qu:\'\', JB_DD_DanWei:\'\', JB_DD_ChangSuo:\'\', JB_LC_CheCi:8, JB_LC_CheHao:\'\', JB_LC_QiDian:\'\', JB_LC_ZhongDian:\'\', JB_LC_PeiShu:\'\', JB_LC_DanDang:\'\', JB_LC_LvKe:\'\', JB_JC_XingHao:9, JB_JC_BianHao:\'\', JB_JC_PeiShu:\'\', JB_JC_DanDang:\'\', JB_JC_SuDu:\'\', JB_JC_GongDian:\'\', JB_JC_XinHao:\'\', JB_BZ_DunWei:\'\', JB_BZ_ShuLiang:\'\', JB_BZ_JiChang:\'\', JB_BZ_ZhongChe:\'\', JB_BZ_KongChe:\'\', JB_BZ_LieWei:\'\', JB_BZ_WeiXianPin:\'\', JB_BZ_ChaoXianChe:\'\', JB_GXR_SiJi:\'\', JB_GXR_FuSiJi:\'\', JB_GXR_YunZhuanCheZhang:\'\', JB_GXR_LieCheZhang:\'\', JB_GXR_ZhiBanYuan:\'\', JB_TianQi:\'\', JB_ShiGuXingZhi:\'\', JB_FS_ShangXing:\'\', JB_FS_XiaXing:\'\', JB_FJ_ShangXing:\'\', JB_FJ_XiaXing:\'\', JB_KT_ShangXing:\'\', JB_KT_XiaXing:\'\', JB_CreatTime:2016/4/25 10:58:00, JB_UpdateTime:2016/4/25 10:58:00, JB_ZB_X:\'\', JB_ZB_Y:\'\', JB_ZB_Z:\'\', JB_Ext1:\'\', JB_Ext2:\'\', JB_Ext3:\'\'', '2016-04-25 10:58:01', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('33', '5', '李四', '修改', '事故基本信息 JB_ID:5, JB_UpdateTime:2016/4/25 10:58:01 -> 2016/4/25 11:14:44, JB_ZB_X:\'\' -> 108.977871, JB_ZB_Y:\'\' -> 34.158142', '2016-04-25 11:14:45', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('34', '5', '李四', '修改', '事故基本信息 JB_ID:5, JB_UpdateTime:2016/4/25 11:14:45 -> 2016/4/25 11:46:17, JB_ZB_X:108.9778710000 -> 108.526562, JB_ZB_Y:34.1581420000 -> 33.979195', '2016-04-25 11:46:17', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('35', '5', '李四', '修改', '事故基本信息 JB_ID:5, JB_UpdateTime:2016/4/25 11:46:17 -> 2016/4/25 12:55:26, JB_ZB_X:108.5265620000 -> 109.095153, JB_ZB_Y:33.9791950000 -> 34.404881', '2016-04-25 12:55:27', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('36', '5', '李四', '修改', '事故基本信息 JB_ID:5, JB_UpdateTime:2016/4/25 12:55:27 -> 2016/4/25 12:55:48, JB_ZB_X:109.0951530000 -> 108.892208, JB_ZB_Y:34.4048810000 -> 34.37676', '2016-04-25 12:55:49', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('37', '5', '李四', '修改', '事故基本信息 JB_ID:5, JB_UpdateTime:2016/4/25 12:55:49 -> 2016/4/25 13:08:25, JB_ZB_X:108.8922080000 -> 109.513692, JB_ZB_Y:34.3767600000 -> 34.322875', '2016-04-25 13:08:26', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('38', '5', '管理员', '登录', '管理员 登录了系统.', '2016-04-25 15:24:04', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('39', '5', '管理员', '退出', '管理员 退出了系统.', '2016-04-25 15:27:52', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('40', '5', '管理员', '登录', '管理员 登录了系统.', '2016-04-25 15:28:13', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('41', '5', '管理员', '退出', '管理员 退出了系统.', '2016-04-25 15:28:16', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('42', '5', '管理员', '登录', '管理员 登录了系统.', '2016-04-25 15:44:52', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('43', '5', '管理员', '退出', '管理员 退出了系统.', '2016-04-25 15:44:57', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('44', '5', '管理员', '登录', '管理员 登录了系统.', '2016-04-25 15:44:58', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('45', '5', '管理员', '登录', '管理员 登录了系统.', '2016-04-25 15:52:32', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('46', '5', '管理员', '登录', '管理员 登录了系统.', '2016-04-25 16:17:00', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('47', '5', '管理员', '登录', '管理员 登录了系统.', '2016-04-25 17:10:38', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('48', '5', '管理员', '登录', '管理员 登录了系统.', '2016-04-25 17:14:28', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('49', '5', '管理员', '修改', '用户管理 重置用户 5 密码', '2016-04-25 17:23:37', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('50', '5', '管理员', '修改', '用户管理 重置用户 5 密码.', '2016-04-25 17:27:38', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('51', '5', '管理员', '退出', '管理员 退出了系统.', '2016-04-25 17:27:51', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('52', '5', '管理员', '登录', '管理员 登录了系统.', '2016-04-25 17:28:02', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('53', '5', '管理员', '退出', '管理员 退出了系统.', '2016-04-25 17:29:59', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('54', '5', '管理员', '登录', '管理员 登录了系统.', '2016-04-25 17:30:03', null, null, null);
 
 -- ----------------------------
 -- Table structure for userinfo
@@ -346,8 +381,8 @@ CREATE TABLE `userinfo` (
 -- Records of userinfo
 -- ----------------------------
 INSERT INTO `userinfo` VALUES ('4', 'zhangsan001', '张三', '18098987878', '机关', '段领导', '4QrcOUm6Wau+VuBX8g+IPg==', '段长', '', '2016-04-11 17:25:18', '1', '', null, null);
-INSERT INTO `userinfo` VALUES ('5', 'lisi002', '李四', '18256457845', '管理员', '管理员', '4QrcOUm6Wau+VuBX8g+IPg==', '管理员', '', '2016-04-11 19:52:55', '1', '是', null, null);
-INSERT INTO `userinfo` VALUES ('6', 'we', 'qq', '029-32323333', '机关', '段领导', '4QrcOUm6Wau+VuBX8g+IPg==', '书记', '', '2016-04-23 11:35:45', '1', '是', null, null);
+INSERT INTO `userinfo` VALUES ('5', 'admin', '管理员', '18256457845', '管理员', '管理员', '4QrcOUm6Wau+VuBX8g+IPg==', '管理员', '', '2016-04-11 19:52:55', '0', '是', null, null);
+INSERT INTO `userinfo` VALUES ('6', 'ddd', 'dd', '029-32323333', '机关', '段领导', '4QrcOUm6Wau+VuBX8g+IPg==', '书记', '', '2016-04-23 11:35:45', '1', '是', null, null);
 
 -- ----------------------------
 -- View structure for v_shigu

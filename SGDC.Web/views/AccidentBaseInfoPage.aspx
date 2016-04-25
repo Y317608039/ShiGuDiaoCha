@@ -61,6 +61,7 @@
 <form id="sgbaseinfo_ditu" style="margin: 0; padding: 0px; color: #333;">
     <div style="position: fixed; margin: 10px 0 0 10px; z-index: 999;">
         <input type="text" id="sgbaseinfodianid" name="sgbaseinfodianid" style="display: none;" />
+        <input type="text" id="sgbaseinfodianzb" name="sgbaseinfodianzb" style="display: none;" />
         <input type="text" id="txtsgbaseinfoeditpoint" name="txtsgbaseinfoeditpoint" class="mapquery" />
         <div style="position: fixed; margin: -45px 0 0 302px;">
             <div class="ditubutton" style="background: url('images/chaxun.png'); background-size: 100%;" title="查询" onclick="sgbaseinfoqueryPoint();"></div>
@@ -74,7 +75,7 @@
         sgdianmap.centerAndZoom(new BMap.Point(108.952, 34.268), 12);
         sgdianmap.addControl(new BMap.MapTypeControl());   //添加地图类型控件
         sgdianmap.setCurrentCity("西安");          // 设置地图显示的城市 此项是必须设置的
-        sgdianmap.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+        sgdianmap.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放  
 
         sgdianmap.addEventListener("click", function (e) {
             var pointx = e.point.lng;
@@ -101,6 +102,8 @@
                                     $('#sgbaseinfo_ditu').dialog('close').form('reset');
                                     $('#gv_sgbaseinfo').datagrid('reload');
                                     $('#gv_sgbaseinfo').datagrid('unselectAll');
+
+                                    showAllPoint();//刷新显示标记点
                                 } else {
                                     $.messager.alert('标记坐标点失败！', '未知错误导致失败，请重试！', 'warning');
                                 }

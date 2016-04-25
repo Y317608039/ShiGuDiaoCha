@@ -35,8 +35,20 @@ public partial class views_AccidentBaseInfoPage : BasePage
                 case "SaveItemPoint":
                     SaveSuJbItemPoint();
                     break;
+                case "GetAllPoint":
+                    GetAllPoint();
+                    break;
             }
         }
+    }
+
+    private void GetAllPoint()
+    {
+        List<shigujibeninfo> listPoint = SgJbBll.GetAll();
+
+        DataContractJsonSerializer json = new DataContractJsonSerializer(listPoint.GetType());
+        json.WriteObject(Response.OutputStream, listPoint);
+        Response.End();
     }
 
     private void SaveSuJbItemPoint()

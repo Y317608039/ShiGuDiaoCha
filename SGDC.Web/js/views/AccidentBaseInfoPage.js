@@ -317,8 +317,31 @@
             editpoint: function () {
                 var rows = $('#gv_sgbaseinfo').datagrid('getSelections');
                 if (rows.length > 0) {
-                    console.log(rows[0]);
-                    $('#sgbaseinfo_ditu').form('load', { sgbaseinfodianid: rows[0].JB_ID }).dialog({ title: "编辑事故点坐标信息" }).dialog('open');
+                    $('#sgbaseinfo_ditu').form('load', {
+                        sgbaseinfodianid: rows[0].JB_ID,
+                        sgbaseinfodianzb: rows[0].JB_ZB_X ? String.format('{0},{1}', rows[0].JB_ZB_X, rows[0].JB_ZB_Y) : ''
+                    }).dialog({ title: "编辑事故点坐标信息" }).dialog('open');
+
+                    //#region 标记坐标点
+                    //var allSgOverlay = sgdianmap.getOverlays();
+                    //for (var i = 0; i < allSgOverlay.length; i++) { sgdianmap.removeOverlay(allSgOverlay[i]); }//删除所有标记
+
+                    sgdianmap.centerAndZoom(new BMap.Point(108.952, 34.268), 12);
+                    sgdianmap.clearOverlays();
+
+                    //标记点坐标
+                    var dianzb = $('#sgbaseinfodianzb').val().split(',');
+                    if (dianzb.length === 2) {
+                        console.log('a' + dianzb[0] + 'b');
+                        var point = new BMap.Point(parseFloat(dianzb[0]), parseFloat(dianzb[1]));
+                        sgdianmap.centerAndZoom(point, 12);
+                        var marker = new BMap.Marker(point);  // 创建标注
+                        sgdianmap.addOverlay(marker);
+
+                        //var label = new BMap.Label("我是文字标注哦", { offset: new BMap.Size(20, -10) });
+                        //marker.setLabel(label);
+                    }
+                    //#endregion
                 } else if (rows.length === 0) {
                     $.messager.alert('警告操作！', '请选择要标记点坐标的记录！', 'warning');
                 }

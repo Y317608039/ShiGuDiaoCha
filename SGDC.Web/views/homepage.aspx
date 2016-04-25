@@ -26,7 +26,7 @@
     }
 </style>
 
-<div id="r-result" style=" position: fixed;margin: 10px 0 0 100px;z-index: 999;">
+<div id="r-result" style="position: fixed; margin: 10px 0 0 100px; z-index: 999;">
     <input type="text" id="suggestId" class="mapquery" />
     <%--<input type="button" id="openDis" value="打开测量工具" onclick="openDis();" />
     <input type="button" id="btnQuery" value="查询" onclick="queryPoint();" />--%>
@@ -42,7 +42,7 @@
 <script type="text/javascript">
     var map = new BMap.Map("container", { mapType: BMAP_HYBRID_MAP }); // 创建地图实例  
     var point = new BMap.Point(108.952, 34.268); // 创建点坐标  
-    map.centerAndZoom(point, 12); // 初始化地图，设置中心点坐标和地图级别
+    map.centerAndZoom(point, 11); // 初始化地图，设置中心点坐标和地图级别
 
     map.addControl(new BMap.NavigationControl());
     //map.addControl(new BMap.NavigationControl());
@@ -170,25 +170,71 @@
         });
         console.log(myValue);
         local.search(myValue);
-    }
+    };
 
 
     //打开测量工具
     function openDis() {
         //map.clearOverlays();
         myDis.open();
-    }
+    };
 
     myDis.addEventListener("drawend", function (e) {
         myDis.close();
     });
+
+    showAllPoint();//刷新显示标记点
+
+    function showAllPoint() {
+        $.post(
+            'views/AccidentBaseInfoPage.aspx',
+            {
+                method: 'GetAllPoint'
+            },
+            function (data, response, status) {
+                data = $.parseJSON(data);
+                console.log(data);
+                map.clearOverlays();
+                if (data) {
+                    var pointminx = 200, pointmaxx = 0, pointminy = 200, pointmaxy = 0;
+                    for (var i = 0; i < data.length; i++) {
+                        //标记点坐标
+                        var diantemp = data[i];
+                        //console.log(diantemp.JB_ZB_X);
+                        if (diantemp.JB_ZB_X && ('' + diantemp.JB_ZB_X).length > 0) {
+                            //console.log(diantemp);
+                            var tempx = parseFloat(diantemp.JB_ZB_X);
+                            var tempy = parseFloat(diantemp.JB_ZB_Y);
+                            pointminx = pointminx > tempx ? tempx : pointminx;
+                            pointmaxx = pointmaxx < tempx ? tempx : pointmaxx;
+
+                            pointminy = pointminy > tempy ? tempy : pointminy;
+                            pointmaxy = pointmaxy < tempy ? tempy : pointmaxy;
+
+                            var point = new BMap.Point(tempx, tempy);
+
+                            //map.centerAndZoom(point, 10);
+                            var marker = new BMap.Marker(point);  // 创建标注
+                            map.addOverlay(marker);
+
+                            var label = new BMap.Label(String.format('标记时间:{0}', DateFormat(diantemp.JB_UpdateTime).substr(0, 16)), { offset: new BMap.Size(20, -10) });
+                            marker.setLabel(label);
+                        }
+                    }
+                    //console.log(pointminx + ',' + pointminy + '          ' + pointmaxx + ',' + pointmaxy);
+                    var bounds = new BMap.Bounds(new BMap.Point(pointminx, pointminy), new BMap.Point(pointmaxx, pointmaxy));
+                    map.centerAndZoom(bounds.getCenter(), 10);
+                    //BMapLib.AreaRestriction.setBounds(map, b);
+
+                }
+            }
+        );
+    }
 </script>
 
 <script type="text/javascript">
     function queryPoint() {
         myValue = $('#suggestId').val();
         setPlace();
-        //ac.confirm();
-    }
-
+    };
 </script>

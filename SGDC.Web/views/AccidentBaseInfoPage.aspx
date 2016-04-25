@@ -56,7 +56,7 @@
         <a href="#" class="easyui-linkbutton" iconcls="icon-redo" plain="true" id="redo" onclick="sgbaseinfo_tool.redo();">取消选择</a>
         <a href="#" class="easyui-linkbutton" iconcls="icon-edit-new" plain="true" id="editpoint" onclick="sgbaseinfo_tool.editpoint();">编辑事故点坐标</a>
     </div>
-</div>
+</div> 
 
 <form id="sgbaseinfo_ditu" style="margin: 0; padding: 0px; color: #333;">
     <div style="position: fixed; margin: 10px 0 0 10px; z-index: 999;">

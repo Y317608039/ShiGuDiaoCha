@@ -178,7 +178,7 @@
                                  'views/UserManage.aspx',
                                 {
                                     method: 'ResetPwd',
-                                    userid: rows[0].UserID
+                                    userid: rows[0].User_ID
                                 },
                                  function (data) {
                                      if (data) {
@@ -189,7 +189,7 @@
                                          $('#gv_UserManage').datagrid('unselectAll');
                                          $.messager.show({
                                              title: '提示',
-                                             msg: data.UserName + ' 密码重置成功！'
+                                             msg: data.User_Name + ' 密码重置成功！'
                                          });
                                      }
                                  }

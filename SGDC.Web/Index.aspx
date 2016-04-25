@@ -12,6 +12,7 @@
     <link href="kindeditor/themes/default/default.css" rel="stylesheet" />
 </head>
 <body class="easyui-layout">
+
     <div data-options="region:'north',border:false" style="overflow: hidden; height: 63px;" class="panel-body panel-body-noheader panel-body-noborder layout-body">
         <div style="width: 100%; height: 63px; position: relative; background-image: url(Images/top_bg1.jpg)">
             <div style="float: left; width: 493px; height: 63px;">
@@ -20,10 +21,10 @@
             <div style="margin: 8px 15px 15px -360px; font-size: 28px; float: left;" class="daoying">铁 路 事 故 调 查 管 理 系 统</div>
             <div style="float: right; height: 50px;">
                 <div style="text-align: center; float: left; padding-top: 35px; padding-left: 10px;">
-                    <a class="easyui-linkbutton" id="btnmodifypwd" data-options="iconCls:'icon-edit'">修改密码</a>
+                    <a class="easyui-linkbutton" id="btnmodifypwd" data-options="iconCls:'icon-edit'" onclick="ChangePwd()">修改密码</a>
                 </div>
                 <div style="text-align: center; float: right; padding-top: 35px; padding-left: 10px;">
-                    <a class="easyui-linkbutton" id="btnexit" data-options="iconCls:'icon-redo'" onclick="exitclick()">退出</a>
+                    <a class="easyui-linkbutton" id="btnexit" data-options="iconCls:'icon-redo'" onclick="Logout()">退出</a>
                 </div>
             </div>
         </div>
@@ -82,17 +83,23 @@
     </div>
     <div data-options="region:'south',border:false" style="height: 20px; background-color: #5c87b2; overflow: hidden; color: #000444; text-align: center; line-height: normal;">
         <div style="padding: 2px; background-color: #4080b0">
-            <span style="color: white;">&nbsp;&nbsp; © All Right <a href="" style="color: white;"
-                target="_blank">有限公司</a> 2015-2015</span> &nbsp;&nbsp; <span style="color: white;"
-                    class="STYLE7" id="ServerDateTime1">建议IE8.0+及分辨率在1024*768及以上使用</span>
+            <span style="color: white;">&nbsp;&nbsp; © All Right <a href="" style="color: white;" target="_blank">有限公司</a> 2015-2015</span> &nbsp;&nbsp; 
+            <span style="color: white;" class="STYLE7" id="ServerDateTime1">建议IE8.0+及分辨率在1024*768及以上使用</span>
         </div>
     </div>
     <div data-options="region:'center',border:false" style="background: #eee; overflow: hidden; border: 1px solid #95B8E7;">
+        <form id="changePwd" style="margin: 0; padding: 5px 0 0 25px; color: #333;">
+            <p>旧 &nbsp;密 码：<input id="oldPwd" name="oldPwd" class="easyui-textbox" data-options="type:'password',required:true,validType:'minLength[3]'" style="width: 160px;"></p>
+            <p>新 &nbsp;密 码：<input id="newPwd" name="newPwd" class="easyui-textbox" data-options="type:'password',required:true,validType:'minLength[3]'" style="width: 160px;"></p>
+            <p>确认密码：<input id="newPwd1" name="newPwd1" class="easyui-textbox" data-options="type:'password',required:true,validType:'minLength[3]'" style="width: 160px;"></p>
+            <p><label id="showvalidinfo" /></p>
+        </form>
         <div id="tabs">
             <div title="首页" style="padding: 0; display: block; overflow: hidden;" href="views/homepage.aspx">
             </div>
         </div>
     </div>
+
     <script type="text/javascript" src="easyui/jquery.min.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Ttudj3z5XkdxXZGlRasVplqGAkLduSx7"></script>
     <script type="text/javascript" src="js/views/DistanceTool_min.js"></script>
@@ -100,10 +107,11 @@
 
     <%-- <script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
     <script type="text/javascript" src="http://api.map.baidu.com/library/AreaRestriction/1.2/src/AreaRestriction_min.js"></script>--%>
-    
+
     <script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="easyui/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="easyui/jquery.form.js"></script>
+    <script type="text/javascript" src="js/helpfun.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <%--<script src="supermap/libs/SuperMap.Include.js"></script>--%>
 </body>

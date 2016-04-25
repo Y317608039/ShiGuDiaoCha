@@ -22,7 +22,16 @@
         margin: 10px 0 0 2px;
         opacity: 0.8;
         float: left;
-        z-index: 5;
+        /*z-index: 1;*/
+    }
+    .showpointinfo {
+        width: 90%;
+        border: 0;
+    }
+    .showpointinfo tr td:nth-child(odd) {
+        text-align: right;
+        font-weight: bold;
+        width: 100px;
     }
 </style>
 
@@ -48,7 +57,8 @@
     //map.addControl(new BMap.NavigationControl());
     map.addControl(new BMap.ScaleControl());
     map.addControl(new BMap.OverviewMapControl());
-    map.addControl(new BMap.MapTypeControl());
+    //map.addControl(new BMap.MapTypeControl());
+    map.addControl(new BMap.MapTypeControl({ mapTypes: [BMAP_NORMAL_MAP, BMAP_HYBRID_MAP] }));
     map.enableScrollWheelZoom();
     map.enableInertialDragging();
     map.enableContinuousZoom();
@@ -193,7 +203,7 @@
             },
             function (data, response, status) {
                 data = $.parseJSON(data);
-                console.log(data);
+                //console.log(data);
                 map.clearOverlays();
                 if (data) {
                     var pointminx = 200, pointmaxx = 0, pointminy = 200, pointmaxy = 0;
@@ -215,7 +225,25 @@
 
                             //map.centerAndZoom(point, 10);
                             var marker = new BMap.Marker(point);  // 创建标注
+
+                            var content = String.format('<table class="showpointinfo"><tr><td>局属:</td><td>{0}</td><td>线属:</td><td>{1}</td></tr><tr><td>起点:</td><td>{2}</td><td>终点:</td><td>{3}</td></tr>'
+                                + '<tr><td>线别:</td><td>{4}</td><td></td><td></td></tr><tr><td>公里数:</td><td>{5}</td><td>米数:</td><td>{6}</td></tr>'
+                                + '<tr><td>车型:</td><td>{7}</td><td>车次:</td><td>{8}</td></tr><tr><td>X坐标:</td><td>{9}</td><td>Y坐标:</td><td>{10}</td></tr></table>'
+                                , diantemp.JB_DD_Ju
+                                , diantemp.JB_DD_Xian
+                                , diantemp.JB_DD_QiDian
+                                , diantemp.JB_DD_ZhongDian
+                                , diantemp.JB_DD_XingBie
+                                , diantemp.JB_DD_GongLi
+                                , diantemp.JB_DD_MiShu
+                                , diantemp.JB_JC_XingHao
+                                , diantemp.JB_LC_CheCi
+                                , diantemp.JB_ZB_X
+                                , diantemp.JB_ZB_Y);
+
                             map.addOverlay(marker);
+
+                            addClickHandler(content, marker);
 
                             var label = new BMap.Label(String.format('标记时间:{0}', DateFormat(diantemp.JB_UpdateTime).substr(0, 16)), { offset: new BMap.Size(20, -10) });
                             marker.setLabel(label);
@@ -229,6 +257,20 @@
                 }
             }
         );
+    }
+    var opts = {
+        width: 280,     // 信息窗口宽度
+        height: 120,     // 信息窗口高度
+        title: "", // 信息窗口标题
+        enableMessage: true//设置允许信息窗发送短息
+    };
+    function addClickHandler(content, marker) {
+        marker.addEventListener('click', function (e) {
+            var p = e.target;
+            var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+            var infoWindow = new BMap.InfoWindow(content, opts);
+            map.openInfoWindow(infoWindow, point);
+        });
     }
 </script>
 

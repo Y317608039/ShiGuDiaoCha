@@ -1,0 +1,42 @@
+﻿* {
+    font-size: 12px;
+    font-family: Tahoma,Verdana,微软雅黑;
+}
+
+.loginbody {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /* 底色 */
+    background-color: #76B7D7;
+    /* chrome 2+, safari 4+; multiple color stops */
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.32, #76B7D7), color-stop(0.66, #BFDFEE), color-stop(0.83, #346B8B));
+    /* chrome 10+, safari 5.1+ */
+    background-image: -webkit-linear-gradient(#76B7D7, #BFDFEE, #346B8B);
+    /* firefox; multiple color stops */
+    background-image: -moz-linear-gradient(top,#76B7D7, #BFDFEE, #346B8B);
+    /* ie 6+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#76B7D7', endColorstr='#BFDFEE');
+    /* ie8 + */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#76B7D7', endColorstr='#BFDFEE')";
+    /* ie10 */
+    background-image: -ms-linear-gradient(#76B7D7, #BFDFEE, #346B8B);
+    /* opera 11.1 */
+    background-image: -o-linear-gradient(#76B7D7, #BFDFEE, #346B8B);
+    /* 标准写法 */
+    background-image: linear-gradient(#76B7D7, #BFDFEE, #346B8B);
+}
+
+.loginbody1 {
+    padding: 0;
+    margin: 0;
+    background-image: url('dlbj2.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.textbox {
+    height: 20px;
+    padding: 0 2px;
+}

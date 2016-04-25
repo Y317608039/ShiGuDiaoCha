@@ -32,8 +32,35 @@ public partial class views_UserManage : BasePage
                 case "QryList":
                     GetUserListInfo();
                     break;
+                case "ResetPwd":
+                    ResetPwd();
+                    break;
             }
         }
+    }
+
+    private void ResetPwd()
+    {
+        string userid = Request["userid"]; userid = userid.Trim();
+
+        userinfo item = null; 
+        if (userid.Length > 0)
+            item = UserBll.Get(Convert.ToInt32(userid));
+        if (item != null)
+        {
+            item.User_Pwd = Encrypt_MD5.Encrypt("123456");
+
+            LogType = SysLogType.修改.ToString();
+        }
+
+        item = UserBll.Save(item);
+
+        LogDesc = string.Format("用户管理 {0}", string.Format("重置用户 {0} 密码.", item.User_ID));
+        WriteSystemLog();
+
+        DataContractJsonSerializer json = new DataContractJsonSerializer(item.GetType());
+        json.WriteObject(Response.OutputStream, item);
+        Response.End();
     }
 
     private void DeleteUserItem()
@@ -111,7 +138,7 @@ public partial class views_UserManage : BasePage
         }
         item = UserBll.Save(item);
 
-        LogDesc = string.Format("系统参数 {0}", CompareEntityProperties(oldItem, item, true));
+        LogDesc = string.Format("用户管理 {0}", CompareEntityProperties(oldItem, item, true));
         WriteSystemLog();
 
         DataContractJsonSerializer json = new DataContractJsonSerializer(item.GetType());

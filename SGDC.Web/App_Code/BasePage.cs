@@ -18,9 +18,8 @@ public class BasePage : Page
     private userinfo user = null;
     protected override void OnPreInit(EventArgs e)
     {
-
-        if (Session[SessionKey] == null) Session[SessionKey] = (new userinfo_Bll()).Get(5);
-        //Response.Redirect(Request.ApplicationPath.TrimEnd('/') + "/Login.aspx", true);
+        if (Session[SessionKey] == null)
+            Response.Redirect(Request.ApplicationPath.TrimEnd('/') + "/Login.aspx", true);
 
         base.OnPreInit(e);
     }

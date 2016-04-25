@@ -23,7 +23,7 @@
             {
                 field: 'JB_DD_Ju',
                 title: '事故点局属',
-                width: 20
+                width: 30
             },
             {
                 field: 'JB_DD_Xian',
@@ -65,6 +65,18 @@
                 field: 'JB_JC_XingHao',
                 title: '机车型号',
                 width: 30
+            },
+            {
+                field: 'JB_ZB_X',
+                title: '经度',
+                width: 30,
+                //formatter: function (value, row, index) { if (value) { return DateFormat(value); } else { return value; } }
+            },
+            {
+                field: 'JB_ZB_Y',
+                title: '纬度',
+                width: 30,
+                //formatter: function (value, row, index) { if (value) { return DateFormat(value); } else { return value; } }
             },
             {
                 field: 'JB_CreatTime',

@@ -35,7 +35,8 @@
             <table style="/*line-height: 30px; border: solid 1px #999; border-radius: 10px; */ width: 700px; margin: -50px auto 0px auto;">
                 <tr>
                     <td colspan="3">
-                        <div style="height: 50px; width: 375px; margin: auto; font-weight: bold; font-size: 28px;opacity: 0.8">铁 路 事 故 调 查 管 理 系 统</div><%--background: url('styles/dl_logo.png'); background-size: 100% 100%;--%>
+                        <div style="height: 70px; width: 495px; margin: auto; background: url('styles/dl_logo.png'); background-size: 100% 100%;"></div>
+                        <%--font-weight: bold; font-size: 28px;opacity: 0.8铁 路 事 故 调 查 管 理 系 统--%>
                     </td>
                 </tr>
                 <tr>

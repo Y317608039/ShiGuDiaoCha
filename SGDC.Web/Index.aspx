@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>铁路事故调查管理系统</title>
     <link type="text/css" href="easyui/themes/default/easyui.css" rel="stylesheet" />
     <link type="text/css" href="easyui/themes/icon.css" rel="stylesheet" />
     <link type="text/css" href="styles/index.css" rel="stylesheet" />
@@ -18,7 +18,7 @@
             <div style="float: left; width: 493px; height: 63px;">
                 <img style="width: 493px; height: 63px;" src="Images/top_bg.png" />
             </div>
-            <div style="margin: 8px 15px 15px -360px; font-size: 28px; float: left;" class="daoying">铁 路 事 故 调 查 管 理 系 统</div>
+            <%--<div style="margin: 8px 15px 15px -360px; font-size: 28px; float: left;" class="daoying">铁 路 事 故 调 查 管 理 系 统</div>--%>
             <div style="float: right; height: 50px;">
                 <div style="text-align: center; float: left; padding-top: 35px; padding-left: 10px;">
                     <a class="easyui-linkbutton" id="btnmodifypwd" data-options="iconCls:'icon-edit'" onclick="ChangePwd()">修改密码</a>

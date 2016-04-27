@@ -73,7 +73,7 @@
         /********************************************************************************************************************************************************/
         var sgdianmap = new BMap.Map("sgbaseinfomap", { mapType: BMAP_HYBRID_MAP });
         sgdianmap.centerAndZoom(new BMap.Point(108.952, 34.268), 12);
-        sgdianmap.addControl(new BMap.MapTypeControl());   //添加地图类型控件
+        sgdianmap.addControl(new BMap.MapTypeControl({ mapTypes: [BMAP_NORMAL_MAP, BMAP_HYBRID_MAP] }));   //添加地图类型控件
         sgdianmap.setCurrentCity("西安");          // 设置地图显示的城市 此项是必须设置的
         sgdianmap.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放  
 

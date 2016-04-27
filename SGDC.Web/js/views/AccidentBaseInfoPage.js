@@ -209,7 +209,7 @@
             edit: function () {
                 var rows = $('#gv_sgbaseinfo').datagrid('getSelections');
                 if (rows.length > 0) {
-                    console.log(rows[0]);
+                    //console.log(rows[0]);
                     $('#sgbaseinfo_edit').form('load', {
                         //#region 填充表单 
                         sgbaseinfoid: rows[0].JB_ID,
@@ -292,6 +292,8 @@
                                         $('#gv_sgbaseinfo').datagrid('load');
                                         $('#gv_sgbaseinfo').datagrid('unselectAll');
                                         $.messager.show({ title: '提示', msg: '1 条记录被删除！' });
+
+                                        showAllPoint();//刷新首页显示标记点
                                     }
                                 });
                         }
@@ -332,7 +334,7 @@
                     //标记点坐标
                     var dianzb = $('#sgbaseinfodianzb').val().split(',');
                     if (dianzb.length === 2) {
-                        console.log('a' + dianzb[0] + 'b');
+                        //console.log('a' + dianzb[0] + 'b');
                         var point = new BMap.Point(parseFloat(dianzb[0]), parseFloat(dianzb[1]));
                         sgdianmap.centerAndZoom(point, 12);
                         var marker = new BMap.Marker(point);  // 创建标注

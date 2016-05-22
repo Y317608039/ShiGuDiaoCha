@@ -19,7 +19,7 @@
             url: 'views/LogInfoPage.aspx',
             fit: true,
             allowCellWrap: true,
-            nowrap:false,
+            nowrap: false,
             fitColumns: true,
             rownumbers: true,
             border: false,
@@ -44,7 +44,14 @@
             }, {
                 field: 'SL_Desc',
                 title: '日志内容',
-                width: 600
+                width: 600,
+                formatter: function (value, row, index) {
+                    if (value) {
+                        var temptext = DelHtmlTags(decodeURIComponent(value));
+                        //if (temptext.length > 1000) return temptext.substr(0, 1000) + '...'; else
+                        return temptext;
+                    } else { return value; }
+                }
             }, {
                 field: 'SL_CreateTime',
                 title: '日志创建时间',

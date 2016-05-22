@@ -209,7 +209,7 @@
           <Property Name="SL_UserID" Type="int" Nullable="false" />
           <Property Name="SL_UserName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="SL_Type" Type="char" MaxLength="25" Nullable="false" />
-          <Property Name="SL_Desc" Type="varchar" MaxLength="3000" Nullable="false" />
+          <Property Name="SL_Desc" Type="text" Nullable="false" />
           <Property Name="SL_CreateTime" Type="timestamp" Precision="0" Nullable="false" />
           <Property Name="SL_Ext1" Type="varchar" MaxLength="255" />
           <Property Name="SL_Ext2" Type="varchar" MaxLength="255" />
@@ -551,12 +551,12 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
           <EntitySet Name="shiguhouguoinfo" EntityType="SGDCModel.shiguhouguoinfo" />
           <EntitySet Name="shiguhouguoshangwanginfo" EntityType="SGDCModel.shiguhouguoshangwanginfo" />
           <EntitySet Name="shiguzerendanweiinfo" EntityType="SGDCModel.shiguzerendanweiinfo" />
-          <EntitySet Name="systemloginfo" EntityType="SGDCModel.systemloginfo" />
           <EntitySet Name="userinfo" EntityType="SGDCModel.userinfo" />
           <EntitySet Name="shiguzereninfo" EntityType="SGDCModel.shiguzereninfo" />
           <EntitySet Name="shigujibeninfo" EntityType="SGDCModel.shigujibeninfo" />
           <EntitySet Name="v_shigu" EntityType="SGDCModel.v_shigu" />
           <EntitySet Name="documentinfo" EntityType="SGDCModel.documentinfo" />
+          <EntitySet Name="systemloginfo" EntityType="SGDCModel.systemloginfo" />
         </EntityContainer>
         <EntityType Name="datadictionaryinfo">
           <Key>
@@ -648,20 +648,6 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
           <Property Name="ZRDW_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ZRDW_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ZRDW_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="systemloginfo">
-          <Key>
-            <PropertyRef Name="SL_ID" />
-          </Key>
-          <Property Name="SL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SL_UserID" Type="Int32" Nullable="false" />
-          <Property Name="SL_UserName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="SL_Type" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="SL_Desc" Type="String" Nullable="false" MaxLength="3000" FixedLength="false" Unicode="false" />
-          <Property Name="SL_CreateTime" Type="DateTime" Nullable="false" />
-          <Property Name="SL_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="SL_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="SL_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="userinfo">
           <Key>
@@ -957,6 +943,20 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
           <Property Name="D_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="D_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="systemloginfo">
+          <Key>
+            <PropertyRef Name="SL_ID" />
+          </Key>
+          <Property Name="SL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SL_UserID" Type="Int32" Nullable="false" />
+          <Property Name="SL_UserName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SL_Type" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="SL_Desc" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="SL_CreateTime" Type="DateTime" Nullable="false" />
+          <Property Name="SL_Ext1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SL_Ext2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SL_Ext3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1055,21 +1055,6 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
                 <ScalarProperty Name="ZRDW_DanWei" ColumnName="ZRDW_DanWei" />
                 <ScalarProperty Name="JB_ID" ColumnName="JB_ID" />
                 <ScalarProperty Name="ZRDW_ID" ColumnName="ZRDW_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="systemloginfo">
-            <EntityTypeMapping TypeName="SGDCModel.systemloginfo">
-              <MappingFragment StoreEntitySet="systemloginfo">
-                <ScalarProperty Name="SL_Ext3" ColumnName="SL_Ext3" />
-                <ScalarProperty Name="SL_Ext2" ColumnName="SL_Ext2" />
-                <ScalarProperty Name="SL_Ext1" ColumnName="SL_Ext1" />
-                <ScalarProperty Name="SL_CreateTime" ColumnName="SL_CreateTime" />
-                <ScalarProperty Name="SL_Desc" ColumnName="SL_Desc" />
-                <ScalarProperty Name="SL_Type" ColumnName="SL_Type" />
-                <ScalarProperty Name="SL_UserName" ColumnName="SL_UserName" />
-                <ScalarProperty Name="SL_UserID" ColumnName="SL_UserID" />
-                <ScalarProperty Name="SL_ID" ColumnName="SL_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1325,6 +1310,21 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
                 <ScalarProperty Name="D_Head" ColumnName="D_Head" />
                 <ScalarProperty Name="D_Type" ColumnName="D_Type" />
                 <ScalarProperty Name="D_ID" ColumnName="D_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="systemloginfo">
+            <EntityTypeMapping TypeName="SGDCModel.systemloginfo">
+              <MappingFragment StoreEntitySet="systemloginfo">
+                <ScalarProperty Name="SL_Ext3" ColumnName="SL_Ext3" />
+                <ScalarProperty Name="SL_Ext2" ColumnName="SL_Ext2" />
+                <ScalarProperty Name="SL_Ext1" ColumnName="SL_Ext1" />
+                <ScalarProperty Name="SL_CreateTime" ColumnName="SL_CreateTime" />
+                <ScalarProperty Name="SL_Desc" ColumnName="SL_Desc" />
+                <ScalarProperty Name="SL_Type" ColumnName="SL_Type" />
+                <ScalarProperty Name="SL_UserName" ColumnName="SL_UserName" />
+                <ScalarProperty Name="SL_UserID" ColumnName="SL_UserID" />
+                <ScalarProperty Name="SL_ID" ColumnName="SL_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

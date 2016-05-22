@@ -4,9 +4,7 @@
         //$('#docdesc').textbox({ multiline: true });  
 
         fillDropDown($('#doctype'), '文档类别');
-        fillDropDown($('#search_doctype'), '文档类别');
-
-        //#endregion
+        fillDropDown($('#search_doctype'), '文档类别'); 
 
         $('#gv_sgdocument').datagrid({
             url: 'views/DocumentPage.aspx',
@@ -45,7 +43,7 @@
                 width: 100,
                 formatter: function (value, row, index) {
                     if (value) {
-                        var temptext = DelHtmlTags(decodeURI(value));
+                        var temptext = DelHtmlTags(decodeURIComponent(value));
                         if (temptext.length > 30) return temptext.substr(0, 30) + '...'; else return temptext;
                     } else { return value; }
                 }

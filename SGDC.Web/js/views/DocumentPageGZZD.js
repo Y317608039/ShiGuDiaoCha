@@ -1,13 +1,13 @@
 ﻿$(
     function () {
-        $('#dochead').validatebox();
+        $('#docheadgzzd').validatebox();
         //$('#docdesc').textbox({ multiline: true });  
 
-        //fillDropDown($('#doctype'), '文档类别');
-        //fillDropDown($('#search_doctype'), '文档类别'); 
+        fillDropDown($('#doctypegzzd'), '文档类别');
+        fillDropDown($('#search_doctypegzzd'), '文档类别');
 
-        $('#gv_sgdocument').datagrid({
-            url: 'views/DocumentPage.aspx',
+        $('#gv_sgdocumentgzzd').datagrid({
+            url: 'views/DocumentPageGZZD.aspx',
             fit: true,
             fitColumns: true,
             rownumbers: true,
@@ -22,7 +22,11 @@
             queryParams: { method: 'QryList' },
             dataType: 'json',
             columns: [[
-            //{ field: 'D_Type', title: '文档类型', width: 20 },
+            {
+                field: 'D_Type',
+                title: '文档类型',
+                width: 20
+            },
             {
                 field: 'D_Head',
                 title: '文档标题',
@@ -57,10 +61,10 @@
                 formatter: function (value, row, index) { if (value) { return DateFormat(value); } else { return value; } }
             }
             ]],
-            toolbar: "#sgdocument_tool"
+            toolbar: "#sgdocument_toolgzzd"
         });
 
-        $('#sgdocumentr_edit').dialog({
+        $('#sgdocumentr_editgzzd').dialog({
             width: 900,
             title: '编辑文档',
             modal: true,
@@ -70,20 +74,20 @@
                 text: '保存',
                 iconCls: 'icon-add-new',
                 handler: function () {
-                    if ($('#sgdocumentr_edit').form('validate')) {
+                    if ($('#sgdocumentr_editgzzd').form('validate')) {
                         $.messager.progress({ text: '正在保存中...' });
                         editor.sync();
-                        console.log($('#docdesc').val());
-                        console.log(encodeURIComponent($('#docdesc').val()));
+                        console.log($('#docdescgzzd').val());
+                        console.log(encodeURIComponent($('#docdescgzzd').val()));
                         $.post(
-                            'views/DocumentPage.aspx',
+                            'views/DocumentPageGZZD.aspx',
                             {
                                 method: 'SaveItem',
-                                docid: $('#docid').val(),
-                                //doctype: $('#doctype').combobox("getText"),
-                                dochead: $('#dochead').val(),
-                                docsubhead: $('#docsubhead').val(),
-                                docdesc: encodeURIComponent($('#docdesc').val())
+                                docid: $('#docidgzzd').val(),
+                                doctype: $('#doctypegzzd').combobox("getText"),
+                                dochead: $('#docheadgzzd').val(),
+                                docsubhead: $('#docsubheadgzzd').val(),
+                                docdesc: encodeURIComponent($('#docdescgzzd').val())
                                 //docext1: $('#docext1').val(),
                                 //docext2: $('#docext2').val(),
                                 //docext3: $('#docext3').val()
@@ -97,9 +101,9 @@
                                         title: '提示',
                                         msg: '保存成功'
                                     });
-                                    $('#sgdocumentr_edit').dialog('close').form('reset');
-                                    $('#gv_sgdocument').datagrid('reload');
-                                    $('#gv_sgdocument').datagrid('unselectAll');
+                                    $('#sgdocumentr_editgzzd').dialog('close').form('reset');
+                                    $('#gv_sgdocumentgzzd').datagrid('reload');
+                                    $('#gv_sgdocumentgzzd').datagrid('unselectAll');
                                 } else {
                                     $.messager.alert('保存失败！', '未知错误导致失败，请重试！', 'warning');
                                 }
@@ -111,18 +115,17 @@
                 text: '取消',
                 iconCls: 'icon-redo',
                 handler: function () {
-                    $('#sgdocumentr_edit').dialog('close').form('reset');
+                    $('#sgdocumentr_editgzzd').dialog('close').form('reset');
                 }
             }],
             onClose: function () {
-                $('#sgdocumentr_edit').form('reset');
-                editor.html('');
+                $('#sgdocumentr_editgzzd').form('reset');
             }
         });
 
-        sgdocument_tool = {
+        sgdocument_toolgzzd = {
             add: function () {
-                $('#sgdocumentr_edit').dialog({
+                $('#sgdocumentr_editgzzd').dialog({
                     title: "添加文档", onOpen: function () {
                         //KindEditor.create('#docdesc', {
                         //    resizeType: 1,
@@ -135,22 +138,22 @@
                         //});
                     }
                 });
-                $('#sgdocumentr_edit').dialog('open');
+                $('#sgdocumentr_editgzzd').dialog('open');
 
-                $('#doctype').focus();
+                $('#doctypegzzd').focus();
             },
             edit: function () {
-                var rows = $('#gv_sgdocument').datagrid('getSelections');
+                var rows = $('#gv_sgdocumentgzzd').datagrid('getSelections');
                 //if (rows.length > 1) {
                 //    $.messager.alert('警告操作！', '编辑记录只能选定一条数据！', 'warning');
                 //} else
                 if (rows.length > 0) {
                     console.log(rows[0]);
                     $('#sgdocumentr_edit').form('load', {
-                        docid: rows[0].D_ID,
-                        //doctype: rows[0].D_Type,
-                        dochead: rows[0].D_Head,
-                        docsubhead: rows[0].D_Subhead
+                        docidgzzd: rows[0].D_ID,
+                        doctypegzzd: rows[0].D_Type,
+                        docheadgzzd: rows[0].D_Head,
+                        docsubheadgzzd: rows[0].D_Subhead
                         //docdesc: rows[0].D_Content,
                         //docext1: rows[0].D_Ext1,
                         //docext2: rows[0].D_Ext2,
@@ -162,29 +165,29 @@
                 }
             },
             reload: function () {
-                $('#gv_sgdocument').datagrid('reload');
+                $('#gv_sgdocumentgzzd').datagrid('reload');
             },
             redo: function () {
-                $('#gv_sgdocument').datagrid('unselectAll');
+                $('#gv_sgdocumentgzzd').datagrid('unselectAll');
             },
             remove: function () {
-                var rows = $('#gv_sgdocument').datagrid('getSelections');
+                var rows = $('#gv_sgdocumentgzzd').datagrid('getSelections');
                 if (rows.length > 0) {
                     $.messager.confirm('确定操作', '您确定要删除所选的记录吗？', function (flag) {
                         if (flag) {
                             $.messager.progress({ text: '正在删除中...' });
                             console.log(rows[0]);
                             $.post(
-                                'views/DocumentPage.aspx',
+                                'views/DocumentPageGZZD.aspx',
                                 {
                                     method: 'DelItem',
-                                    docid: rows[0].D_ID
+                                    docidgzzd: rows[0].D_ID
                                 },
                                 function (data) {
                                     if (data) {
                                         $.messager.progress('close');
-                                        $('#gv_sgdocument').datagrid('load');
-                                        $('#gv_sgdocument').datagrid('unselectAll');
+                                        $('#gv_sgdocumentgzzd').datagrid('load');
+                                        $('#gv_sgdocumentgzzd').datagrid('unselectAll');
                                         $.messager.show({
                                             title: '提示',
                                             msg: '1 条记录被删除！'
@@ -198,20 +201,20 @@
                 }
             },
             resetquery: function () {
-                $('#search_doctype').combobox("setText", "　");
-                $('#search_dochead').val("");
+                $('#search_doctypegzzd').combobox("setText", "　");
+                $('#search_docheadgzzd').val("");
             },
             search: function () {
-                $('#gv_sgdocument').datagrid('unselectAll');
-                $('#gv_sgdocument').datagrid('load', {
+                $('#gv_sgdocumentgzzd').datagrid('unselectAll');
+                $('#gv_sgdocumentgzzd').datagrid('load', {
                     method: 'QryList',
-                    //doctype: $('#search_doctype').combobox("getText"),
-                    dochead: $('#search_dochead').val(),
-                    docdesc: $('#search_docdesc').val()
+                    doctype: $('#search_doctypegzzd').combobox("getText"),
+                    dochead: $('#search_docheadgzzd').val(),
+                    docdesc: $('#search_docdescgzzd').val()
                 });
             }
         };
-        var editor = KindEditor.create('#docdesc', {
+        var editor = KindEditor.create('#docdescgzzd', {
             resizeType: 1,
             allowPreviewEmoticons: false,
             allowImageUpload: false,

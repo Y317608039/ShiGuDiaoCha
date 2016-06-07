@@ -9,7 +9,7 @@ using SGDC.Bll;
 using SGDC.Model;
 using SGDC.Utility;
 
-public partial class views_DocumentPage : BasePage
+public partial class DocumentPageGZZD : BasePage
 {
     /// <summary>
     /// 全局连接对象
@@ -44,7 +44,7 @@ public partial class views_DocumentPage : BasePage
         int page = Convert.ToInt32(Request["page"]) - 1;
         int rows = Convert.ToInt32(Request["rows"]);
 
-        string doctype = "事故案例";//Request["doctype"] ?? "　";
+        string doctype = Request["doctype"] ?? "　";
         string dochead = Request["dochead"] ?? "";
         string docdesc = Request["docdesc"] ?? "";
         dochead = dochead.Trim();
@@ -65,7 +65,7 @@ public partial class views_DocumentPage : BasePage
 
     private void DeletedocItem()
     {
-        string docid = Request["docid"];
+        string docid = Request["docidgzzd"];
         if (docid.Length > 0)
         {
             documentinfo obj = DocBll.Get(Convert.ToInt32(docid));//用于记录删除日志
@@ -88,7 +88,7 @@ public partial class views_DocumentPage : BasePage
     private void SaveDocItem()
     {
         string docid = Request["docid"];
-        string doctype = "事故案例";//Request["doctype"];
+        string doctype = Request["doctype"];
         string dochead = Request["dochead"];
         string docsubhead = Request["docsubhead"];
         string docdesc = Request["docdesc"];
@@ -145,15 +145,5 @@ public partial class views_DocumentPage : BasePage
         DataContractJsonSerializer json = new DataContractJsonSerializer(item.GetType());
         json.WriteObject(Response.OutputStream, item);
         Response.End();
-    }
-
-    //private void GetDocType()
-    //{
-    //    List<DataDictionary> listDocType = AllDataDictionary.Where(d => d.DicType == "文档类别").ToList();
-
-    //    listDocType.Insert(0, new DataDictionary() { DicValue = "　" });
-    //    DataContractJsonSerializer json = new DataContractJsonSerializer(listDocType.GetType());
-    //    json.WriteObject(Response.OutputStream, listDocType);
-    //    Response.End();
-    //}
+    } 
 }

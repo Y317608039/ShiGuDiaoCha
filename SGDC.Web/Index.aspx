@@ -31,26 +31,67 @@
     </div>
     <div data-options="region:'west',split:true" title="功能导航" style="width: 200px;">
         <div id="expandMenu" class="easyui-accordion" data-options="fit:true,border:false">
-            <div title="事故点信息管理" style="padding: 5px;">
+            <div title="事故处理" style="padding: 5px;">
                 <ul>
                     <li>
                         <div class="">
-                            <a ref="Menu0001" href="#" rel="views/AccidentBaseInfoPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">事故基本信息</span></a>
+                            <a ref="Menu0001" href="#" rel="views/AccidentBaseInfoPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">事故地点定位与报警</span></a>
                         </div>
                     </li>
                     <li>
                         <div class="">
-                            <a ref="Menu0002" href="#" rel="views/AccidentZeRenInfoPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">事故后果及责任信息</span></a>
+                            <a ref="Menu0002" href="#" rel="views/AccidentZeRenInfoPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">事故调查处理</span></a>
                         </div>
                     </li>
-                    <%--<li>
+                    <li>
                         <div class="">
-                            <a ref="Menu0003" href="#" rel="views/FillAccidentForm.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">填充表单</span></a>
+                            <a ref="Menu0003" href="#" rel="views/.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">事故调查分析管理</span></a>
                         </div>
-                    </li>--%>
+                    </li>
                 </ul>
             </div>
-            <div title="基础信息管理" style="padding: 5px;">
+            
+            <div title="文档管理" style="padding: 5px;">
+                <ul>
+                    <li>
+                        <div class="">
+                            <a ref="Menu1002" href="#" rel="views/DocumentPageGZZD.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">规章制度</span></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                            <a ref="Menu0002" href="#" rel="views/DocumentPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">电报档案</span></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                            <a ref="Menu1002" href="#" rel="views/DocumentPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">技术文档</span></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                            <a ref="Menu0002" href="#" rel="views/DocumentPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">事故案例</span></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div title="短信管理" style="padding: 5px;">
+                <ul>
+                    <li>
+                        <div class="">
+                            <a ref="Menu1002" href="#" rel="views/.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">短信配置</span></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                            <a ref="Menu0002" href="#" rel="views/.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">短信日志</span></a>
+                        </div>
+                    </li> 
+                </ul>
+            </div>
+
+            <%--<div title="基础信息管理" style="padding: 5px;">
                 <ul>
                     <li>
                         <div class="">
@@ -63,18 +104,32 @@
                         </div>
                     </li>
                 </ul>
-            </div>
-
-            <div title="系统管理" style="padding: 5px;">
+            </div>--%>
+            <div title="专题图处理和编辑" style="padding: 5px;">
                 <ul>
                     <li>
                         <div class="">
-                            <a ref="Menu1001" href="#" rel="views/SystemParmsManage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">系统参数</span></a>
+                            <a ref="Menu1002" href="#" rel="views/UserManage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">历史事故记录</span></a>
                         </div>
-                    </li>
+                    </li> 
+                </ul>
+            </div>
+
+            <div title="系统配置" style="padding: 5px;">
+                <ul>
                     <li>
                         <div class="">
-                            <a ref="Menu1002" href="#" rel="views/LogInfoPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">日志信息</span></a>
+                            <a ref="Menu1001" href="#" rel="views/SystemParmsManage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">系统参数配置</span></a>
+                        </div>
+                    </li>
+                     <li>
+                        <div class="">
+                            <a ref="Menu1002" href="#" rel="views/UserManage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">人员和权限管理</span></a>
+                        </div>
+                    </li> 
+                    <li>
+                        <div class="">
+                            <a ref="Menu1002" href="#" rel="views/LogInfoPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">系统日志</span></a>
                         </div>
                     </li>
                 </ul>

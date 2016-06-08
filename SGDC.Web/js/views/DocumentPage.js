@@ -137,7 +137,7 @@
                 });
                 $('#sgdocumentr_edit').dialog('open');
 
-                $('#doctype').focus();
+                $('#dochead').focus();
             },
             edit: function () {
                 var rows = $('#gv_sgdocument').datagrid('getSelections');

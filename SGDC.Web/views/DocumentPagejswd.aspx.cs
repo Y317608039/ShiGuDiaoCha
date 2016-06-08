@@ -9,7 +9,7 @@ using SGDC.Bll;
 using SGDC.Model;
 using SGDC.Utility;
 
-public partial class DocumentPageGZZD : BasePage
+public partial class DocumentPagejswd : BasePage
 {
     /// <summary>
     /// 全局连接对象
@@ -44,7 +44,7 @@ public partial class DocumentPageGZZD : BasePage
         int page = Convert.ToInt32(Request["page"]) - 1;
         int rows = Convert.ToInt32(Request["rows"]);
 
-        string doctype = "规章制度";//Request["doctype"] ?? "　";
+        string doctype = "技术文档";//Request["doctype"] ?? "　";
         string dochead = Request["dochead"] ?? "";
         string docdesc = Request["docdesc"] ?? "";
         dochead = dochead.Trim();
@@ -65,7 +65,7 @@ public partial class DocumentPageGZZD : BasePage
 
     private void DeletedocItem()
     {
-        string docid = Request["docidgzzd"];
+        string docid = Request["docidjswd"];
         if (docid.Length > 0)
         {
             documentinfo obj = DocBll.Get(Convert.ToInt32(docid));//用于记录删除日志
@@ -88,7 +88,7 @@ public partial class DocumentPageGZZD : BasePage
     private void SaveDocItem()
     {
         string docid = Request["docid"];
-        string doctype = "规章制度";//Request["doctype"];
+        string doctype = "技术文档";//Request["doctype"];
         string dochead = Request["dochead"];
         string docsubhead = Request["docsubhead"];
         string docdesc = Request["docdesc"]; 

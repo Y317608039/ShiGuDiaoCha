@@ -60,12 +60,12 @@
                     </li>
                     <li>
                         <div class="">
-                            <a ref="Menu0002" href="#" rel="views/DocumentPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">电报档案</span></a>
+                            <a ref="Menu0002" href="#" rel="views/DocumentPagedbda.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">电报档案</span></a>
                         </div>
                     </li>
                     <li>
                         <div class="">
-                            <a ref="Menu1002" href="#" rel="views/DocumentPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">技术文档</span></a>
+                            <a ref="Menu1002" href="#" rel="views/DocumentPagejswd.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">技术文档</span></a>
                         </div>
                     </li>
                     <li>

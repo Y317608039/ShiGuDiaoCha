@@ -80,7 +80,7 @@
                 <ul>
                     <li>
                         <div class="">
-                            <a ref="Menu1002" href="#" rel="views/.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">短信配置</span></a>
+                            <a ref="Menu1002" href="#" rel="views/MessageConfig.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">短信配置</span></a>
                         </div>
                     </li>
                     <li>

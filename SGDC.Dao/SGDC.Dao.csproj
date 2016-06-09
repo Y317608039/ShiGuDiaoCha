@@ -58,6 +58,7 @@
       <DependentUpon>SGModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Svc\datadictionaryinfo_Dao.cs" />
+    <Compile Include="Svc\messageloginfo_Dao.cs" />
     <Compile Include="Svc\shiguhouguoinfo_Dao.cs" />
     <Compile Include="Svc\documentinfo_Dao.cs" />
     <Compile Include="Svc\shiguhouguoshangwanginfo_Dao.cs" />

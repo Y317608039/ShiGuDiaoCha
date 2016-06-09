@@ -54,6 +54,8 @@ public partial class SGDCEntities : DbContext
 
     public DbSet<systemloginfo> systemloginfo { get; set; }
 
+    public DbSet<messageloginfo> messageloginfo { get; set; }
+
 }
 
 }

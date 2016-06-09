@@ -45,7 +45,11 @@
     <Compile Include="documentinfo.cs">
       <DependentUpon>SGModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="messageloginfo.cs">
+      <DependentUpon>SGModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ObjExt\datadictionaryinfo.cs" />
+    <Compile Include="ObjExt\messageloginfo.cs" />
     <Compile Include="ObjExt\documentinfo.cs" />
     <Compile Include="ObjExt\shiguhouguoinfo.cs" />
     <Compile Include="ObjExt\shiguhouguoshangwanginfo.cs" />

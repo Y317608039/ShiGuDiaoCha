@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2016-06-08 16:58:01
+Date: 2016-06-09 10:46:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -63,7 +63,7 @@ CREATE TABLE `documentinfo` (
   `D_Ext2` varchar(255) DEFAULT NULL COMMENT '文档扩展信息2',
   `D_Ext3` varchar(255) DEFAULT NULL COMMENT '文档扩展信息3',
   PRIMARY KEY (`D_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='基本文档信息';
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='基本文档信息';
 
 -- ----------------------------
 -- Records of documentinfo
@@ -73,6 +73,29 @@ INSERT INTO `documentinfo` VALUES ('2', '规章制度', 'Web技术与开发', '�
 INSERT INTO `documentinfo` VALUES ('5', '事故案例', 'qqq', 'www', 'eeeee%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%88%91%E7%9A%84%E7%82%B9%E7%82%B9%E6%BB%B4%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E6%BB%B4%E7%AD%94%E7%AD%94%E6%88%91%E9%97%AE%E9%97%AE%E6%88%91', '2016-06-07 22:29:40', '2016-06-07 22:46:11', null, null, null);
 INSERT INTO `documentinfo` VALUES ('6', '技术文档', 'jishuwendang', 'ddsf', 'fdsfdsf', '2016-06-07 22:37:49', '2016-06-07 22:37:49', null, null, null);
 INSERT INTO `documentinfo` VALUES ('7', '规章制度', '规章制度qq', 'fdsfds', '%3Cp%3E%0A%09fdasfafdsff%26nbsp%3B%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09f%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09a%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09fsd%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09a%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09f%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09sda%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09f%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09sdafas%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09%3Cbr%20%2F%3E%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09fds%0A%3C%2Fp%3E', '2016-06-08 16:11:21', '2016-06-08 16:18:57', null, null, null);
+
+-- ----------------------------
+-- Table structure for messageloginfo
+-- ----------------------------
+DROP TABLE IF EXISTS `messageloginfo`;
+CREATE TABLE `messageloginfo` (
+  `ML_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '短信日志标识ID',
+  `ML_JB_ID` int(11) NOT NULL DEFAULT '0' COMMENT '短信日志事故基本信息ID',
+  `ML_Phone` varchar(15) NOT NULL DEFAULT '' COMMENT '短信日志电话',
+  `ML_Desc` varchar(300) NOT NULL DEFAULT '' COMMENT '短信日志内容',
+  `ML_SendUserID` int(11) NOT NULL DEFAULT '0' COMMENT '短信日志发送人ID',
+  `ML_SendUserName` varchar(25) NOT NULL DEFAULT '' COMMENT '短信日志发送人姓名',
+  `ML_SendTime` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '短信日志发送时间',
+  `ML_Status` varchar(10) NOT NULL DEFAULT '' COMMENT '短信日志状态',
+  `ML_Ext1` varchar(255) DEFAULT NULL COMMENT '短信日志扩展信息1',
+  `ML_Ext2` varchar(255) DEFAULT NULL COMMENT '短信日志扩展信息2',
+  `ML_Ext3` varchar(255) DEFAULT NULL COMMENT '短信日志扩展信息3',
+  PRIMARY KEY (`ML_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of messageloginfo
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for shiguhouguoinfo
@@ -305,7 +328,7 @@ CREATE TABLE `systemloginfo` (
   `SL_Ext2` varchar(255) DEFAULT NULL COMMENT '日志扩展2',
   `SL_Ext3` varchar(255) DEFAULT NULL COMMENT '日志扩展3',
   PRIMARY KEY (`SL_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=187 DEFAULT CHARSET=utf8 COMMENT='系统日志信息';
+) ENGINE=InnoDB AUTO_INCREMENT=188 DEFAULT CHARSET=utf8 COMMENT='系统日志信息';
 
 -- ----------------------------
 -- Records of systemloginfo
@@ -496,6 +519,7 @@ INSERT INTO `systemloginfo` VALUES ('183', '5', '管理员', '删除', '文档 D
 INSERT INTO `systemloginfo` VALUES ('184', '5', '管理员', '删除', '文档 D_ID:4, D_Type:电报档案, D_Head:ddd, D_Subhead:d, D_Content:%3Cp%3E%0A%09dacsx%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09ds%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09vc%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09dsdddd%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09s%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09%3Cbr%20%2F%3E%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09d%0A%3C%2Fp%3E, D_CreateTime:2016/6/6 14:24:21, D_UpdateTime:2016/6/6 14:24:21, D_Ext1:\'\', D_Ext2:\'\', D_Ext3:\'\'', '2016-06-08 16:38:12', null, null, null);
 INSERT INTO `systemloginfo` VALUES ('185', '5', '管理员', '删除', '文档 D_ID:14, D_Type:电报档案, D_Head:qq1, D_Subhead:ww2, D_Content:ee3, D_CreateTime:2016/6/8 16:36:50, D_UpdateTime:2016/6/8 16:37:01, D_Ext1:\'\', D_Ext2:\'\', D_Ext3:\'\'', '2016-06-08 16:38:15', null, null, null);
 INSERT INTO `systemloginfo` VALUES ('186', '5', '管理员', '删除', '文档 D_ID:13, D_Type:规章制度, D_Head:111, D_Subhead:222, D_Content:%3Cp%3E%0A%093333%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09%3Cbr%20%2F%3E%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09d%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09d%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09d%0A%3C%2Fp%3E%0A%3Cp%3E%0A%09d%0A%3C%2Fp%3E, D_CreateTime:2016/6/8 16:36:07, D_UpdateTime:2016/6/8 16:36:19, D_Ext1:\'\', D_Ext2:\'\', D_Ext3:\'\'', '2016-06-08 16:38:19', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('187', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-09 09:40:58', null, null, null);
 
 -- ----------------------------
 -- Table structure for userinfo

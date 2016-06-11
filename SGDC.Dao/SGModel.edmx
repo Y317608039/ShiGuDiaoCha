@@ -224,6 +224,7 @@
           <Property Name="ZT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="JB_ID" Type="int" Nullable="false" />
           <Property Name="ZT_Type" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ZT_FilePath" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="ZT_Desc" Type="text" Nullable="false" />
           <Property Name="ZT_CreateUserID" Type="int" Nullable="false" />
           <Property Name="ZT_CreateUser" Type="varchar" MaxLength="25" Nullable="false" />
@@ -1015,6 +1016,7 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
           <Property Name="ZT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="JB_ID" Type="Int32" Nullable="false" />
           <Property Name="ZT_Type" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ZT_FilePath" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="ZT_Desc" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="ZT_CreateUserID" Type="Int32" Nullable="false" />
           <Property Name="ZT_CreateUser" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
@@ -1421,6 +1423,7 @@ FROM `v_shigu` AS `v_shigu`</DefiningQuery>
                 <ScalarProperty Name="ZT_CreateUser" ColumnName="ZT_CreateUser" />
                 <ScalarProperty Name="ZT_CreateUserID" ColumnName="ZT_CreateUserID" />
                 <ScalarProperty Name="ZT_Desc" ColumnName="ZT_Desc" />
+                <ScalarProperty Name="ZT_FilePath" ColumnName="ZT_FilePath" />
                 <ScalarProperty Name="ZT_Type" ColumnName="ZT_Type" />
                 <ScalarProperty Name="JB_ID" ColumnName="JB_ID" />
                 <ScalarProperty Name="ZT_ID" ColumnName="ZT_ID" />

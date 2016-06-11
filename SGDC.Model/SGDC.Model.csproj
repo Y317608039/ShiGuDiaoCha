@@ -60,7 +60,7 @@
     <Compile Include="ObjExt\systemloginfo.cs" />
     <Compile Include="ObjExt\userinfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SGModel.cs">
+    <Compile Include="SGModel1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SGModel.tt</DependentUpon>

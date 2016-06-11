@@ -24,6 +24,8 @@ public partial class shiguzhuantiinfo
 
     public string ZT_Type { get; set; }
 
+    public string ZT_FilePath { get; set; }
+
     public string ZT_Desc { get; set; }
 
     public int ZT_CreateUserID { get; set; }

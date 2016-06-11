@@ -348,6 +348,15 @@
                     $.messager.alert('警告操作！', '请选择要标记点坐标的记录！', 'warning');
                 }
 
+            },
+            sendmsg: function () {
+
+                var rows = $('#gv_sgbaseinfo').datagrid('getSelections');
+                if (rows.length > 0) {
+
+                } else if (rows.length === 0) {
+                    $.messager.alert('警告操作！', '请选择要发送短息的记录！', 'warning');
+                }
             }
         };
 

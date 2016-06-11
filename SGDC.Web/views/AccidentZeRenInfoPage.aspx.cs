@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Web;
@@ -38,8 +39,135 @@ public partial class views_AccidentZeRenInfoPage : BasePage
                 case "QryList":
                     GetSgZrListInfo();
                     break;
+                case "SaveFile":
+                    UpLoadFiles();
+                    break;
+                case "SaveUploadFileInfo":
+                    SaveUploadFileInfo();
+                    break;
+                case "DelDocFileInfo":
+                    DelDocFileInfo();
+                    break;
             }
         }
+    }
+
+    private void DelDocFileInfo()
+    {
+        string sgzereninfoid = Request["sgzereninfoid"];
+        string doctype = Request["doctype"];
+
+        if (sgzereninfoid.Length > 0)
+        {
+            shiguzereninfo objSgZR = new shiguzereninfo_Bll().Get(Convert.ToInt32(sgzereninfoid));
+            if (objSgZR != null)
+            {
+                string strFileName = string.Empty;
+                switch (doctype)
+                {
+                    case "事故调查报告": strFileName = objSgZR.ZR_ShiGuDiaoChaBaoGao; objSgZR.ZR_ShiGuDiaoChaBaoGao = string.Empty; break;
+                    case "现场调查有关资料": strFileName = objSgZR.ZR_XianChangDianChaZiLiao; objSgZR.ZR_XianChangDianChaZiLiao = string.Empty; break;
+                    case "损失计算材料": strFileName = objSgZR.ZR_SunShiJiSuanZiLiao; objSgZR.ZR_SunShiJiSuanZiLiao = string.Empty; break;
+                    case "事故认定书": strFileName = objSgZR.ZR_ShiGuRenDingShu; objSgZR.ZR_ShiGuRenDingShu = string.Empty; break;
+                    case "安监报二": strFileName = objSgZR.ZR_AnJianBaoEr; objSgZR.ZR_AnJianBaoEr = string.Empty; break;
+                    case "特派办调查报告": strFileName = objSgZR.ZR_TePaiBanDiaoChaBaoGao; objSgZR.ZR_TePaiBanDiaoChaBaoGao = string.Empty; break;
+                    case "深度调查报告": strFileName = objSgZR.ZR_SheDuDiaoChaBaoGao; objSgZR.ZR_SheDuDiaoChaBaoGao = string.Empty; break;
+                    case "其它": strFileName = objSgZR.ZR_QiTa; objSgZR.ZR_QiTa = string.Empty; break;
+                }
+
+                objSgZR = new shiguzereninfo_Bll().Save(objSgZR);
+
+                string path = string.Format("~/docfile/{0}/{1}", objSgZR.JB_ID, strFileName);
+                File.Delete(Server.MapPath(path));
+
+                DataContractJsonSerializer json = new DataContractJsonSerializer(objSgZR.GetType());
+                json.WriteObject(Response.OutputStream, objSgZR);
+                Response.End();
+            }
+        }
+    }
+
+    private void SaveUploadFileInfo()
+    {
+        string sgbaseinfoid = Request["sgbaseinfoid"];
+        string sgzereninfoid = Request["sgzereninfoid"];
+        string doctype = Request["doctype"];
+        string filename = Request["filename"];
+        shiguzereninfo objSgZR;
+        if (sgzereninfoid.Length == 0)
+        {
+            objSgZR = new shiguzereninfo
+            {
+                JB_ID = Convert.ToInt32(sgbaseinfoid),
+                ZR_ZeRenDanWei = string.Empty,
+                ZR_ZeRenDanWeiShuXing = string.Empty,
+                ZR_ZeRenBuMen = string.Empty,
+                ZR_ZeRenChengDu = string.Empty,
+                ZR_YuanYinLeiBie = string.Empty,
+                ZR_ShiGuLeiBie = string.Empty,
+                ZR_ShiGuDengJi = string.Empty,
+                ZR_ZhiBanJianCha = string.Empty,
+                ZR_BaoGaoCiShu = string.Empty,
+                ZR_ShiGuDiaoChaBaoGao = string.Empty,
+                ZR_XianChangDianChaZiLiao = string.Empty,
+                ZR_SunShiJiSuanZiLiao = string.Empty,
+                ZR_ShiGuRenDingShu = string.Empty,
+                ZR_AnJianBaoEr = string.Empty,
+                ZR_QiTa = string.Empty,
+                ZR_TePaiBanDiaoChaBaoGao = string.Empty,
+                ZR_SheDuDiaoChaBaoGao = string.Empty
+            };
+        }
+        else
+        {
+            objSgZR = new shiguzereninfo_Bll().Get(Convert.ToInt32(sgzereninfoid));
+            if (objSgZR != null)
+            {
+                switch (doctype)
+                {
+                    case "事故调查报告": objSgZR.ZR_ShiGuDiaoChaBaoGao = filename; break;
+                    case "现场调查有关资料": objSgZR.ZR_XianChangDianChaZiLiao = filename; break;
+                    case "损失计算材料": objSgZR.ZR_SunShiJiSuanZiLiao = filename; break;
+                    case "事故认定书": objSgZR.ZR_ShiGuRenDingShu = filename; break;
+                    case "安监报二": objSgZR.ZR_AnJianBaoEr = filename; break;
+                    case "特派办调查报告": objSgZR.ZR_TePaiBanDiaoChaBaoGao = filename; break;
+                    case "深度调查报告": objSgZR.ZR_SheDuDiaoChaBaoGao = filename; break;
+                    case "其它": objSgZR.ZR_QiTa = filename; break;
+                }
+            }
+        }
+        objSgZR = new shiguzereninfo_Bll().Save(objSgZR);
+        DataContractJsonSerializer json = new DataContractJsonSerializer(objSgZR.GetType());
+        json.WriteObject(Response.OutputStream, objSgZR);
+        Response.End();
+    }
+
+    private void UpLoadFiles()
+    {
+        HttpPostedFile file = Request.Files["fileZR_DocFile"];
+        string sgbaseinfoid = Request.Params["sgbaseinfoid"];
+        if (file != null && file.ContentLength > 0)
+        {
+            //获取上传文件的名称  
+            string s = file.FileName;
+            //截取获得上传文件的名称(ie上传会把绝对路径也连带上，这里只得到文件的名称)  
+            int intIndex = s.LastIndexOf('.');
+            string fileName = s.Substring(0, intIndex);
+            string fileType = s.Substring(intIndex);
+            string strFileName = string.Format("{0}_{1}{2}", fileName, DateTime.Now.ToString("yyyyMMddhhmmssms"), fileType);
+            string strDir = "~/docfile/" + sgbaseinfoid;
+            strDir = Server.MapPath(strDir);
+            if (!Directory.Exists(strDir)) Directory.CreateDirectory(strDir);
+            string path = strDir + "/" + strFileName;
+            //保存文件  
+            file.SaveAs(path);
+            //HttpRuntime.AppDomainAppVirtualPath主要是获取应用程序虚拟路径名称，因为响应给页面时不会自动添加而导致无法显示图片
+            //Response.Write(path.Substring(1));//path.Substring(1)用来去除第一个~字符
+            Response.Write(strFileName);
+            Response.End();
+
+        }
+        //return strReturn;
     }
 
     private void GetSgZrListInfo()
@@ -73,7 +201,23 @@ public partial class views_AccidentZeRenInfoPage : BasePage
         {
             v_shigu obj = VSgBll.GetByFilter(new List<Filter> { new Filter { Name = "JB_ID", Op = FilterOp.Equals, Value = Convert.ToInt32(sgbaseinfoid) } }).First();//用于记录删除日志
 
-            SgHgBll.Remove(obj.HG_ID); SgZrBll.Remove(obj.ZR_ID);
+            SgHgBll.Remove(obj.HG_ID);
+            if (obj.ZR_ID > 0)
+            {
+                if (obj.ZR_ShiGuDiaoChaBaoGao.Length > 0) { string path = string.Format("~/docfile/{0}/{1}", obj.JB_ID, obj.ZR_ShiGuDiaoChaBaoGao); File.Delete(Server.MapPath(path)); }
+                if (obj.ZR_XianChangDianChaZiLiao.Length > 0) { string path = string.Format("~/docfile/{0}/{1}", obj.JB_ID, obj.ZR_XianChangDianChaZiLiao); File.Delete(Server.MapPath(path)); }
+                if (obj.ZR_SunShiJiSuanZiLiao.Length > 0) { string path = string.Format("~/docfile/{0}/{1}", obj.JB_ID, obj.ZR_SunShiJiSuanZiLiao); File.Delete(Server.MapPath(path)); }
+                if (obj.ZR_ShiGuRenDingShu.Length > 0) { string path = string.Format("~/docfile/{0}/{1}", obj.JB_ID, obj.ZR_ShiGuRenDingShu); File.Delete(Server.MapPath(path)); }
+                if (obj.ZR_AnJianBaoEr.Length > 0) { string path = string.Format("~/docfile/{0}/{1}", obj.JB_ID, obj.ZR_AnJianBaoEr); File.Delete(Server.MapPath(path)); }
+                if (obj.ZR_QiTa.Length > 0) { string path = string.Format("~/docfile/{0}/{1}", obj.JB_ID, obj.ZR_QiTa); File.Delete(Server.MapPath(path)); }
+                if (obj.ZR_TePaiBanDiaoChaBaoGao.Length > 0) { string path = string.Format("~/docfile/{0}/{1}", obj.JB_ID, obj.ZR_TePaiBanDiaoChaBaoGao); File.Delete(Server.MapPath(path)); }
+                if (obj.ZR_SheDuDiaoChaBaoGao.Length > 0) { string path = string.Format("~/docfile/{0}/{1}", obj.JB_ID, obj.ZR_SheDuDiaoChaBaoGao); File.Delete(Server.MapPath(path)); }
+                string strDir = string.Format("~/docfile/{0}", obj.JB_ID);
+                strDir = Server.MapPath(strDir);
+                //if (Directory.GetFiles(strDir).Length == 0) 
+                Directory.Delete(strDir, true);
+                SgZrBll.Remove(obj.ZR_ID);
+            }
 
             LogType = BasePage.SysLogType.删除.ToString();
             LogDesc = string.Format("事故后果及责任信息 {0}", CompareEntityProperties(null, obj, false));
@@ -287,14 +431,14 @@ public partial class views_AccidentZeRenInfoPage : BasePage
             sgZrItem.ZR_ZhiBanJianCha = txtZR_ZhiBanJianCha;
             sgZrItem.ZR_TianBaoShiJian = dtbZR_TianBaoShiJian.Length > 0 ? Convert.ToDateTime(dtbZR_TianBaoShiJian) : dtNow;
             sgZrItem.ZR_BaoGaoCiShu = txtZR_BaoGaoCiShu;
-            sgZrItem.ZR_ShiGuDiaoChaBaoGao = txtZR_ShiGuDiaoChaBaoGao;
-            sgZrItem.ZR_XianChangDianChaZiLiao = txtZR_XianChangDianChaZiLiao;
-            sgZrItem.ZR_SunShiJiSuanZiLiao = txtZR_SunShiJiSuanZiLiao;
-            sgZrItem.ZR_ShiGuRenDingShu = txtZR_ShiGuRenDingShu;
-            sgZrItem.ZR_AnJianBaoEr = txtZR_AnJianBaoEr;
-            sgZrItem.ZR_QiTa = txtZR_QiTa;
-            sgZrItem.ZR_TePaiBanDiaoChaBaoGao = txtZR_TePaiBanDiaoChaBaoGao;
-            sgZrItem.ZR_SheDuDiaoChaBaoGao = txtZR_SheDuDiaoChaBaoGao;
+            //sgZrItem.ZR_ShiGuDiaoChaBaoGao = txtZR_ShiGuDiaoChaBaoGao;
+            //sgZrItem.ZR_XianChangDianChaZiLiao = txtZR_XianChangDianChaZiLiao;
+            //sgZrItem.ZR_SunShiJiSuanZiLiao = txtZR_SunShiJiSuanZiLiao;
+            //sgZrItem.ZR_ShiGuRenDingShu = txtZR_ShiGuRenDingShu;
+            //sgZrItem.ZR_AnJianBaoEr = txtZR_AnJianBaoEr;
+            //sgZrItem.ZR_QiTa = txtZR_QiTa;
+            //sgZrItem.ZR_TePaiBanDiaoChaBaoGao = txtZR_TePaiBanDiaoChaBaoGao;
+            //sgZrItem.ZR_SheDuDiaoChaBaoGao = txtZR_SheDuDiaoChaBaoGao;
             #endregion
 
             LogType = SysLogType.修改.ToString();
@@ -315,14 +459,14 @@ public partial class views_AccidentZeRenInfoPage : BasePage
                 ZR_ZhiBanJianCha = txtZR_ZhiBanJianCha,
                 ZR_TianBaoShiJian = dtbZR_TianBaoShiJian.Length > 0 ? Convert.ToDateTime(dtbZR_TianBaoShiJian) : dtNow,
                 ZR_BaoGaoCiShu = txtZR_BaoGaoCiShu,
-                ZR_ShiGuDiaoChaBaoGao = txtZR_ShiGuDiaoChaBaoGao,
-                ZR_XianChangDianChaZiLiao = txtZR_XianChangDianChaZiLiao,
-                ZR_SunShiJiSuanZiLiao = txtZR_SunShiJiSuanZiLiao,
-                ZR_ShiGuRenDingShu = txtZR_ShiGuRenDingShu,
-                ZR_AnJianBaoEr = txtZR_AnJianBaoEr,
-                ZR_QiTa = txtZR_QiTa,
-                ZR_TePaiBanDiaoChaBaoGao = txtZR_TePaiBanDiaoChaBaoGao,
-                ZR_SheDuDiaoChaBaoGao = txtZR_SheDuDiaoChaBaoGao,
+                ZR_ShiGuDiaoChaBaoGao = string.Empty,
+                ZR_XianChangDianChaZiLiao = string.Empty,
+                ZR_SunShiJiSuanZiLiao = string.Empty,
+                ZR_ShiGuRenDingShu = string.Empty,
+                ZR_AnJianBaoEr = string.Empty,
+                ZR_QiTa = string.Empty,
+                ZR_TePaiBanDiaoChaBaoGao = string.Empty,
+                ZR_SheDuDiaoChaBaoGao = string.Empty,
             };
             #endregion
 

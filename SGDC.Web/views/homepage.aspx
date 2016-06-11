@@ -24,15 +24,17 @@
         float: left;
         /*z-index: 1;*/
     }
+
     .showpointinfo {
         width: 90%;
         border: 0;
     }
-    .showpointinfo tr td:nth-child(odd) {
-        text-align: right;
-        font-weight: bold;
-        width: 100px;
-    }
+
+        .showpointinfo tr td:nth-child(odd) {
+            text-align: right;
+            font-weight: bold;
+            width: 100px;
+        }
 </style>
 
 <div id="r-result" style="position: fixed; margin: 10px 0 0 100px; z-index: 999;">
@@ -65,7 +67,7 @@
     var size = new BMap.Size(10, 40);
     map.addControl(new BMap.CityListControl({
         anchor: BMAP_ANCHOR_TOP_RIGHT,
-        offset: size,
+        offset: size
         // 切换城市之间事件
         // onChangeBefore: function(){
         //    alert('before');
@@ -125,62 +127,62 @@
         setPlace();
     });
 
-    function setPlace() {
-        map.clearOverlays(); //清除地图上所有覆盖物
-        function myFun() {
-            if (local.getResults().OQ < 1) {
-                alert("未搜索到相关内容");
-                return;
-            }
+    //function setPlace() {
+    //    //map.clearOverlays(); //清除地图上所有覆盖物
+    //    function myFun() {
+    //        if (local.getResults().OQ < 1) {
+    //            alert("未搜索到相关内容");
+    //            return;
+    //        }
 
-            var pp; //获取第一个智能搜索的结果
+    //        var pp; //获取第一个智能搜索的结果
 
-            if (local.getResults().OQ == 1) {
-                pp = local.getResults().getPoi(0).point;
-                var marker = new BMap.Marker(pp, {
-                    title: local.getResults().getPoi(0).title
-                });
-                marker.addEventListener("click", function (e) {
-                    var infoWindow = new BMap.InfoWindow(e.target.getTitle()); // 创建信息窗口对象    
-                    map.openInfoWindow(infoWindow, e.target.getPosition());
-                });
-                map.addOverlay(marker); //添加标注
-                map.centerAndZoom(pp, 15);
-            } else {
-                var firstP, endP;
-                for (var i = 0; i < local.getResults().OQ; i++) {
-                    pp = local.getResults().getPoi(i).point; //获取第一个智能搜索的结果
-                    if (i == 0) {
-                        firstP = pp;
-                    } else if (i == local.getResults().OQ - 1) {
-                        endP = pp;
-                    }
-                    var marker = new BMap.Marker(pp, { title: local.getResults().getPoi(i).title });
+    //        if (local.getResults().OQ === 1) {
+    //            pp = local.getResults().getPoi(0).point;
+    //            var marker = new BMap.Marker(pp, {
+    //                title: local.getResults().getPoi(0).title
+    //            });
+    //            marker.addEventListener("click", function (e) {
+    //                var infoWindow = new BMap.InfoWindow(e.target.getTitle()); // 创建信息窗口对象    
+    //                map.openInfoWindow(infoWindow, e.target.getPosition());
+    //            });
+    //            map.addOverlay(marker); //添加标注
+    //            map.centerAndZoom(pp, 15);
+    //        } else {
+    //            var firstP, endP;
+    //            for (var i = 0; i < local.getResults().OQ; i++) {
+    //                pp = local.getResults().getPoi(i).point; //获取第一个智能搜索的结果
+    //                if (i == 0) {
+    //                    firstP = pp;
+    //                } else if (i == local.getResults().OQ - 1) {
+    //                    endP = pp;
+    //                }
+    //                var marker = new BMap.Marker(pp, { title: local.getResults().getPoi(i).title });
 
-                    //bounds.extend(pp);
-                    marker.addEventListener("click", function (e) {
-                        var infoWindow = new BMap.InfoWindow(e.target.getTitle()); // 创建信息窗口对象    
-                        map.openInfoWindow(infoWindow, e.target.getPosition());
-                    });
-                    map.addOverlay(marker); //添加标注
-                }
+    //                //bounds.extend(pp);
+    //                marker.addEventListener("click", function (e) {
+    //                    var infoWindow = new BMap.InfoWindow(e.target.getTitle()); // 创建信息窗口对象    
+    //                    map.openInfoWindow(infoWindow, e.target.getPosition());
+    //                });
+    //                map.addOverlay(marker); //添加标注
+    //            }
 
-                var b = new BMap.Bounds(firstP, endP);
-                try {    // js中尽然还有try catch方法，可以避免bug引起的错误
-                    BMapLib.AreaRestriction.setBounds(map, b); // 已map为中心，已b为范围的地图
-                } catch (e) {
-                    // 捕获错误异常
-                    alert(e);
-                }
-            }
+    //            var b = new BMap.Bounds(firstP, endP);
+    //            try {    // js中尽然还有try catch方法，可以避免bug引起的错误
+    //                BMapLib.AreaRestriction.setBounds(map, b); // 已map为中心，已b为范围的地图
+    //            } catch (e) {
+    //                // 捕获错误异常
+    //                alert(e);
+    //            }
+    //        }
 
-        }
-        var local = new BMap.LocalSearch(map, { //智能搜索
-            onSearchComplete: myFun
-        });
-        console.log(myValue);
-        local.search(myValue);
-    };
+    //    }
+    //    var local = new BMap.LocalSearch(map, { //智能搜索
+    //        onSearchComplete: myFun
+    //    });
+    //    console.log(myValue);
+    //    local.search(myValue);
+    //};
 
 
     //打开测量工具
@@ -228,7 +230,8 @@
 
                             var content = String.format('<table class="showpointinfo"><tr><td>局属:</td><td>{0}</td><td>线属:</td><td>{1}</td></tr><tr><td>起点:</td><td>{2}</td><td>终点:</td><td>{3}</td></tr>'
                                 + '<tr><td>线别:</td><td>{4}</td><td></td><td></td></tr><tr><td>公里数:</td><td>{5}</td><td>米数:</td><td>{6}</td></tr>'
-                                + '<tr><td>车型:</td><td>{7}</td><td>车次:</td><td>{8}</td></tr><tr><td>X坐标:</td><td>{9}</td><td>Y坐标:</td><td>{10}</td></tr></table>'
+                                + '<tr><td>车型:</td><td>{7}</td><td>车次:</td><td>{8}</td></tr><tr><td>X坐标:</td><td>{9}</td><td>Y坐标:</td><td>{10}</td></tr>'
+                                + '<tr><td  colspan="4" style="text-align:right;padding-top:5px;"><a href="#" class="easyui-linkbutton l-btn l-btn-small"   onclick="goToSg({11})" ><span class="l-btn-left"><span class="l-btn-text">{12}</span></span></a></td></tr></table>'
                                 , diantemp.JB_DD_Ju
                                 , diantemp.JB_DD_Xian
                                 , diantemp.JB_DD_QiDian
@@ -239,9 +242,17 @@
                                 , diantemp.JB_JC_XingHao
                                 , diantemp.JB_LC_CheCi
                                 , diantemp.JB_ZB_X
-                                , diantemp.JB_ZB_Y);
+                                , diantemp.JB_ZB_Y
+                                , diantemp.JB_ID
+                                ,"事故地点定位与报警");
 
                             map.addOverlay(marker);
+
+                            var today = new Date();
+                            var oldday = new Date(DateFormat(diantemp.JB_CreatTime));
+                            var days = parseInt(Math.abs(today - oldday) / 1000 / 60 / 60 / 24);//把相差的毫秒数转换为天数  
+                            if (days <= 7)
+                                marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
 
                             addClickHandler(content, marker);
 
@@ -260,7 +271,7 @@
     }
     var opts = {
         width: 280,     // 信息窗口宽度
-        height: 120,     // 信息窗口高度
+        height: 160,     // 信息窗口高度
         title: "", // 信息窗口标题
         enableMessage: true//设置允许信息窗发送短息
     };
@@ -272,11 +283,25 @@
             map.openInfoWindow(infoWindow, point);
         });
     }
+
+    function goToSg(sgjbid) { 
+        var url = 'views/AccidentBaseInfoPage.aspx';
+        var text = '事故地点定位与报警';
+        if (url.length > 0) {
+            if ($('#tabs').tabs('exists', text)) {
+                $('#tabs').tabs('select', text);
+            } else {
+                $('#tabs').tabs('add', { title: text, closable: true, href: url });
+            }
+        }
+    }
 </script>
 
 <script type="text/javascript">
     function queryPoint() {
         myValue = $('#suggestId').val();
-        setPlace();
+
+        var local = new BMap.LocalSearch(map, {renderOptions: { map: map }});
+        local.search(myValue);
     };
 </script>

@@ -49,6 +49,7 @@
       <DependentUpon>SGModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ObjExt\datadictionaryinfo.cs" />
+    <Compile Include="ObjExt\shiguzhuantiinfo.cs" />
     <Compile Include="ObjExt\messageloginfo.cs" />
     <Compile Include="ObjExt\documentinfo.cs" />
     <Compile Include="ObjExt\shiguhouguoinfo.cs" />
@@ -79,6 +80,9 @@
     <Compile Include="shiguzereninfo.cs">
       <DependentUpon>SGModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="shiguzhuantiinfo.cs">
+      <DependentUpon>SGModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="systemloginfo.cs">
       <DependentUpon>SGModel.tt</DependentUpon>
     </Compile>
@@ -92,7 +96,7 @@
   <ItemGroup>
     <None Include="SGModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>SGModel.cs</LastGenOutput>
+      <LastGenOutput>SGModel1.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

@@ -44,8 +44,6 @@ public partial class SGDCEntities : DbContext
 
     public DbSet<userinfo> userinfo { get; set; }
 
-    public DbSet<shiguzereninfo> shiguzereninfo { get; set; }
-
     public DbSet<shigujibeninfo> shigujibeninfo { get; set; }
 
     public DbSet<v_shigu> v_shigu { get; set; }
@@ -55,6 +53,10 @@ public partial class SGDCEntities : DbContext
     public DbSet<systemloginfo> systemloginfo { get; set; }
 
     public DbSet<messageloginfo> messageloginfo { get; set; }
+
+    public DbSet<shiguzereninfo> shiguzereninfo { get; set; }
+
+    public DbSet<shiguzhuantiinfo> shiguzhuantiinfo { get; set; }
 
 }
 

@@ -10,12 +10,13 @@
         <EntityTypeShape EntityType="SGDCModel.shiguhouguoshangwanginfo" Width="1.5" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="SGDCModel.shiguzerendanweiinfo" Width="1.5" PointX="4.75" PointY="4.75" />
         <EntityTypeShape EntityType="SGDCModel.userinfo" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SGDCModel.shiguzereninfo" Width="1.5" PointX="6.75" PointY="5.75" />
         <EntityTypeShape EntityType="SGDCModel.shigujibeninfo" Width="1.5" PointX="8.75" PointY="0.75" />
         <EntityTypeShape EntityType="SGDCModel.v_shigu" Width="1.5" PointX="10.75" PointY="0.75" />
         <EntityTypeShape EntityType="SGDCModel.documentinfo" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="SGDCModel.systemloginfo" Width="1.5" PointX="2.75" PointY="10.75" />
         <EntityTypeShape EntityType="SGDCModel.messageloginfo" Width="1.5" PointX="5.375" PointY="11.75" />
+        <EntityTypeShape EntityType="SGDCModel.shiguzereninfo" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SGDCModel.shiguzhuantiinfo" Width="1.5" PointX="13.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -55,6 +55,7 @@
         <a href="#" class="easyui-linkbutton" iconcls="icon-reload" plain="true" onclick="sgbaseinfo_tool.reload();">刷新</a>
         <a href="#" class="easyui-linkbutton" iconcls="icon-redo" plain="true" id="redo" onclick="sgbaseinfo_tool.redo();">取消选择</a>
         <a href="#" class="easyui-linkbutton" iconcls="icon-edit-new" plain="true" id="editpoint" onclick="sgbaseinfo_tool.editpoint();">编辑事故点坐标</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-man" plain="true" id="sendmsg" onclick="sgbaseinfo_tool.sendmsg();">发送短信</a>
     </div>
 </div> 
 

@@ -64,6 +64,7 @@
         局属：<input class="textbox" id="search_txtZr_JB_DD_Ju" name="search_txtZr_JB_DD_Ju" style="width: 110px;">&nbsp;&nbsp;
         线属：<input type="text" class="textbox" id="search_txtZr_JB_DD_Xian" name="search_txtZr_JB_DD_Xian" style="width: 110px;">&nbsp;&nbsp;  
         车次：<input type="text" class="textbox" id="search_txtZr_JB_LC_CheCi" name="search_txtZr_JB_LC_CheCi" style="width: 110px;">&nbsp;&nbsp; 
+       
         <a href="#" class="easyui-linkbutton" iconcls="icon-search" onclick="sgzereninfo_tool.search();">查询</a>
         <a href="#" class="easyui-linkbutton" iconcls="icon-undo" onclick="sgzereninfo_tool.resetquery();">重置</a>
     </div>
@@ -480,6 +481,16 @@
                 </tr>
                 <tr>
                     <td colspan="8" style="border: 0;">&nbsp;</td>
+                </tr>
+
+                <tr>
+                    <td>文档类型</td>
+                    <td>
+                        <input id="cmbZR_DocType" name="cmbZR_DocType" class="easyui-combobox" <%--required="true" missingmessage="请选择文档类型"--%>></td>
+                    <td>选择文档</td>
+                    <td colspan="3">
+                        <input id="fileZR_DocFile" name="fileZR_DocFile" class="easyui-filebox"></td>
+                    <td colspan="2"><a href="#" class="easyui-linkbutton" iconcls="icon-redo" id="uploaddocfile">上传</a></td>
                 </tr>
                 <tr>
                     <td>事故调查报告</td>

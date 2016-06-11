@@ -1,11 +1,40 @@
 ﻿$(
-    function () { 
+    function () {
         $('#txtHG_ShiGuGaiKuang').textbox({ multiline: true, width: 1132 });
         //$('input').textbox();
         $('#sgzerentab').tabs({ border: false });
         //$('#sgzenrenjibeninfo input').textbox({ readonly: true });
 
         $('#dtbZR_TianBaoShiJian').datetimebox({ showSeconds: false, width: 137 });
+
+        $('#cmbZR_DocType').combobox({
+            panelHeight: 80,
+            valueField: 'label',
+            textField: 'value',
+            data: [
+                //{ label: '　', value: '　' },
+                { label: '事故调查报告', value: '事故调查报告' },
+                { label: '现场调查有关资料', value: '现场调查有关资料' },
+                { label: '损失计算材料', value: '损失计算材料' },
+                { label: '事故认定书', value: '事故认定书' },
+                { label: '安监报二', value: '安监报二' },
+                { label: '特派办调查报告', value: '特派办调查报告' },
+                { label: '深度调查报告', value: '深度调查报告' },
+                { label: '其它', value: '其它' }
+            ]
+        }).combobox('setValue', '事故调查报告');
+
+        $('#fileZR_DocFile').filebox({ buttonText: '选择文档', width: 450 });
+        $('#uploaddocfile').linkbutton({ iconCls: 'icon-system', onClick: function () { sgzereninfo_tool.uploadfile(); } });
+
+        $('#txtZR_ShiGuDiaoChaBaoGao').textbox({ buttonIcon: 'icon-delete-new', onClickButton: function () { if ($(this).val().length > 0) sgzereninfo_tool.deletefile('事故调查报告'); } });
+        $('#txtZR_XianChangDianChaZiLiao').textbox({ buttonIcon: 'icon-delete-new', onClickButton: function () { if ($(this).val().length > 0) sgzereninfo_tool.deletefile('现场调查有关资料'); } });
+        $('#txtZR_SunShiJiSuanZiLiao').textbox({ buttonIcon: 'icon-delete-new', onClickButton: function () { if ($(this).val().length > 0) sgzereninfo_tool.deletefile('损失计算材料'); } });
+        $('#txtZR_ShiGuRenDingShu').textbox({ buttonIcon: 'icon-delete-new', onClickButton: function () { if ($(this).val().length > 0) sgzereninfo_tool.deletefile('事故认定书'); } });
+        $('#txtZR_AnJianBaoEr').textbox({ buttonIcon: 'icon-delete-new', onClickButton: function () { if ($(this).val().length > 0) sgzereninfo_tool.deletefile('安监报二'); } });
+        $('#txtZR_TePaiBanDiaoChaBaoGao').textbox({ buttonIcon: 'icon-delete-new', onClickButton: function () { if ($(this).val().length > 0) sgzereninfo_tool.deletefile('特派办调查报告'); } });
+        $('#txtZR_SheDuDiaoChaBaoGao').textbox({ buttonIcon: 'icon-delete-new', onClickButton: function () { if ($(this).val().length > 0) sgzereninfo_tool.deletefile('深度调查报告'); } });
+        $('#txtZR_QiTa').textbox({ buttonIcon: 'icon-delete-new', onClickButton: function () { if ($(this).val().length > 0) sgzereninfo_tool.deletefile('其它'); } });
 
         $('#gv_sgzereninfo').datagrid({
             url: 'views/AccidentZeRenInfoPage.aspx',
@@ -41,7 +70,7 @@
             {
                 field: 'JB_DD_ZhongDian',
                 title: '事故点终点站',
-                width: 30,
+                width: 30
                 //formatter: function (value, row, index) { if (value && value.length > 30) { return value.substr(0, 30) + '...'; } else { return value; } }
             },
             {
@@ -159,7 +188,7 @@
                                 txtZR_AnJianBaoEr: $('#txtZR_AnJianBaoEr').val(),
                                 txtZR_QiTa: $('#txtZR_QiTa').val(),
                                 txtZR_TePaiBanDiaoChaBaoGao: $('#txtZR_TePaiBanDiaoChaBaoGao').val(),
-                                txtZR_SheDuDiaoChaBaoGao: $('#txtZR_SheDuDiaoChaBaoGao').val(),
+                                txtZR_SheDuDiaoChaBaoGao: $('#txtZR_SheDuDiaoChaBaoGao').val()
                                 //#endregion 
                             },
                             function (data, response, status) {
@@ -172,6 +201,7 @@
                                         msg: '保存成功'
                                     });
                                     $('#sgzereninfo_edit').dialog('close').form('reset');
+                                    $('#cmbZR_DocType').combobox('setValue', '事故调查报告');
                                     $('#gv_sgzereninfo').datagrid('reload');
                                     $('#gv_sgzereninfo').datagrid('unselectAll');
                                 } else {
@@ -186,10 +216,13 @@
                 iconCls: 'icon-redo',
                 handler: function () {
                     $('#sgzereninfo_edit').dialog('close').form('reset');
+                    $('#cmbZR_DocType').combobox('setValue', '事故调查报告');
                 }
             }],
             onClose: function () {
                 $('#sgzereninfo_edit').form('reset');
+                $('#cmbZR_DocType').combobox('setValue', '事故调查报告');
+                $('#gv_sgzereninfo').datagrid('reload');
             }
         });
 
@@ -318,7 +351,7 @@
                         txtZR_AnJianBaoEr: rows[0].ZR_AnJianBaoEr,
                         txtZR_QiTa: rows[0].ZR_QiTa,
                         txtZR_TePaiBanDiaoChaBaoGao: rows[0].ZR_TePaiBanDiaoChaBaoGao,
-                        txtZR_SheDuDiaoChaBaoGao: rows[0].ZR_SheDuDiaoChaBaoGao,
+                        txtZR_SheDuDiaoChaBaoGao: rows[0].ZR_SheDuDiaoChaBaoGao
 
                         //#endregion
                     }).dialog({ title: "修改事故责任信息" }).dialog('open');
@@ -371,6 +404,89 @@
                     search_txtZr_JB_DD_Ju: $('#search_txtZr_JB_DD_Ju').val(),
                     search_txtZr_JB_DD_Xian: $('#search_txtZr_JB_DD_Xian').val(),
                     search_txtZr_JB_LC_CheCi: $('#search_txtZr_JB_LC_CheCi').val()
+                });
+            },
+            uploadfile: function () {
+                var idFile = $("#fileZR_DocFile").filebox("getText");
+                if (idFile != null && idFile.length > 0) {
+                    $.messager.progress({ text: '正在上传中...' });
+                    var doctype = $('#cmbZR_DocType').combobox('getText');
+
+                    $('#sgzereninfo_edit').ajaxSubmit({
+                        type: "POST",
+                        url: 'views/AccidentZeRenInfoPage.aspx',
+                        data: { method: "SaveFile", docfile: idFile },
+                        success: function (data) {
+                            $.messager.progress('close');
+                            data = data.replace("<PRE>", "").replace("</PRE>", "");
+                            $("#fileZR_DocFile").filebox({ value: '' });
+
+                            //#region 保存上传文件信息
+                            $.post(
+                                'views/AccidentZeRenInfoPage.aspx',
+                                {
+                                    method: 'SaveUploadFileInfo',
+                                    sgbaseinfoid: $('#sgbaseinfoid').val(),
+                                    sgzereninfoid: $('#sgzereninfoid').val(),
+                                    doctype: doctype,
+                                    filename: data
+                                },
+                                function (data1, response, status) {
+                                    data1 = $.parseJSON(data1);
+                                    if (data1) {
+                                        $.messager.show({ title: '提示', msg: '上传成功' });
+                                        $('#sgzereninfoid').val(data1.ZR_ID);
+                                        //#region 保存成功,显示文件信息
+                                        console.log(data);
+                                        switch (doctype) {
+                                            case "事故调查报告": $('#txtZR_ShiGuDiaoChaBaoGao').textbox('setValue', data); break;
+                                            case "现场调查有关资料": $('#txtZR_XianChangDianChaZiLiao').textbox('setValue', data); break;
+                                            case "损失计算材料": $('#txtZR_SunShiJiSuanZiLiao').textbox('setValue', data); break;
+                                            case "事故认定书": $('#txtZR_ShiGuRenDingShu').textbox('setValue', data); break;
+                                            case "安监报二": $('#txtZR_AnJianBaoEr').textbox('setValue', data); break;
+                                            case "特派办调查报告": $('#txtZR_TePaiBanDiaoChaBaoGao').textbox('setValue', data); break;
+                                            case "深度调查报告": $('#txtZR_SheDuDiaoChaBaoGao').textbox('setValue', data); break;
+                                            case "其它": $('#txtZR_QiTa').textbox('setValue', data); break;
+                                        }
+                                        //#endregion 
+                                    } else {
+                                        $.messager.alert('上传失败！', '未知错误导致失败，请重试！', 'warning');
+                                    }
+                                }
+                            );
+                            //#endregion 
+                        }
+                    });
+                }
+            },
+            deletefile: function (doctype) {
+                $.messager.confirm('确定操作', String.format('您确定要删除{0}吗？', doctype), function (flag) {
+                    if (flag) {
+                        $.messager.progress({ text: '正在删除中...' });
+                        $.post(
+                            'views/AccidentZeRenInfoPage.aspx',
+                            {
+                                method: 'DelDocFileInfo',
+                                sgzereninfoid: $('#sgzereninfoid').val(),
+                                doctype: doctype
+                            },
+                            function (data) {
+                                if (data) {
+                                    $.messager.progress('close');
+                                    switch (doctype) {
+                                        case "事故调查报告": $('#txtZR_ShiGuDiaoChaBaoGao').textbox('setValue', ''); break;
+                                        case "现场调查有关资料": $('#txtZR_XianChangDianChaZiLiao').textbox('setValue', ''); break;
+                                        case "损失计算材料": $('#txtZR_SunShiJiSuanZiLiao').textbox('setValue', ''); break;
+                                        case "事故认定书": $('#txtZR_ShiGuRenDingShu').textbox('setValue', ''); break;
+                                        case "安监报二": $('#txtZR_AnJianBaoEr').textbox('setValue', ''); break;
+                                        case "特派办调查报告": $('#txtZR_TePaiBanDiaoChaBaoGao').textbox('setValue', ''); break;
+                                        case "深度调查报告": $('#txtZR_SheDuDiaoChaBaoGao').textbox('setValue', ''); break;
+                                        case "其它": $('#txtZR_QiTa').textbox('setValue', ''); break;
+                                    }
+                                    $.messager.show({ title: '提示', msg: String.format('{0} 删除成功！', doctype) });
+                                }
+                            });
+                    }
                 });
             }
         };

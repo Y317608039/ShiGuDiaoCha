@@ -40,5 +40,18 @@ namespace SGDC.Utility
 			MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
 			return md5.ComputeHash(src);
 		}
+
+        public static string MD5ForPHP(string stringToHash)
+        {
+            var md5 = new MD5CryptoServiceProvider();
+            byte[] emailBytes = Encoding.UTF8.GetBytes(stringToHash.ToLower()); 
+            byte[] hashedEmailBytes = md5.ComputeHash(emailBytes);
+            StringBuilder sb = new StringBuilder();
+            foreach (var b in hashedEmailBytes)
+            {
+                sb.Append(b.ToString("x2").ToLower());
+            }
+            return sb.ToString();
+        }
     }
 }

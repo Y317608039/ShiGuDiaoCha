@@ -109,7 +109,7 @@
                 <ul>
                     <li>
                         <div class="">
-                            <a ref="Menu1002" href="#" rel="views/UserManage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">历史事故记录</span></a>
+                            <a ref="Menu1002" href="#" rel="views/AccidentSpecialPage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">历史事故记录</span></a>
                         </div>
                     </li> 
                 </ul>

@@ -36,8 +36,38 @@ public partial class views_AccidentSpecialPage : BasePage
                 case "ShowUploadFileInfo":
                     ShowUploadFileInfo();
                     break;
+                case "DelZtFileInfo":
+                    DelZtFileInfo();
+                    break;
             }
         }
+    }
+
+    private void DelZtFileInfo()
+    {
+        string jbid = Request["jbid"];
+        string ztid = Request["ztid"];
+        string ztpath = Request["ztpath"];
+        string strReturn = String.Empty;
+        try
+        {
+            new shiguzhuantiinfo_Bll().Remove(Convert.ToInt32(ztid));
+
+            string strPath = string.Format("~/dmtfile/{0}/{1}", jbid, ztpath);
+            strPath = Server.MapPath(strPath);
+
+            File.Delete(strPath);
+            strReturn = "sucess";
+        }
+        catch (Exception ex)
+        {
+            strReturn = "error";
+        }
+
+        DataContractJsonSerializer json = new DataContractJsonSerializer(strReturn.GetType());
+        json.WriteObject(Response.OutputStream, strReturn);
+        Response.End();
+
     }
 
     private void ShowUploadFileInfo()

@@ -1,10 +1,7 @@
 ﻿$(
     function () {
-        $('#txtHG_ShiGuGaiKuang').textbox({ multiline: true, width: 1132 });
-        //$('input').textbox();
-        $('#sgzerentab').tabs({ border: false });
-        //$('#sgzenrenjibeninfo input').textbox({ readonly: true });
-
+        $('#txtHG_ShiGuGaiKuang').textbox({ multiline: true, width: 1132 }); 
+        $('#sgzerentab').tabs({ border: false }); 
         $('#dtbZR_TianBaoShiJian').datetimebox({ showSeconds: false, width: 137 });
 
         $('#cmbZR_DocType').combobox({
@@ -121,6 +118,16 @@
                 handler: function () {
                     if ($('#sgzereninfo_edit').form('validate')) {
                         $.messager.progress({ text: '正在保存中...' });
+
+                        var txtHG_SW_XingMing = []; $('.txtHG_SW_XingMing').each(function (i) { txtHG_SW_XingMing[i] = $(this).val(); });
+                        var txtHG_SW_DanWei = []; $('.txtHG_SW_DanWei').each(function (i) { txtHG_SW_DanWei[i] = $(this).val(); });
+                        var txtHG_SW_XingBie = []; $('.txtHG_SW_XingBie').each(function (i) { txtHG_SW_XingBie[i] = $(this).val(); });
+                        var txtHG_SW_NianLing = []; $('.txtHG_SW_NianLing').each(function (i) { txtHG_SW_NianLing[i] = $(this).val(); });
+                        var txtHG_SW_MinZu = []; $('.txtHG_SW_MinZu').each(function (i) { txtHG_SW_MinZu[i] = $(this).val(); });
+                        var txtHG_SW_GongZhong = []; $('.txtHG_SW_GongZhong').each(function (i) { txtHG_SW_GongZhong[i] = $(this).val(); });
+                        var txtHG_SW_ShangHaiChengDu = []; $('.txtHG_SW_ShangHaiChengDu').each(function (i) { txtHG_SW_ShangHaiChengDu[i] = $(this).val(); });
+                        var txtHG_SW_RenYuanShuXing = []; $('.txtHG_SW_RenYuanShuXing').each(function (i) { txtHG_SW_RenYuanShuXing[i] = $(this).val(); });
+
                         $.post(
                             'views/AccidentZeRenInfoPage.aspx',
                             {
@@ -153,14 +160,14 @@
                                 txtHG_XZ_SuDuQuDuan: $('#txtHG_XZ_SuDuQuDuan').val(),
                                 txtHG_XZ_QuXianBanJing: $('#txtHG_XZ_QuXianBanJing').val(),
                                 txtHG_XZ_PoDu: $('#txtHG_XZ_PoDu').val(),
-                                txtHG_SW_XingMing: $('#txtHG_SW_XingMing').val(),
-                                txtHG_SW_DanWei: $('#txtHG_SW_DanWei').val(),
-                                txtHG_SW_XingBie: $('#txtHG_SW_XingBie').val(),
-                                txtHG_SW_NianLing: $('#txtHG_SW_NianLing').val(),
-                                txtHG_SW_MinZu: $('#txtHG_SW_MinZu').val(),
-                                txtHG_SW_GongZhong: $('#txtHG_SW_GongZhong').val(),
-                                txtHG_SW_ShangHaiChengDu: $('#txtHG_SW_ShangHaiChengDu').val(),
-                                txtHG_SW_RenYuanShuXing: $('#txtHG_SW_RenYuanShuXing').val(),
+                                txtHG_SW_XingMing: txtHG_SW_XingMing.join(','),
+                                txtHG_SW_DanWei: txtHG_SW_DanWei.join(','),
+                                txtHG_SW_XingBie: txtHG_SW_XingBie.join(','),
+                                txtHG_SW_NianLing: txtHG_SW_NianLing.join(','),
+                                txtHG_SW_MinZu: txtHG_SW_MinZu.join(','),
+                                txtHG_SW_GongZhong: txtHG_SW_GongZhong.join(','),
+                                txtHG_SW_ShangHaiChengDu: txtHG_SW_ShangHaiChengDu.join(','),
+                                txtHG_SW_RenYuanShuXing: txtHG_SW_RenYuanShuXing.join(','),
                                 txtHG_SiW_LuNei: $('#txtHG_SiW_LuNei').val(),
                                 txtHG_SiW_LuWai: $('#txtHG_SiW_LuWai').val(),
                                 txtHG_ZS_LuNei: $('#txtHG_ZS_LuNei').val(),
@@ -236,122 +243,153 @@
             edit: function () {
                 var rows = $('#gv_sgzereninfo').datagrid('getSelections');
                 if (rows.length > 0) {
-                    console.log(rows[0]);
+                    var selectrow = rows[0];
+                    //console.log(selectrow);
+
+                    var txtHG_SW_XingMing = (selectrow.HG_SW_XingMing && selectrow.HG_SW_XingMing.length > 1) ? selectrow.HG_SW_XingMing.split(',') : ['', '', ''];
+                    var txtHG_SW_DanWei = (selectrow.HG_SW_DanWei && selectrow.HG_SW_DanWei.length > 1) ? selectrow.HG_SW_DanWei.split(',') : ['', '', ''];
+                    var txtHG_SW_XingBie = (selectrow.HG_SW_XingBie && selectrow.HG_SW_XingBie.length > 1) ? selectrow.HG_SW_XingBie.split(',') : ['', '', ''];
+                    var txtHG_SW_NianLing = (selectrow.HG_SW_NianLing && selectrow.HG_SW_NianLing.length > 1) ? selectrow.HG_SW_NianLing.split(',') : ['', '', ''];
+                    var txtHG_SW_MinZu = (selectrow.HG_SW_MinZu && selectrow.HG_SW_MinZu.length > 1) ? selectrow.HG_SW_MinZu.split(',') : ['', '', ''];
+                    var txtHG_SW_GongZhong = (selectrow.HG_SW_GongZhong && selectrow.HG_SW_GongZhong.length > 1) ? selectrow.HG_SW_GongZhong.split(',') : ['', '', ''];
+                    var txtHG_SW_ShangHaiChengDu = (selectrow.HG_SW_ShangHaiChengDu && selectrow.HG_SW_ShangHaiChengDu.length > 1) ? selectrow.HG_SW_ShangHaiChengDu.split(',') : ['', '', ''];
+                    var txtHG_SW_RenYuanShuXing = (selectrow.HG_SW_RenYuanShuXing && selectrow.HG_SW_RenYuanShuXing.length > 1) ? selectrow.HG_SW_RenYuanShuXing.split(',') : ['', '', ''];
+
                     $('#sgzereninfo_edit').form('load', {
-                        sgbaseinfoid: rows[0].JB_ID,
-                        sghouguoinfoid: rows[0].HG_ID,
-                        sgzereninfoid: rows[0].ZR_ID,
+                        sgbaseinfoid: selectrow.JB_ID,
+                        sghouguoinfoid: selectrow.HG_ID,
+                        sgzereninfoid: selectrow.ZR_ID,
                         //#region 基本信息
-                        txtQ_JB_DD_Ju: rows[0].JB_DD_Ju,
-                        txtQ_JB_DD_Xian: rows[0].JB_DD_Xian,
-                        txtQ_JB_DD_XianBie: rows[0].JB_DD_XianBie,
-                        txtQ_JB_DD_QiDian: rows[0].JB_DD_QiDian,
-                        txtQ_JB_DD_ZhongDian: rows[0].JB_DD_ZhongDian,
-                        txtQ_JB_DD_XingBie: rows[0].JB_DD_XingBie,
-                        txtQ_JB_DD_GongLi: rows[0].JB_DD_GongLi,
-                        txtQ_JB_DD_MiShu: rows[0].JB_DD_MiShu,
-                        txtQ_JB_DD_Sheng: rows[0].JB_DD_Sheng,
-                        txtQ_JB_DD_Shi: rows[0].JB_DD_Shi,
-                        txtQ_JB_DD_Qu: rows[0].JB_DD_Qu,
-                        txtQ_JB_DD_DanWei: rows[0].JB_DD_DanWei,
-                        txtQ_JB_DD_ChangSuo: rows[0].JB_DD_ChangSuo,
-                        txtQ_JB_LC_CheCi: rows[0].JB_LC_CheCi,
-                        txtQ_JB_LC_CheHao: rows[0].JB_LC_CheHao,
-                        txtQ_JB_LC_QiDian: rows[0].JB_LC_QiDian,
-                        txtQ_JB_LC_ZhongDian: rows[0].JB_LC_ZhongDian,
-                        txtQ_JB_LC_PeiShu: rows[0].JB_LC_PeiShu,
-                        txtQ_JB_LC_DanDang: rows[0].JB_LC_DanDang,
-                        txtQ_JB_LC_LvKe: rows[0].JB_LC_LvKe,
-                        txtQ_JB_JC_XingHao: rows[0].JB_JC_XingHao,
-                        txtQ_JB_JC_BianHao: rows[0].JB_JC_BianHao,
-                        txtQ_JB_JC_PeiShu: rows[0].JB_JC_PeiShu,
-                        txtQ_JB_JC_DanDang: rows[0].JB_JC_DanDang,
-                        txtQ_JB_JC_SuDu: rows[0].JB_JC_SuDu,
-                        txtQ_JB_JC_GongDian: rows[0].JB_JC_GongDian,
-                        txtQ_JB_JC_XinHao: rows[0].JB_JC_XinHao,
-                        txtQ_JB_BZ_DunWei: rows[0].JB_BZ_DunWei,
-                        txtQ_JB_BZ_ShuLiang: rows[0].JB_BZ_ShuLiang,
-                        txtQ_JB_BZ_JiChang: rows[0].JB_BZ_JiChang,
-                        txtQ_JB_BZ_ZhongChe: rows[0].JB_BZ_ZhongChe,
-                        txtQ_JB_BZ_KongChe: rows[0].JB_BZ_KongChe,
-                        txtQ_JB_BZ_LieWei: rows[0].JB_BZ_LieWei,
-                        txtQ_JB_BZ_WeiXianPin: rows[0].JB_BZ_WeiXianPin,
-                        txtQ_JB_BZ_ChaoXianChe: rows[0].JB_BZ_ChaoXianChe,
-                        txtQ_JB_GXR_SiJi: rows[0].JB_GXR_SiJi,
-                        txtQ_JB_GXR_FuSiJi: rows[0].JB_GXR_FuSiJi,
-                        txtQ_JB_GXR_YunZhuanCheZhang: rows[0].JB_GXR_YunZhuanCheZhang,
-                        txtQ_JB_GXR_LieCheZhang: rows[0].JB_GXR_LieCheZhang,
-                        txtQ_JB_GXR_ZhiBanYuan: rows[0].JB_GXR_ZhiBanYuan,
-                        txtQ_JB_TianQi: rows[0].JB_TianQi,
-                        txtQ_JB_ShiGuXingZhi: rows[0].JB_ShiGuXingZhi,
-                        txtQ_JB_FS_ShangXing: DateFormat(rows[0].JB_FS_ShangXing),
-                        txtQ_JB_FS_XiaXing: DateFormat(rows[0].JB_FS_XiaXing),
-                        txtQ_JB_FJ_ShangXing: DateFormat(rows[0].JB_FJ_ShangXing),
-                        txtQ_JB_FJ_XiaXing: DateFormat(rows[0].JB_FJ_XiaXing),
-                        txtQ_JB_KT_ShangXing: DateFormat(rows[0].JB_KT_ShangXing),
-                        txtQ_JB_KT_XiaXing: DateFormat(rows[0].JB_KT_XiaXing),
+                        txtQ_JB_DD_Ju: selectrow.JB_DD_Ju,
+                        txtQ_JB_DD_Xian: selectrow.JB_DD_Xian,
+                        txtQ_JB_DD_XianBie: selectrow.JB_DD_XianBie,
+                        txtQ_JB_DD_QiDian: selectrow.JB_DD_QiDian,
+                        txtQ_JB_DD_ZhongDian: selectrow.JB_DD_ZhongDian,
+                        txtQ_JB_DD_XingBie: selectrow.JB_DD_XingBie,
+                        txtQ_JB_DD_GongLi: selectrow.JB_DD_GongLi,
+                        txtQ_JB_DD_MiShu: selectrow.JB_DD_MiShu,
+                        txtQ_JB_DD_Sheng: selectrow.JB_DD_Sheng,
+                        txtQ_JB_DD_Shi: selectrow.JB_DD_Shi,
+                        txtQ_JB_DD_Qu: selectrow.JB_DD_Qu,
+                        txtQ_JB_DD_DanWei: selectrow.JB_DD_DanWei,
+                        txtQ_JB_DD_ChangSuo: selectrow.JB_DD_ChangSuo,
+                        txtQ_JB_LC_CheCi: selectrow.JB_LC_CheCi,
+                        txtQ_JB_LC_CheHao: selectrow.JB_LC_CheHao,
+                        txtQ_JB_LC_QiDian: selectrow.JB_LC_QiDian,
+                        txtQ_JB_LC_ZhongDian: selectrow.JB_LC_ZhongDian,
+                        txtQ_JB_LC_PeiShu: selectrow.JB_LC_PeiShu,
+                        txtQ_JB_LC_DanDang: selectrow.JB_LC_DanDang,
+                        txtQ_JB_LC_LvKe: selectrow.JB_LC_LvKe,
+                        txtQ_JB_JC_XingHao: selectrow.JB_JC_XingHao,
+                        txtQ_JB_JC_BianHao: selectrow.JB_JC_BianHao,
+                        txtQ_JB_JC_PeiShu: selectrow.JB_JC_PeiShu,
+                        txtQ_JB_JC_DanDang: selectrow.JB_JC_DanDang,
+                        txtQ_JB_JC_SuDu: selectrow.JB_JC_SuDu,
+                        txtQ_JB_JC_GongDian: selectrow.JB_JC_GongDian,
+                        txtQ_JB_JC_XinHao: selectrow.JB_JC_XinHao,
+                        txtQ_JB_BZ_DunWei: selectrow.JB_BZ_DunWei,
+                        txtQ_JB_BZ_ShuLiang: selectrow.JB_BZ_ShuLiang,
+                        txtQ_JB_BZ_JiChang: selectrow.JB_BZ_JiChang,
+                        txtQ_JB_BZ_ZhongChe: selectrow.JB_BZ_ZhongChe,
+                        txtQ_JB_BZ_KongChe: selectrow.JB_BZ_KongChe,
+                        txtQ_JB_BZ_LieWei: selectrow.JB_BZ_LieWei,
+                        txtQ_JB_BZ_WeiXianPin: selectrow.JB_BZ_WeiXianPin,
+                        txtQ_JB_BZ_ChaoXianChe: selectrow.JB_BZ_ChaoXianChe,
+                        txtQ_JB_GXR_SiJi: selectrow.JB_GXR_SiJi,
+                        txtQ_JB_GXR_FuSiJi: selectrow.JB_GXR_FuSiJi,
+                        txtQ_JB_GXR_YunZhuanCheZhang: selectrow.JB_GXR_YunZhuanCheZhang,
+                        txtQ_JB_GXR_LieCheZhang: selectrow.JB_GXR_LieCheZhang,
+                        txtQ_JB_GXR_ZhiBanYuan: selectrow.JB_GXR_ZhiBanYuan,
+                        txtQ_JB_TianQi: selectrow.JB_TianQi,
+                        txtQ_JB_ShiGuXingZhi: selectrow.JB_ShiGuXingZhi,
+                        txtQ_JB_FS_ShangXing: DateFormat(selectrow.JB_FS_ShangXing),
+                        txtQ_JB_FS_XiaXing: DateFormat(selectrow.JB_FS_XiaXing),
+                        txtQ_JB_FJ_ShangXing: DateFormat(selectrow.JB_FJ_ShangXing),
+                        txtQ_JB_FJ_XiaXing: DateFormat(selectrow.JB_FJ_XiaXing),
+                        txtQ_JB_KT_ShangXing: DateFormat(selectrow.JB_KT_ShangXing),
+                        txtQ_JB_KT_XiaXing: DateFormat(selectrow.JB_KT_XiaXing),
                         //#endregion
 
                         //#region 后果信息
-                        txtHG_ZD_ShangXing: rows[0].HG_ZD_ShangXing,
-                        txtHG_ZD_XiaXing: rows[0].HG_ZD_XiaXing,
-                        txtHG_DW_ShangXing: rows[0].HG_DW_ShangXing,
-                        txtHG_DW_XiaXing: rows[0].HG_DW_XiaXing,
-                        txtHG_TG_DongCheZu: rows[0].HG_TG_DongCheZu,
-                        txtHG_TG_JiChe: rows[0].HG_TG_JiChe,
-                        txtHG_TG_KeChe: rows[0].HG_TG_KeChe,
-                        txtHG_TG_HuoChe: rows[0].HG_TG_HuoChe,
-                        txtHG_SS_DongCheZu: rows[0].HG_SS_DongCheZu,
-                        txtHG_SS_JiChe: rows[0].HG_SS_JiChe,
-                        txtHG_SS_CheLiang: rows[0].HG_SS_CheLiang,
-                        txtHG_SS_QiTa: rows[0].HG_SS_QiTa,
-                        txtHG_ZhiJieSunShi: rows[0].HG_ZhiJieSunShi,
-                        txtHG_XZ_JiDongChe: rows[0].HG_XZ_JiDongChe,
-                        txtHG_XZ_FeiJiDongChe: rows[0].HG_XZ_FeiJiDongChe,
-                        txtHG_XZ_XingRen: rows[0].HG_XZ_XingRen,
-                        txtHG_XZ_DaoKouQingKuang: rows[0].HG_XZ_DaoKouQingKuang,
-                        txtHG_XZ_GongTieBingXing: rows[0].HG_XZ_GongTieBingXing,
-                        txtHG_XZ_FangHuZhaLan: rows[0].HG_XZ_FangHuZhaLan,
-                        txtHG_XZ_GongTieLiJiao: rows[0].HG_XZ_GongTieLiJiao,
-                        txtHG_XZ_SuDuQuDuan: rows[0].HG_XZ_SuDuQuDuan,
-                        txtHG_XZ_QuXianBanJing: rows[0].HG_XZ_QuXianBanJing,
-                        txtHG_XZ_PoDu: rows[0].HG_XZ_PoDu,
-                        txtHG_SW_XingMing: rows[0].HG_SW_XingMing,
-                        txtHG_SW_DanWei: rows[0].HG_SW_DanWei,
-                        txtHG_SW_XingBie: rows[0].HG_SW_XingBie,
-                        txtHG_SW_NianLing: rows[0].HG_SW_NianLing,
-                        txtHG_SW_MinZu: rows[0].HG_SW_MinZu,
-                        txtHG_SW_GongZhong: rows[0].HG_SW_GongZhong,
-                        txtHG_SW_ShangHaiChengDu: rows[0].HG_SW_ShangHaiChengDu,
-                        txtHG_SW_RenYuanShuXing: rows[0].HG_SW_RenYuanShuXing,
-                        txtHG_SiW_LuNei: rows[0].HG_SiW_LuNei,
-                        txtHG_SiW_LuWai: rows[0].HG_SiW_LuWai,
-                        txtHG_ZS_LuNei: rows[0].HG_ZS_LuNei,
-                        txtHG_ZS_LuWai: rows[0].HG_ZS_LuWai,
-                        txtHG_QS_LuNei: rows[0].HG_QS_LuNei,
-                        txtHG_QS_LuWai: rows[0].HG_QS_LuWai,
-                        txtHG_ShiGuGaiKuang: rows[0].HG_ShiGuGaiKuang,
+                        txtHG_ZD_ShangXing: selectrow.HG_ZD_ShangXing,
+                        txtHG_ZD_XiaXing: selectrow.HG_ZD_XiaXing,
+                        txtHG_DW_ShangXing: selectrow.HG_DW_ShangXing,
+                        txtHG_DW_XiaXing: selectrow.HG_DW_XiaXing,
+                        txtHG_TG_DongCheZu: selectrow.HG_TG_DongCheZu,
+                        txtHG_TG_JiChe: selectrow.HG_TG_JiChe,
+                        txtHG_TG_KeChe: selectrow.HG_TG_KeChe,
+                        txtHG_TG_HuoChe: selectrow.HG_TG_HuoChe,
+                        txtHG_SS_DongCheZu: selectrow.HG_SS_DongCheZu,
+                        txtHG_SS_JiChe: selectrow.HG_SS_JiChe,
+                        txtHG_SS_CheLiang: selectrow.HG_SS_CheLiang,
+                        txtHG_SS_QiTa: selectrow.HG_SS_QiTa,
+                        txtHG_ZhiJieSunShi: selectrow.HG_ZhiJieSunShi,
+                        txtHG_XZ_JiDongChe: selectrow.HG_XZ_JiDongChe,
+                        txtHG_XZ_FeiJiDongChe: selectrow.HG_XZ_FeiJiDongChe,
+                        txtHG_XZ_XingRen: selectrow.HG_XZ_XingRen,
+                        txtHG_XZ_DaoKouQingKuang: selectrow.HG_XZ_DaoKouQingKuang,
+                        txtHG_XZ_GongTieBingXing: selectrow.HG_XZ_GongTieBingXing,
+                        txtHG_XZ_FangHuZhaLan: selectrow.HG_XZ_FangHuZhaLan,
+                        txtHG_XZ_GongTieLiJiao: selectrow.HG_XZ_GongTieLiJiao,
+                        txtHG_XZ_SuDuQuDuan: selectrow.HG_XZ_SuDuQuDuan,
+                        txtHG_XZ_QuXianBanJing: selectrow.HG_XZ_QuXianBanJing,
+                        txtHG_XZ_PoDu: selectrow.HG_XZ_PoDu,
+                        //#region 伤亡人员情况
+                        txtHG_SW_XingMing: txtHG_SW_XingMing[0],
+                        txtHG_SW_DanWei: txtHG_SW_DanWei[0],
+                        txtHG_SW_XingBie: txtHG_SW_XingBie[0],
+                        txtHG_SW_NianLing: txtHG_SW_NianLing[0],
+                        txtHG_SW_MinZu: txtHG_SW_MinZu[0],
+                        txtHG_SW_GongZhong: txtHG_SW_GongZhong[0],
+                        txtHG_SW_ShangHaiChengDu: txtHG_SW_ShangHaiChengDu[0],
+                        txtHG_SW_RenYuanShuXing: txtHG_SW_RenYuanShuXing[0],
+
+                        txtHG_SW_XingMing1: txtHG_SW_XingMing[1],
+                        txtHG_SW_DanWei1: txtHG_SW_DanWei[1],
+                        txtHG_SW_XingBie1: txtHG_SW_XingBie[1],
+                        txtHG_SW_NianLing1: txtHG_SW_NianLing[1],
+                        txtHG_SW_MinZu1: txtHG_SW_MinZu[1],
+                        txtHG_SW_GongZhong1: txtHG_SW_GongZhong[1],
+                        txtHG_SW_ShangHaiChengDu1: txtHG_SW_ShangHaiChengDu[1],
+                        txtHG_SW_RenYuanShuXing1: txtHG_SW_RenYuanShuXing[1],
+
+                        txtHG_SW_XingMing2: txtHG_SW_XingMing[2],
+                        txtHG_SW_DanWei2: txtHG_SW_DanWei[2],
+                        txtHG_SW_XingBie2: txtHG_SW_XingBie[2],
+                        txtHG_SW_NianLing2: txtHG_SW_NianLing[2],
+                        txtHG_SW_MinZu2: txtHG_SW_MinZu[2],
+                        txtHG_SW_GongZhong2: txtHG_SW_GongZhong[2],
+                        txtHG_SW_ShangHaiChengDu2: txtHG_SW_ShangHaiChengDu[2],
+                        txtHG_SW_RenYuanShuXing2: txtHG_SW_RenYuanShuXing[2],
+                        //#endregion
+                        txtHG_SiW_LuNei: selectrow.HG_SiW_LuNei,
+                        txtHG_SiW_LuWai: selectrow.HG_SiW_LuWai,
+                        txtHG_ZS_LuNei: selectrow.HG_ZS_LuNei,
+                        txtHG_ZS_LuWai: selectrow.HG_ZS_LuWai,
+                        txtHG_QS_LuNei: selectrow.HG_QS_LuNei,
+                        txtHG_QS_LuWai: selectrow.HG_QS_LuWai,
+                        txtHG_ShiGuGaiKuang: selectrow.HG_ShiGuGaiKuang,
                         //#endregion
 
                         //#region 责任信息
-                        txtZR_ZeRenDanWei: rows[0].ZR_ZeRenDanWei,
-                        txtZR_ZeRenDanWeiShuXing: rows[0].ZR_ZeRenDanWeiShuXing,
-                        txtZR_ZeRenBuMen: rows[0].ZR_ZeRenBuMen,
-                        txtZR_ZeRenChengDu: rows[0].ZR_ZeRenChengDu,
-                        txtZR_YuanYinLeiBie: rows[0].ZR_YuanYinLeiBie,
-                        txtZR_ShiGuLeiBie: rows[0].ZR_ShiGuLeiBie,
-                        txtZR_ShiGuDengJi: rows[0].ZR_ShiGuDengJi,
-                        txtZR_ZhiBanJianCha: rows[0].ZR_ZhiBanJianCha,
-                        dtbZR_TianBaoShiJian: DateFormat(rows[0].ZR_TianBaoShiJian),
-                        txtZR_BaoGaoCiShu: rows[0].ZR_BaoGaoCiShu,
-                        txtZR_ShiGuDiaoChaBaoGao: rows[0].ZR_ShiGuDiaoChaBaoGao,
-                        txtZR_XianChangDianChaZiLiao: rows[0].ZR_XianChangDianChaZiLiao,
-                        txtZR_SunShiJiSuanZiLiao: rows[0].ZR_SunShiJiSuanZiLiao,
-                        txtZR_ShiGuRenDingShu: rows[0].ZR_ShiGuRenDingShu,
-                        txtZR_AnJianBaoEr: rows[0].ZR_AnJianBaoEr,
-                        txtZR_QiTa: rows[0].ZR_QiTa,
-                        txtZR_TePaiBanDiaoChaBaoGao: rows[0].ZR_TePaiBanDiaoChaBaoGao,
-                        txtZR_SheDuDiaoChaBaoGao: rows[0].ZR_SheDuDiaoChaBaoGao
+                        txtZR_ZeRenDanWei: selectrow.ZR_ZeRenDanWei,
+                        txtZR_ZeRenDanWeiShuXing: selectrow.ZR_ZeRenDanWeiShuXing,
+                        txtZR_ZeRenBuMen: selectrow.ZR_ZeRenBuMen,
+                        txtZR_ZeRenChengDu: selectrow.ZR_ZeRenChengDu,
+                        txtZR_YuanYinLeiBie: selectrow.ZR_YuanYinLeiBie,
+                        txtZR_ShiGuLeiBie: selectrow.ZR_ShiGuLeiBie,
+                        txtZR_ShiGuDengJi: selectrow.ZR_ShiGuDengJi,
+                        txtZR_ZhiBanJianCha: selectrow.ZR_ZhiBanJianCha,
+                        dtbZR_TianBaoShiJian: DateFormat(selectrow.ZR_TianBaoShiJian),
+                        txtZR_BaoGaoCiShu: selectrow.ZR_BaoGaoCiShu,
+                        txtZR_ShiGuDiaoChaBaoGao: selectrow.ZR_ShiGuDiaoChaBaoGao,
+                        txtZR_XianChangDianChaZiLiao: selectrow.ZR_XianChangDianChaZiLiao,
+                        txtZR_SunShiJiSuanZiLiao: selectrow.ZR_SunShiJiSuanZiLiao,
+                        txtZR_ShiGuRenDingShu: selectrow.ZR_ShiGuRenDingShu,
+                        txtZR_AnJianBaoEr: selectrow.ZR_AnJianBaoEr,
+                        txtZR_QiTa: selectrow.ZR_QiTa,
+                        txtZR_TePaiBanDiaoChaBaoGao: selectrow.ZR_TePaiBanDiaoChaBaoGao,
+                        txtZR_SheDuDiaoChaBaoGao: selectrow.ZR_SheDuDiaoChaBaoGao
 
                         //#endregion
                     }).dialog({ title: "修改事故责任信息" }).dialog('open');

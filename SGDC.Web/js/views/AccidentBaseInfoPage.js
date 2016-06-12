@@ -20,71 +20,18 @@
             queryParams: { method: 'QryList' },
             dataType: 'json',
             columns: [[
-            {
-                field: 'JB_DD_Ju',
-                title: '事故点局属',
-                width: 30
-            },
-            {
-                field: 'JB_DD_Xian',
-                title: '事故点线属',
-                width: 30
-            },
-            {
-                field: 'JB_DD_QiDian',
-                title: '事故点起始站',
-                width: 30
-            },
-            {
-                field: 'JB_DD_ZhongDian',
-                title: '事故点终点站',
-                width: 30,
-                //formatter: function (value, row, index) { if (value && value.length > 30) { return value.substr(0, 30) + '...'; } else { return value; } }
-            },
-            {
-                field: 'JB_DD_XingBie',
-                title: '上下行',
-                width: 30
-            },
-            {
-                field: 'JB_DD_GongLi',
-                title: '公里数',
-                width: 30
-            },
-            {
-                field: 'JB_DD_MiShu',
-                title: '米数',
-                width: 30
-            },
-            {
-                field: 'JB_LC_CheCi',
-                title: '车次',
-                width: 30
-            },
-            {
-                field: 'JB_JC_XingHao',
-                title: '机车型号',
-                width: 30
-            },
-            {
-                field: 'JB_ZB_X',
-                title: '经度',
-                width: 30,
-                //formatter: function (value, row, index) { if (value) { return DateFormat(value); } else { return value; } }
-            },
-            {
-                field: 'JB_ZB_Y',
-                title: '纬度',
-                width: 30,
-                //formatter: function (value, row, index) { if (value) { return DateFormat(value); } else { return value; } }
-            },
-            {
-                field: 'JB_CreatTime',
-                title: '创建时间',
-                width: 40,
-                formatter: function (value, row, index) { if (value) { return DateFormat(value); } else { return value; } }
-            }
-
+            { field: 'JB_DD_Ju', title: '事故点局属', width: 30 },
+            { field: 'JB_DD_Xian', title: '事故点线属', width: 30 },
+            { field: 'JB_DD_QiDian', title: '事故点起始站', width: 30 },
+            { field: 'JB_DD_ZhongDian', title: '事故点终点站', width: 30 },//formatter: function (value, row, index) { if (value && value.length > 30) { return value.substr(0, 30) + '...'; } else { return value; } }
+            { field: 'JB_DD_XingBie', title: '上下行', width: 30 },
+            { field: 'JB_DD_GongLi', title: '公里数', width: 30 },
+            { field: 'JB_DD_MiShu', title: '米数', width: 30 },
+            { field: 'JB_LC_CheCi', title: '车次', width: 30 },
+            { field: 'JB_JC_XingHao', title: '机车型号', width: 30 },
+            { field: 'JB_ZB_X', title: '经度', width: 30 },//formatter: function (value, row, index) { if (value) { return DateFormat(value); } else { return value; } }
+            { field: 'JB_ZB_Y', title: '纬度', width: 30 },//formatter: function (value, row, index) { if (value) { return DateFormat(value); } else { return value; } }
+            { field: 'JB_CreatTime', title: '创建时间', width: 40, formatter: function (value, row, index) { if (value) { return DateFormat(value); } else { return value; } } }
             ]],
             toolbar: "#sgbaseinfo_tool"
         });
@@ -105,7 +52,7 @@
                             'views/AccidentBaseInfoPage.aspx',
                             {
                                 method: 'SaveItem',
-                                //#region 
+                                //#region  保存基本信息
                                 sgbaseinfoid: $('#sgbaseinfoid').val(),
                                 txtJB_DD_Ju: $('#txtJB_DD_Ju').val(),
                                 txtJB_DD_Xian: $('#txtJB_DD_Xian').val(),
@@ -154,8 +101,8 @@
                                 dtbJB_FJ_ShangXing: $('#dtbJB_FJ_ShangXing').datetimebox("getText"),
                                 dtbJB_FJ_XiaXing: $('#dtbJB_FJ_XiaXing').datetimebox("getText"),
                                 dtbJB_KT_ShangXing: $('#dtbJB_KT_ShangXing').datetimebox("getText"),
-                                dtbJB_KT_XiaXing: $('#dtbJB_KT_XiaXing').datetimebox("getText"),
-                                //endregion
+                                dtbJB_KT_XiaXing: $('#dtbJB_KT_XiaXing').datetimebox("getText")
+                                //#endregion
                             },
                             function (data, response, status) {
                                 data = $.parseJSON(data);
@@ -188,16 +135,7 @@
             }
         });
 
-        $('#sgbaseinfo_ditu').dialog({
-            width: 1000,
-            title: '编辑事故点坐标信息',
-            modal: true,
-            closed: true,
-            iconCls: 'icon-user-add',
-            onClose: function () {
-                $('#sgbaseinfo_ditu').form('reset');
-            }
-        });
+        $('#sgbaseinfo_ditu').dialog({width: 1000,title: '编辑事故点坐标信息',modal: true,closed: true,iconCls: 'icon-user-add',onClose: function () {$('#sgbaseinfo_ditu').form('reset');}});
 
         sgbaseinfo_tool = {
             add: function () {
@@ -260,7 +198,7 @@
                         dtbJB_FJ_ShangXing: DateFormat(rows[0].JB_FJ_ShangXing),
                         dtbJB_FJ_XiaXing: DateFormat(rows[0].JB_FJ_XiaXing),
                         dtbJB_KT_ShangXing: DateFormat(rows[0].JB_KT_ShangXing),
-                        dtbJB_KT_XiaXing: DateFormat(rows[0].JB_KT_XiaXing),
+                        dtbJB_KT_XiaXing: DateFormat(rows[0].JB_KT_XiaXing)
                         //#endregion
                     }).dialog({ title: "修改事故基本信息" }).dialog('open');
                 } else if (rows.length === 0) {

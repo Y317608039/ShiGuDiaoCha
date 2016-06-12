@@ -1,14 +1,14 @@
 ﻿$(
     function () {
         $('#cmbZtType').combobox({
-            panelHeight: 80, valueField: 'label', textField: 'value',
+            width: 320, panelHeight: 80, valueField: 'label', textField: 'value',
             data: [{ label: '图片', value: '图片' }, { label: '视频', value: '视频' }]
         }).combobox('setValue', '图片');
 
         $('#fileZtFile').filebox({ buttonText: '选择多媒体', width: 450 });
         $('#uploadztfile').linkbutton({ iconCls: 'icon-system', onClick: function () { sgztinfo_tool.uploadfile(); } });
 
-        $('#txtZtDesc').textbox({ width: 450 });
+        $('#txtZtDesc').textbox({ width: 842 });
 
         $('#gv_sgztinfo').datagrid({
             url: 'views/AccidentSpecialPage.aspx',
@@ -47,16 +47,10 @@
             title: '事故专题信息',
             modal: true,
             closed: true,
-            iconCls: 'icon-system',
-            onClose: function () {
-            }
+            iconCls: 'icon-system'
         });
 
         sgztinfo_tool = {
-            add: function () {
-                $('#sgztinfo_edit').dialog({ title: "事故专题信息" });
-                $('#sgztinfo_edit').dialog('open');
-            },
             reload: function () {
                 $('#gv_sgztinfo').datagrid('reload');
             },
@@ -99,9 +93,9 @@
                                 for (var i = 0; i < data.length; i++) {
                                     var temp = data[i];
                                     if (temp.ZT_Type === '图片')
-                                        $('#zttupian').append(String.format('<tr><td title="{0}">{1}</td><td><a ZTID={2}>删除</a></td></tr>', temp.ZT_Desc, temp.ZT_FilePath, temp.ZT_ID));
+                                        $('#zttupian').append(sgztinfo_tool.adddmtrow(temp));
                                     else
-                                        $('#ztshipin').append(String.format('<tr><td title="{0}">{1}</td><td><a ZTID={2}>删除</a></td></tr>', temp.ZT_Desc, temp.ZT_FilePath, temp.ZT_ID));
+                                        $('#ztshipin').append(sgztinfo_tool.adddmtrow(temp));
                                 }
 
 
@@ -128,7 +122,6 @@
                         success: function (data) {
                             $.messager.progress('close');
                             data = data.replace("<PRE>", "").replace("</PRE>", "");
-                            $("#fileZtFile").filebox({ value: '' });
 
                             //#region 保存上传文件信息
                             $.post(
@@ -144,8 +137,11 @@
                                     data1 = $.parseJSON(data1);
                                     if (data1) {
                                         $.messager.show({ title: '提示', msg: '上传成功' });
-                                        console.log(data1);
-
+                                        //console.log(data1);
+                                        if (data1.ZT_Type === '图片')
+                                            $('#zttupian').append(sgztinfo_tool.adddmtrow(data1));
+                                        else
+                                            $('#ztshipin').append(sgztinfo_tool.adddmtrow(data1));
                                         //#endregion 
                                     } else {
                                         $.messager.alert('上传失败！', '未知错误导致失败，请重试！', 'warning');
@@ -153,10 +149,44 @@
                                 }
                             );
                             //#endregion 
+
+                            //$("#cmbZtType").combobox({ 'setValue': '图片' });
+                            $("#fileZtFile").filebox({ 'value': '' }); $("#txtZtDesc").textbox('clear');
                         }
                     });
                 }
+            },
+            adddmtrow: function (obj) {
+                var temphtml = String.format('<tr class="dmtrow{2}{3}"><td title="{0}">{1}</td><td><a href="#" class="easyui-linkbutton l-btn l-btn-small l-btn-plain" iconcls="icon-delete-new" plain="true" onclick="sgztinfo_tool.deletedmtrow({2},{3},\'{4}\');" ><span class="l-btn-left l-btn-icon-left"><span class="l-btn-text l-btn-empty">&nbsp;</span><span class="l-btn-icon icon-delete-new">&nbsp;</span></span></a></td></tr>',
+                    obj.ZT_Desc, obj.ZT_FilePath, obj.JB_ID, obj.ZT_ID, obj.ZT_FilePath);
+                return temphtml;
+            },
+            deletedmtrow: function (jbid, ztid, ztpath) {
+                $.messager.confirm('确定操作', String.format('您确定要删除{0}吗？', ztpath), function (flag) {
+                    if (flag) {
+                        $.messager.progress({ text: '正在删除中...' });
+                        $.post(
+                            'views/AccidentSpecialPage.aspx',
+                            {
+                                method: 'DelZtFileInfo',
+                                jbid: jbid,
+                                ztid: ztid,
+                                ztpath: ztpath
+                            },
+                            function (data) {
+                                if (data) {
+                                    $.messager.progress('close');
+                                    data = $.parseJSON(data);
+                                    if (data === 'sucess') {
+                                        $('.dmtrow' + jbid + ztid).remove();
+                                        $.messager.show({ title: '提示', msg: String.format('{0} 删除成功！', ztpath) });
+                                    }
+                                }
+                            });
+                    }
+                });
             }
+
         };
     }
 );

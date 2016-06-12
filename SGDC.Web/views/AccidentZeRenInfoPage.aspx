@@ -65,6 +65,8 @@
         线属：<input type="text" class="textbox" id="search_txtZr_JB_DD_Xian" name="search_txtZr_JB_DD_Xian" style="width: 110px;">&nbsp;&nbsp;  
         车次：<input type="text" class="textbox" id="search_txtZr_JB_LC_CheCi" name="search_txtZr_JB_LC_CheCi" style="width: 110px;">&nbsp;&nbsp; 
        
+       
+
         <a href="#" class="easyui-linkbutton" iconcls="icon-search" onclick="sgzereninfo_tool.search();">查询</a>
         <a href="#" class="easyui-linkbutton" iconcls="icon-undo" onclick="sgzereninfo_tool.resetquery();">重置</a>
     </div>
@@ -369,21 +371,21 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" id="txtHG_SW_XingMing" name="txtHG_SW_XingMing" /></td>
+                        <input type="text" id="txtHG_SW_XingMing" name="txtHG_SW_XingMing" class="txtHG_SW_XingMing" /></td>
                     <td>
-                        <input type="text" id="txtHG_SW_DanWei" name="txtHG_SW_DanWei" /></td>
+                        <input type="text" id="txtHG_SW_DanWei" name="txtHG_SW_DanWei" class="txtHG_SW_DanWei" /></td>
                     <td>
-                        <input type="text" id="txtHG_SW_XingBie" name="txtHG_SW_XingBie" /></td>
+                        <input type="text" id="txtHG_SW_XingBie" name="txtHG_SW_XingBie" class="txtHG_SW_XingBie" /></td>
                     <td>
-                        <input type="text" id="txtHG_SW_NianLing" name="txtHG_SW_NianLing" /></td>
+                        <input type="text" id="txtHG_SW_NianLing" name="txtHG_SW_NianLing" class="txtHG_SW_NianLing" /></td>
                     <td>
-                        <input type="text" id="txtHG_SW_MinZu" name="txtHG_SW_MinZu" /></td>
+                        <input type="text" id="txtHG_SW_MinZu" name="txtHG_SW_MinZu" class="txtHG_SW_MinZu" /></td>
                     <td>
-                        <input type="text" id="txtHG_SW_GongZhong" name="txtHG_SW_GongZhong" /></td>
+                        <input type="text" id="txtHG_SW_GongZhong" name="txtHG_SW_GongZhong" class="txtHG_SW_GongZhong" /></td>
                     <td>
-                        <input type="text" id="txtHG_SW_ShangHaiChengDu" name="txtHG_SW_ShangHaiChengDu" /></td>
+                        <input type="text" id="txtHG_SW_ShangHaiChengDu" name="txtHG_SW_ShangHaiChengDu" class="txtHG_SW_ShangHaiChengDu" /></td>
                     <td>
-                        <input type="text" id="txtHG_SW_RenYuanShuXing" name="txtHG_SW_RenYuanShuXing" /></td>
+                        <input type="text" id="txtHG_SW_RenYuanShuXing" name="txtHG_SW_RenYuanShuXing" class="txtHG_SW_RenYuanShuXing" /></td>
                     <td>死亡人数</td>
                     <td>
                         <input type="text" id="txtHG_SiW_LuNei" name="txtHG_SiW_LuNei" /></td>
@@ -391,14 +393,22 @@
                         <input type="text" id="txtHG_SiW_LuWai" name="txtHG_SiW_LuWai" /></td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_XingMing1" name="txtHG_SW_XingMing1" class="txtHG_SW_XingMing" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_DanWei1" name="txtHG_SW_DanWei1" class="txtHG_SW_DanWei" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_XingBie1" name="txtHG_SW_XingBie1" class="txtHG_SW_XingBie" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_NianLing1" name="txtHG_SW_NianLing1" class="txtHG_SW_NianLing" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_MinZu1" name="txtHG_SW_MinZu1" class="txtHG_SW_MinZu" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_GongZhong1" name="txtHG_SW_GongZhong1" class="txtHG_SW_GongZhong" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_ShangHaiChengDu1" name="txtHG_SW_ShangHaiChengDu1" class="txtHG_SW_ShangHaiChengDu" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_RenYuanShuXing1" name="txtHG_SW_RenYuanShuXing1" class="txtHG_SW_RenYuanShuXing" /></td>
                     <td>重伤人数</td>
                     <td>
                         <input type="text" id="txtHG_ZS_LuNei" name="txtHG_ZS_LuNei" /></td>
@@ -406,14 +416,22 @@
                         <input type="text" id="txtHG_ZS_LuWai" name="txtHG_ZS_LuWai" /></td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_XingMing2" name="txtHG_SW_XingMing2" class="txtHG_SW_XingMing" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_DanWei2" name="txtHG_SW_DanWei2" class="txtHG_SW_DanWei" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_XingBie2" name="txtHG_SW_XingBie2" class="txtHG_SW_XingBie" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_NianLing2" name="txtHG_SW_NianLing2" class="txtHG_SW_NianLing" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_MinZu2" name="txtHG_SW_MinZu2" class="txtHG_SW_MinZu" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_GongZhong2" name="txtHG_SW_GongZhong2" class="txtHG_SW_GongZhong" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_ShangHaiChengDu2" name="txtHG_SW_ShangHaiChengDu2" class="txtHG_SW_ShangHaiChengDu" /></td>
+                    <td>
+                        <input type="text" id="txtHG_SW_RenYuanShuXing2" name="txtHG_SW_RenYuanShuXing2" class="txtHG_SW_RenYuanShuXing" /></td>
                     <td>轻伤人数</td>
                     <td>
                         <input type="text" id="txtHG_QS_LuWai" name="txtHG_QS_LuWai" /></td>

@@ -14,7 +14,7 @@
         #sgztinfo_edit > table td {
             /*border: solid 1px #666;*/
             padding: 3px;
-            vertical-align: top;
+            /*vertical-align: top;*/
         }
 </style>
 
@@ -30,9 +30,9 @@
         <a href="#" class="easyui-linkbutton" iconcls="icon-undo" onclick="sgztinfo_tool.resetquery();">重置</a>
     </div>
     <div style="margin: 0px;">
+        <a href="#" class="easyui-linkbutton" iconcls="icon-system" plain="true" id="btnsgzt" onclick="sgztinfo_tool.showzt();">事故专题</a>
         <a href="#" class="easyui-linkbutton" iconcls="icon-reload" plain="true" onclick="sgztinfo_tool.reload();">刷新</a>
         <a href="#" class="easyui-linkbutton" iconcls="icon-redo" plain="true" id="redo" onclick="sgztinfo_tool.redo();">取消选择</a>
-        <a href="#" class="easyui-linkbutton" iconcls="icon-system" plain="true" id="btnsgzt" onclick="sgztinfo_tool.showzt();">事故专题</a>
     </div>
 </div>
 
@@ -40,7 +40,7 @@
     <input type="text" id="sgztbaseid" name="sgztbaseid" style="display: none;" />
     <table>
         <tr>
-            <td style="height: 16px;">多媒体类型</td>
+            <td style="height: 12px;">多媒体类型</td>
             <td>
                 <input id="cmbZtType" name="cmbZtType" class="easyui-combobox"></td>
             <td>选择多媒体</td>
@@ -49,7 +49,7 @@
             <td><a href="#" class="easyui-linkbutton" id="uploadztfile">上传</a></td>
         </tr>
         <tr>
-            <td style="height: 16px;">多媒体说明</td>
+            <td style="height: 12px;">多媒体说明</td>
             <td colspan="4">
                 <input id="txtZtDesc" name="txtZtDesc" class="easyui-textbox"></td>
         </tr>
@@ -60,11 +60,11 @@
             </td>
         </tr>
         <tr>
-            <td colspan="3" style="border: solid 1px #666;">
-                <table style="width: 100%;" id="zttupian"></table>
+            <td colspan="3" style="border: solid 1px #666; vertical-align: top;">
+                <table id="zttupian"></table>
             </td>
-            <td colspan="2" style="border: solid 1px #666;">
-                <table style="width: 100%;" id="ztshipin"></table>
+            <td colspan="2" style="border: solid 1px #666; vertical-align: top;">
+                <table id="ztshipin"></table>
             </td>
         </tr>
     </table>

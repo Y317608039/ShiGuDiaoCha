@@ -45,7 +45,7 @@
                     </li>
                     <li>
                         <div class="">
-                            <a ref="Menu0003" href="#" rel="views/.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">事故调查分析管理</span></a>
+                            <a ref="Menu0003" href="#" rel="views/AccidentAnalyzeManagePage.aspx"><span class="icon icon-default">&nbsp;</span><span class="nav">事故调查分析管理</span></a>
                         </div>
                     </li>
                 </ul>
@@ -138,8 +138,8 @@
     </div>
     <div data-options="region:'south',border:false" style="height: 20px; background-color: #5c87b2; overflow: hidden; color: #000444; text-align: center; line-height: normal;">
         <div style="padding: 2px; background-color: #4080b0">
-            <span style="color: white;">&nbsp;&nbsp; © All Right <a href="" style="color: white;" target="_blank">有限公司</a> 2015-2015</span> &nbsp;&nbsp; 
-            <span style="color: white;" class="STYLE7" id="ServerDateTime1">建议IE8.0+及分辨率在1024*768及以上使用</span>
+            <span style="color: white;">&nbsp;&nbsp; © All Right <a href="" style="color: white;" target="_blank">西安华清智能科技有限公司</a></span> &nbsp;&nbsp; 
+            <%--<span style="color: white;" class="STYLE7" id="ServerDateTime1">建议IE8.0+及分辨率在1024*768及以上使用</span>--%>
         </div>
     </div>
     <div data-options="region:'center',border:false" style="background: #eee; overflow: hidden; border: 1px solid #95B8E7;">

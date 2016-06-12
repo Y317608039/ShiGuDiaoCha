@@ -30,22 +30,22 @@
             toolbar: "#sgfenxiinfo_tool"
         });
 
-        sgfenxiinfo_tool = { 
+        sgfenxiinfo_tool = {
             showdetail: function () {
                 var rows = $('#gv_sgfenxiinfo').datagrid('getSelections');
                 if (rows.length > 0) {
-                    var selectrow = rows[0]; 
+                    var selectrow = rows[0];
+                    sgfenxiinfo_tool.goToSgFx(selectrow.JB_ID);
+                    //var txtHG_SW_XingMing = (selectrow.HG_SW_XingMing && selectrow.HG_SW_XingMing.length > 1) ? selectrow.HG_SW_XingMing.split(',') : ['', '', ''];
+                    //var txtHG_SW_DanWei = (selectrow.HG_SW_DanWei && selectrow.HG_SW_DanWei.length > 1) ? selectrow.HG_SW_DanWei.split(',') : ['', '', ''];
+                    //var txtHG_SW_XingBie = (selectrow.HG_SW_XingBie && selectrow.HG_SW_XingBie.length > 1) ? selectrow.HG_SW_XingBie.split(',') : ['', '', ''];
+                    //var txtHG_SW_NianLing = (selectrow.HG_SW_NianLing && selectrow.HG_SW_NianLing.length > 1) ? selectrow.HG_SW_NianLing.split(',') : ['', '', ''];
+                    //var txtHG_SW_MinZu = (selectrow.HG_SW_MinZu && selectrow.HG_SW_MinZu.length > 1) ? selectrow.HG_SW_MinZu.split(',') : ['', '', ''];
+                    //var txtHG_SW_GongZhong = (selectrow.HG_SW_GongZhong && selectrow.HG_SW_GongZhong.length > 1) ? selectrow.HG_SW_GongZhong.split(',') : ['', '', ''];
+                    //var txtHG_SW_ShangHaiChengDu = (selectrow.HG_SW_ShangHaiChengDu && selectrow.HG_SW_ShangHaiChengDu.length > 1) ? selectrow.HG_SW_ShangHaiChengDu.split(',') : ['', '', ''];
+                    //var txtHG_SW_RenYuanShuXing = (selectrow.HG_SW_RenYuanShuXing && selectrow.HG_SW_RenYuanShuXing.length > 1) ? selectrow.HG_SW_RenYuanShuXing.split(',') : ['', '', ''];
 
-                    var txtHG_SW_XingMing = (selectrow.HG_SW_XingMing && selectrow.HG_SW_XingMing.length > 1) ? selectrow.HG_SW_XingMing.split(',') : ['', '', ''];
-                    var txtHG_SW_DanWei = (selectrow.HG_SW_DanWei && selectrow.HG_SW_DanWei.length > 1) ? selectrow.HG_SW_DanWei.split(',') : ['', '', ''];
-                    var txtHG_SW_XingBie = (selectrow.HG_SW_XingBie && selectrow.HG_SW_XingBie.length > 1) ? selectrow.HG_SW_XingBie.split(',') : ['', '', ''];
-                    var txtHG_SW_NianLing = (selectrow.HG_SW_NianLing && selectrow.HG_SW_NianLing.length > 1) ? selectrow.HG_SW_NianLing.split(',') : ['', '', ''];
-                    var txtHG_SW_MinZu = (selectrow.HG_SW_MinZu && selectrow.HG_SW_MinZu.length > 1) ? selectrow.HG_SW_MinZu.split(',') : ['', '', ''];
-                    var txtHG_SW_GongZhong = (selectrow.HG_SW_GongZhong && selectrow.HG_SW_GongZhong.length > 1) ? selectrow.HG_SW_GongZhong.split(',') : ['', '', ''];
-                    var txtHG_SW_ShangHaiChengDu = (selectrow.HG_SW_ShangHaiChengDu && selectrow.HG_SW_ShangHaiChengDu.length > 1) ? selectrow.HG_SW_ShangHaiChengDu.split(',') : ['', '', ''];
-                    var txtHG_SW_RenYuanShuXing = (selectrow.HG_SW_RenYuanShuXing && selectrow.HG_SW_RenYuanShuXing.length > 1) ? selectrow.HG_SW_RenYuanShuXing.split(',') : ['', '', ''];
 
-                     
                 } else if (rows.length === 0) {
                     $.messager.alert('警告操作！', '请选择要修改的记录！', 'warning');
                 }
@@ -55,7 +55,7 @@
             },
             redo: function () {
                 $('#gv_sgfenxiinfo').datagrid('unselectAll');
-            }, 
+            },
             resetquery: function () {
                 $('#search_txtFx_JB_DD_Ju').val("");
                 $('#search_txtFx_JB_DD_Xian').val("");
@@ -69,7 +69,18 @@
                     search_txtFx_JB_DD_Xian: $('#search_txtFx_JB_DD_Xian').val(),
                     search_txtFx_JB_LC_CheCi: $('#search_txtFx_JB_LC_CheCi').val()
                 });
-            } 
+            },
+            goToSgFx: function (sgjbid) {
+                var url = 'views/AccidentAnalyzeShowPage.aspx';
+                var text = '事故具体信息';
+                if (url.length > 0) {
+                    if ($('#tabs').tabs('exists', text))
+                        $('#tabs').tabs('close', text);
+
+                    $('#tabs').tabs('add', { title: text, closable: true, href: url });
+                    $('#tabs').tabs('getTab', text).attr({ 'sgjbid': sgjbid }); 
+                }
+            }
         };
     }
 );

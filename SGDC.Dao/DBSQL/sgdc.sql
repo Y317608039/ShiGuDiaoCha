@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2016-06-11 18:13:05
+Date: 2016-06-12 23:38:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -146,14 +146,15 @@ CREATE TABLE `shiguhouguoinfo` (
   `HG_Ext2` varchar(255) DEFAULT NULL COMMENT '后果扩展信息2',
   `HG_Ext3` varchar(255) DEFAULT NULL COMMENT '后果扩展信息3',
   PRIMARY KEY (`HG_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='事故基本信息后果部分';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='事故基本信息后果部分';
 
 -- ----------------------------
 -- Records of shiguhouguoinfo
 -- ----------------------------
-INSERT INTO `shiguhouguoinfo` VALUES ('1', '3', '08小时59分', '', '08小时59分', '', '', '是', '', '', '', '', '', '', '13', '否', '否', '', '', '', '有防护', '', '120km/h以下', '0', '4.8‰', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '1西安局陇海线Z20次客车（西安-北京西，西安客车车辆段配属，西安机务段HXD3D-0329号机车并值乘）运行至窑村至临潼站间上行线K1048+528m处，因雷电暴雨突发泥流（3000方），造成机后第11位（RW25T554029），第13位（RW25T554037）车辆脱轨停车。', null, null, null);
-INSERT INTO `shiguhouguoinfo` VALUES ('2', '6', '05时45分', '', '05时45分', '', '', '是', '', '', '', '', '', '', '', '否', '否', '', '', '', '', '', '120km/h', '0', '2.8‰', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '事故的概况信息', null, null, null);
-INSERT INTO `shiguhouguoinfo` VALUES ('3', '7', ' 08小时59分', '', ' 08小时59分', '', '', '', '', '', '', '', '', '', '0', '否', '否', '', '', '', '有', '', '120km/h以下', '0', '4.8‰ ', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '构成较大事故。原因：短时强降雨，洪水泥流漫道，造成车辆脱轨。责任列西安局其他。', null, null, null);
+INSERT INTO `shiguhouguoinfo` VALUES ('1', '3', '08小时59分', '', '08小时59分', '', '', '是', '', '', '', '', '', '', '13', '否', '否', '', '', '', '有防护', '', '120km/h以下', '0', '4.8‰', ',,', ',,', ',,', ',,', ',,', ',,', ',,', ',,', '', '', '', '', '', '', '1西安局陇海线Z20次客车（西安-北京西，西安客车车辆段配属，西安机务段HXD3D-0329号机车并值乘）运行至窑村至临潼站间上行线K1048+528m处，因雷电暴雨突发泥流（3000方），造成机后第11位（RW25T554029），第13位（RW25T554037）车辆脱轨停车。', null, null, null);
+INSERT INTO `shiguhouguoinfo` VALUES ('2', '6', '05时45分', '', '05时45分', '', '', '是', '', '', '', '', '', '', '', '否', '否', '', '', '', '', '', '120km/h', '0', '2.8‰', ',,', ',,', ',,', ',,', ',,', ',,', ',,', ',,', '', '', '', '', '', '', '事故的概况信息', null, null, null);
+INSERT INTO `shiguhouguoinfo` VALUES ('3', '7', ' 08小时59分', '', ' 08小时59分', '', '', '', '', '', '', '', '', '', '0', '否', '否', '', '', '', '有', '', '120km/h以下', '0', '4.8‰ ', ',,', ',,', ',,', ',,', ',,', ',,', ',,', ',,', '', '', '', '', '', '', '构成较大事故。原因：短时强降雨，洪水泥流漫道，造成车辆脱轨。责任列西安局其他。', null, null, null);
+INSERT INTO `shiguhouguoinfo` VALUES ('4', '11', '11', '22', '33', '44', 'qq', 'ww', 'ee', 'rr', 'tt', 'yy', 'uu', 'ii', 'oo', 'aa', 'ss', 'dd', 'ff', 'gg', 'hh', 'jj', 'kk', 'll', 'pp', 'z,zz,zzz', 'x,xx,xxx', 'c,cc,ccc', '11,22,33', 'v,vv,vvv', 'b,bb,bbb', 'n,nn,nnn', 'm,mm,mm', '0', '0', '0', '0', '0', '0', '', null, null, null);
 
 -- ----------------------------
 -- Table structure for shiguhouguoshangwanginfo
@@ -305,7 +306,7 @@ CREATE TABLE `shiguzereninfo` (
   `ZR_Ext2` varchar(255) DEFAULT NULL COMMENT '责任扩展信息2',
   `ZR_Ext3` varchar(255) DEFAULT NULL COMMENT '责任扩展信息3',
   PRIMARY KEY (`ZR_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='事故基本信息责任部分';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='事故基本信息责任部分';
 
 -- ----------------------------
 -- Records of shiguzereninfo
@@ -315,6 +316,8 @@ INSERT INTO `shiguzereninfo` VALUES ('2', '6', '西安铁路局', '路内', '其
 INSERT INTO `shiguzereninfo` VALUES ('3', '7', '西安铁路局 ', '路内', '其他', '非责任', '自然灾害', '行车', 'J6', '小张', '2016-05-22 18:35:00', '', '', '', '', '', '', '', '', '', null, null, null);
 INSERT INTO `shiguzereninfo` VALUES ('7', '8', '', '', '', '', '', '', '', '', null, '', '', '', '', '', '', '', '', '', null, null, null);
 INSERT INTO `shiguzereninfo` VALUES ('8', '9', '', '', '', '', '', '', '', '', null, '', '', '', '', '', '', '', '', '', null, null, null);
+INSERT INTO `shiguzereninfo` VALUES ('9', '10', '', '', '', '', '', '', '', '', null, '', '', '', '', '', '', '', '', '', null, null, null);
+INSERT INTO `shiguzereninfo` VALUES ('10', '11', '', '', '', '', '', '', '', '', '2016-06-12 16:00:03', '', '', '', '', '', '', '', '', '', null, null, null);
 
 -- ----------------------------
 -- Table structure for shiguzhuantiinfo
@@ -324,6 +327,7 @@ CREATE TABLE `shiguzhuantiinfo` (
   `ZT_ID` int(11) NOT NULL AUTO_INCREMENT COMMENT '事故专题标识ID',
   `JB_ID` int(11) NOT NULL DEFAULT '0' COMMENT '事故基本信息ID',
   `ZT_Type` varchar(25) NOT NULL DEFAULT '' COMMENT '事故专题类型',
+  `ZT_FilePath` varchar(255) NOT NULL DEFAULT '' COMMENT '事故专题文件路径',
   `ZT_Desc` text NOT NULL COMMENT '事故专题描述',
   `ZT_CreateUserID` int(11) NOT NULL DEFAULT '0' COMMENT '事故专题创建人ID',
   `ZT_CreateUser` varchar(25) NOT NULL DEFAULT '' COMMENT '事故专题创建人',
@@ -332,11 +336,12 @@ CREATE TABLE `shiguzhuantiinfo` (
   `ZT_Ext2` varchar(255) DEFAULT NULL COMMENT '事故专题扩展信息2',
   `ZT_Ext3` varchar(255) DEFAULT NULL COMMENT '事故专题扩展信息3',
   PRIMARY KEY (`ZT_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='事故专题信息';
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='事故专题信息';
 
 -- ----------------------------
 -- Records of shiguzhuantiinfo
 -- ----------------------------
+INSERT INTO `shiguzhuantiinfo` VALUES ('12', '11', '视频', '01_201606121129442944.rmvb', 'fdsafewrhgjhkhjnhjgjghhjf', '5', '管理员', '2016-06-12 11:29:44', null, null, null);
 
 -- ----------------------------
 -- Table structure for systemloginfo
@@ -353,7 +358,7 @@ CREATE TABLE `systemloginfo` (
   `SL_Ext2` varchar(255) DEFAULT NULL COMMENT '日志扩展2',
   `SL_Ext3` varchar(255) DEFAULT NULL COMMENT '日志扩展3',
   PRIMARY KEY (`SL_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=235 DEFAULT CHARSET=utf8 COMMENT='系统日志信息';
+) ENGINE=InnoDB AUTO_INCREMENT=251 DEFAULT CHARSET=utf8 COMMENT='系统日志信息';
 
 -- ----------------------------
 -- Records of systemloginfo
@@ -592,6 +597,22 @@ INSERT INTO `systemloginfo` VALUES ('231', '5', '管理员', '登录', '管理�
 INSERT INTO `systemloginfo` VALUES ('232', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-11 13:19:41', null, null, null);
 INSERT INTO `systemloginfo` VALUES ('233', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-11 13:39:42', null, null, null);
 INSERT INTO `systemloginfo` VALUES ('234', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-11 17:34:55', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('235', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-11 21:41:15', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('236', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-11 22:44:35', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('237', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-11 23:23:25', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('238', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-11 23:27:14', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('239', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-11 23:43:05', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('240', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-12 09:59:24', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('241', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-12 11:20:44', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('242', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-12 11:25:20', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('243', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-12 14:58:07', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('244', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-12 15:43:17', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('245', '5', '管理员', '新增', '事故后果信息 HG_ID:4, JB_ID:11, HG_ZD_ShangXing:11, HG_ZD_XiaXing:22, HG_DW_ShangXing:33, HG_DW_XiaXing:44, HG_TG_DongCheZu:qq, HG_TG_JiChe:ww, HG_TG_KeChe:ee, HG_TG_HuoChe:rr, HG_SS_DongCheZu:tt, HG_SS_JiChe:yy, HG_SS_CheLiang:uu, HG_SS_QiTa:ii, HG_ZhiJieSunShi:oo, HG_XZ_JiDongChe:aa, HG_XZ_FeiJiDongChe:ss, HG_XZ_XingRen:dd, HG_XZ_DaoKouQingKuang:ff, HG_XZ_GongTieBingXing:gg, HG_XZ_FangHuZhaLan:hh, HG_XZ_GongTieLiJiao:jj, HG_XZ_SuDuQuDuan:kk, HG_XZ_QuXianBanJing:ll, HG_XZ_PoDu:pp, HG_SW_XingMing:z,zz,zzz, HG_SW_DanWei:x,xx,xxx, HG_SW_XingBie:c,cc,ccc, HG_SW_NianLing:11,22,33, HG_SW_MinZu:v,vv,vvv, HG_SW_GongZhong:b,bb,bbb, HG_SW_ShangHaiChengDu:n,nn,nnn, HG_SW_RenYuanShuXing:m,mm,mm, HG_SiW_LuNei:0, HG_SiW_LuWai:0, HG_ZS_LuNei:0, HG_ZS_LuWai:0, HG_QS_LuNei:0, HG_QS_LuWai:0, HG_ShiGuGaiKuang:\'\', HG_Ext1:\'\', HG_Ext2:\'\', HG_Ext3:\'\'', '2016-06-12 16:00:03', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('246', '5', '管理员', '新增', '事故责任信息 ZR_ID:10, JB_ID:11, ZR_ZeRenDanWei:\'\', ZR_ZeRenDanWeiShuXing:\'\', ZR_ZeRenBuMen:\'\', ZR_ZeRenChengDu:\'\', ZR_YuanYinLeiBie:\'\', ZR_ShiGuLeiBie:\'\', ZR_ShiGuDengJi:\'\', ZR_ZhiBanJianCha:\'\', ZR_TianBaoShiJian:2016/6/12 16:00:03, ZR_BaoGaoCiShu:\'\', ZR_ShiGuDiaoChaBaoGao:\'\', ZR_XianChangDianChaZiLiao:\'\', ZR_SunShiJiSuanZiLiao:\'\', ZR_ShiGuRenDingShu:\'\', ZR_AnJianBaoEr:\'\', ZR_QiTa:\'\', ZR_TePaiBanDiaoChaBaoGao:\'\', ZR_SheDuDiaoChaBaoGao:\'\', ZR_Ext1:\'\', ZR_Ext2:\'\', ZR_Ext3:\'\'', '2016-06-12 16:00:04', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('247', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-12 21:26:10', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('248', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-12 21:59:48', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('249', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-12 23:17:10', null, null, null);
+INSERT INTO `systemloginfo` VALUES ('250', '5', '管理员', '登录', '管理员 登录了系统.', '2016-06-12 23:32:48', null, null, null);
 
 -- ----------------------------
 -- Table structure for userinfo
